@@ -1,0 +1,41 @@
+body {
+    align-items: center;
+    max-width: 700px;
+    margin: auto;
+    font-family: 'Helvetica';
+}
+
+h1 {
+    color: darkgreen;
+}
+
+h1,
+h2 {
+    font-family: 'Georgia';
+    text-align: center;
+}
+
+p {
+    line-height: 25px;
+}
+
+a {
+    color: darkseagreen;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.more-articles {
+    text-transform: uppercase;
+}
+
+img {
+    border-radius: 3px;
+    max-height: 33%;
+    max-width: 33%;
+    padding: 0 1em 0.6em 0;
+    float: left;
+}
