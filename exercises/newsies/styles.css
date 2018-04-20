@@ -1,0 +1,171 @@
+* {
+    box-sizing: border-box;
+}
+
+.reference {
+    color: #78c7bb;
+    text-decoration: underline;
+}
+
+.content-constraints {
+    max-width: 1000px;
+    padding: 0 1rem;
+}
+
+body {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 0 0 2.5em;
+    font-family: 'Lato', sans-serif;
+}
+
+header {
+    background: #111;
+    color: #fafafa;
+    line-height: 1;
+}
+
+.heading {
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+}
+
+.links {
+    list-style: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+}
+
+.link {
+    display: inline-block;
+    margin: 0 0 0 1em;
+    cursor: pointer;
+    color: #eee;
+    font-size: 0.9em;
+}
+
+.headline {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+    ),
+        url(coral-reef.jpg);
+    background-size: cover;
+    height: 350px;
+    display: flex;
+    margin: 0 0 1em;
+}
+
+.title {
+    background: rgba(255, 255, 255, 0.85);
+    width: 50%;
+    margin: auto;
+    padding: 0.25em 0.5em;
+    font-family: 'Playfair Display', serif;
+    border: 5px solid black;
+    box-shadow: 0 5px 20px -5px #333;
+}
+
+.classifieds {
+/*    margin: 1em 0 0;*/
+    vertical-align: top;
+    display: inline-block;
+    width: 24%;
+/*
+    display: flex;
+    flex-direction: column;
+*/
+}
+
+.article {
+    display: inline-block;
+    width: 50%;
+}
+
+
+.classified {
+    height: 250px;
+    width: 75%;
+    background: #f2f2f2;
+    border: 1px solid #888;
+    border-radius: 3px;
+    margin: 3em auto;
+    box-shadow: 0 5px 5px -5px #aaa;
+    cursor: pointer;
+}
+
+.classified p {
+    text-align: center;
+}
+
+.classified-1 {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.9) -50%,
+        rgba(255, 255, 255, 0.1)
+    ),
+        url(coca-cola.jpg);
+    background-size: cover;
+    background-position: 50%;
+}
+
+.classified-2 {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.5) -50%,
+        rgba(255, 255, 255, 0.1)
+    ),
+        url(shoe.jpg);
+    background-size: cover;
+    background-position: 50%;
+}
+
+.classified-3 {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.5) -50%,
+        rgba(255, 255, 255, 0.1)
+    ),
+        url(travel.jpg);
+    background-size: cover;
+    background-position: 50%;
+}
+
+.classified-4 {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.5) -50%,
+        rgba(255, 255, 255, 0.1)
+    ),
+        url(hair.jpg);
+    background-size: cover;
+    background-position: 50%;
+}
+
+.classified-5 {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.9) -20%,
+        rgba(255, 255, 255, 0.1)
+    ),
+        url(ducks.jpg);
+    background-size: cover;
+    background-position: 50%;
+}
+
+.classified-6 {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.5) -50%,
+        rgba(255, 255, 255, 0.1)
+    ),
+        url(lights.jpg);
+    background-size: cover;
+    background-position: 50%;
+}
+
+
+
+
