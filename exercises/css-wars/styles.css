@@ -1,0 +1,41 @@
+body {
+    background: #111111;
+}
+
+h1 {
+    color: #e2e80f;
+}
+
+p {
+    color: #eeeeee;
+    font-size: 1.25em;
+    line-height: 1.5;
+}
+
+.credits {
+    text-decoration: underline;
+    color: #45ffd4;
+}
+
+.credits:hover {
+    cursor: pointer;
+}
+
+#film-description {
+    font-size: 0.75em;
+    font-style: italic;
+}
+
+body {
+    max-width: 900px;
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 1.75rem;
+    text-align: center;
+    font-family: 'Righteous', serif;
+    padding: 0.5em 0;
+}

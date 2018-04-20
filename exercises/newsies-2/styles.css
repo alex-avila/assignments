@@ -1,0 +1,133 @@
+/* GENERAL */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+}
+
+.content-constraints {
+    max-width: 900px;
+    padding: 0 1.62em;
+/*    margin: auto;*/
+}
+
+
+
+/* TOP SECTION */
+.top-section {
+    display: flex;
+    flex-direction: column;
+    min-height:  60vh;
+    padding: 0 0 2em;
+    background: linear-gradient(
+      180deg, rgba(255, 255, 255, 0.8) 8.83%, rgba(255, 255, 255, 0.66) 100%),
+    url(images/coral-reef.jpg),
+    #C4C4C4;
+}
+
+.logo {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    width: 50%;
+    margin: auto;
+    padding: 0.9em 1em;
+    background: rgba(255, 255, 255, 0.9);
+    line-height: normal;
+}
+
+/* NAV */
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    height: 0px;
+}
+
+.links {
+    margin: 0 0 0 auto;
+}
+
+.link {
+    margin: 0 0 0 1em;
+}
+
+.body {
+    display: flex;
+    justify-content: space-around;
+/*    border: 1px solid red;*/
+/*    width: 59%;*/
+/*    margin: auto;*/
+}
+    
+/* ARTICLE */
+article {
+    margin: 2em 0 0;
+    display: inline-block;
+    width: 50%;
+}
+
+
+
+
+
+
+
+
+
+/* CLASSIFIEDS */
+.classifieds {
+    margin: 3.25em 0 0;
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+}
+
+.classified {
+    width: 90%;
+    margin: auto;
+    background: gray;
+    border-radius: 3px;
+}
+
+.classified-1 {
+    padding: 0.01em 1em;
+    height: 250px;
+    margin-right: -2em;
+    background: url(images/travel.jpg);
+    background-size: cover;
+    background-position: 50%;
+/*    color: white;*/
+    font-weight: bold;
+    line-height: 2.7;
+}
+
+.classified-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    margin-left: -2em;
+    background: url(images/coca-cola.jpg);
+    background-size: cover;
+    background-position: 50%;
+    color: white;
+}
