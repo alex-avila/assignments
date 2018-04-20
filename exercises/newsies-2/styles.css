@@ -30,7 +30,7 @@ li {
 .top-section {
     display: flex;
     flex-direction: column;
-    min-height:  60vh;
+    min-height:  65vh;
     padding: 0 0 2em;
     background: linear-gradient(
       180deg, rgba(255, 255, 255, 0.8) 8.83%, rgba(255, 255, 255, 0.66) 100%),

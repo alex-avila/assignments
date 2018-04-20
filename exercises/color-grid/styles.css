@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    font-size: 0;
+}
+
+body {
+    margin: 0 -5px; /*hacky*/
+}
+
+div {
+    height: 25vh;
+    border: 5px solid white;
+}
+
+div div {
+    display: inline-block;
+}
+
+.light-pink {
+    border-top: 0;
+    width: 100%;
+    background: #F5C6D6;
+}
+
+.pinks {
+    border: none;
+}
+
+.pink {
+    width: 25%;
+    background: #EE2E84;
+}
+
+.gray-blues {
+    border: none;
+}
+
+.gray-blue {
+    width: 50%;
+    background: #85CFD8;
+}
+
+.green-orange {
+    border: none;
+}
+
+.green-orange div {
+    border-bottom: 0; /*hacky*/
+}
+
+.green {
+    width: 75%;
+    background: #8DC63F;
+}
+
+.orange {
+    width: 25%;
+    background: #E76E34;
+}
