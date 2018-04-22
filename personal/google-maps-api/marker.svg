@@ -1,0 +1,41 @@
+<svg width="57" height="71" viewBox="0 0 57 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Canvas" fill="none">
+<g id="Group" filter="url(#filter0_d)">
+<g id="Union">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M 18.5 -1.52588e-05C 8.28271 -1.52588e-05 0 8.16943 0 18.2469C 0 21.4674 0.845817 24.4929 2.33035 27.1193C 2.33186 27.122 2.32992 27.1253 2.32684 27.1253C 2.32364 27.1253 2.32172 27.1289 2.32348 27.1315L 2.43274 27.2984C 2.43384 27.3001 2.43489 27.3018 2.4359 27.3035C 2.75996 27.8615 3.11313 28.401 3.49322 28.92C 3.50379 28.9345 3.514 28.9492 3.52381 28.9641L 17.6082 50.4679C 18.003 51.0707 18.8865 51.0707 19.2813 50.4679L 32.7796 29.859C 32.8004 29.8272 32.823 29.7967 32.8472 29.7674C 35.4433 26.626 37 22.6158 37 18.2469C 37 8.16943 28.7173 -1.52588e-05 18.5 -1.52588e-05Z" transform="translate(10 6)" fill="url(#paint0_linear)"/>
+</g>
+<g id="Ellipse 2">
+<ellipse cx="7.28955" cy="7.18984" rx="7.28955" ry="7.18984" transform="translate(20.9343 17.0026)" fill="url(#paint1_linear)"/>
+<g mask="url(#path1_ins)" transform="translate(20.9343 17.0026)">
+<ellipse cx="7.28955" cy="7.18984" rx="7.28955" ry="7.18984" stroke-width="6" stroke="#F0F0F0"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" x="0" y="-1.52588e-05" width="57" height="70.92" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+
+<linearGradient id="paint0_linear" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 50.92 -37 0 37 0)">
+<stop stop-color="#56CCF2"/>
+<stop offset="1" stop-color="#2F80ED"/>
+</linearGradient>
+<linearGradient id="paint1_linear" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 50 -50.6934 0 32.6362 -10.5026)">
+<stop stop-color="#56CCF2"/>
+<stop offset="1" stop-color="#2F80ED"/>
+</linearGradient>
+
+<mask id="path1_ins" fill="white">
+<ellipse cx="7.28955" cy="7.18984" rx="7.28955" ry="7.18984"/>
+</mask>
+
+</defs>
+</svg>
+
