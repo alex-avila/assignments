@@ -1,0 +1,255 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    font-size: 0px;
+    height: 550px;
+}
+
+.flags {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    border: 5px solid #fafafa;
+    background: #fafafa;
+}
+.flag {
+    height: 25%;
+    width: 33%;
+    border: 5px solid #fafafa;
+}
+
+.france div {
+    display: inline-block;
+    height: 100%;
+    width: 33%
+}
+.france .blue {
+    background: blue;
+}
+.france .white {
+    background: white;
+}
+.france .red {
+    background: red;
+}
+
+.germany div {
+    height: 33%;
+    width: 100%;
+}
+.germany .black {
+    background: black;
+}
+.germany .red {
+    background: red;
+}
+.germany .yellow {
+    background: yellow;
+}
+
+.madagascar div {
+    display: inline-block;
+    height: 100%;
+    width: 33%
+}
+.madagascar .white {
+    background: white;
+}
+.madagascar .red-green {
+    height; 100%;
+    width: 66%;
+}
+.madagascar .red {
+    height: 50%;
+    width: 100%;
+    background: red;
+}
+.madagascar .green {
+    height: 50%;
+    width: 100%;
+    background: green;
+}
+
+.switzerland {
+    background: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.switzerland div {
+    background: white;
+}
+.switzerland .v-bar {
+    position: absolute;
+    width: 27px;
+    height: 80px;
+}
+.switzerland .h-bar {
+    height: 27px;
+    width: 80px;
+    position: absolute;
+}
+
+.sweden {
+    position: relative;
+    background: blue;
+}
+.sweden div {
+    background: yellow;
+}
+.sweden .v-bar {
+    position: absolute;
+    margin-left: 25%;
+    height: 100%;
+    width: 20px;
+}
+.sweden .h-bar {
+    position: absolute;
+    margin-top: 50px;
+    height: 20px;
+    width: 100%;
+}
+
+.gambia div {
+    height: 33%;
+    width: 100%;
+}
+.gambia .red {
+    background: red;
+}
+.gambia .blue-w {
+    background: blue;
+    border: 5px white solid;
+    border-left: none;
+    border-right: none;
+}
+.gambia .green {
+    background: green;
+}
+
+.tonga {
+    background: red;
+}
+.tonga .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 50%;
+    height: 50%;
+    background: white;
+}
+.tonga .square .v-bar {
+    position: absolute;
+    height: 40px;
+    width: 15px;
+    background: red;
+}
+.tonga .square .h-bar {
+    position: absolute;
+    height: 15px;
+    width: 40px;
+    background: red;
+}
+
+.japan {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.japan .red-circle {
+    background: red;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%
+}
+
+
+.greece {
+    position: relative;
+}
+.greece .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 55%;
+    width: 45%;
+    background: blue;
+}
+.greece .square div {
+    position: absolute;
+    background: white;
+}
+.greece .square .v-bar {
+    height: 100%;
+    width: 15px;
+}
+.greece .square .h-bar {
+    height: 15px;
+    width: 100%;
+}
+.greece .line {
+    height: 11%;
+}
+.greece .line:nth-child(even) {
+    background: blue;
+}
+.greece .line:nth-child(odd) {
+    background: white;
+}
+
+.niger div {
+    height: 33%;
+    width: 100%;
+}
+.niger .orange {
+    background: orange;
+}
+.niger .white {
+    background: white;
+}
+.niger .green {
+    background: green;
+}
+.niger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.niger .orange-circle {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    background: orange;
+    border-radius: 50%;
+}
+
+.maldives {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: green;
+    border: 30px red solid;
+}
+.maldives .circle {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background: white;
+    border-radius: 50%;
+}
+.maldives .green-circle {
+    position: relative;
+    background: green;
+    left: 10px;
+}
