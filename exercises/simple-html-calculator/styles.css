@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Helvetica Neue, sans-serif;
+    font-size: 14px;
+    background: rgb(160, 152, 224);
+}
+
+form {
+    background: #a3b6dd;
+    padding: 1em;
+    border-radius: 3px 0 0 3px;
+    box-shadow: 0 2px 5px rgb(113, 168, 185);
+    height: 300px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+div {
+    padding: 0.5em 0;
+}
+
+input {
+    border: none;
+    border-radius: 3px;
+    padding: 0.5em;
+    width: 80px;
+    margin: 1em;
+    background: rgb(88, 109, 177);
+    color: white;
+}
+
+ /* remove spinner */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+button {
+    padding: 0.5em 0;
+    width: 80px;
+    border: none;
+    border-radius: 50px;
+    background: #2d08ff;
+    margin-left: 1em;
+    color: white;
+    font-weight: bold;
+}
+
+.results {
+    height: 300px;
+    width: 200px;
+    background: rgb(33, 30, 211);
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 2px 5px rgb(113, 168, 185);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.results div {
+    width: 120px;
+    margin: 0 auto;
+    display: flex;
+}
+
+div span:nth-child(odd) {
+    color: #ddd;
+}
+
+div span:nth-child(even) {
+    display: block;
+    margin-left: auto;
+    font-size: 16px;
+    font-weight: bold;
+}

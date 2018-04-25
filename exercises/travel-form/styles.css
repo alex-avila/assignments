@@ -1,0 +1,25 @@
+html,
+body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+form {
+    background: #eee;
+    padding: 1em;
+}
+
+input {
+    display: block;
+}
+
+select,
+option,
+button,
+input {
+    font-size: 16px;
+    margin: 0.5em 0;
+}

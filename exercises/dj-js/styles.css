@@ -1,0 +1,19 @@
+html,
+body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top, rgb(126, 166, 242), rgb(164, 216, 235));
+}
+
+#square {
+    background: #ff00e2;
+    height: 100px;
+    width: 100px;
+    border-radius: 7px;
+    box-shadow: 
+        0 0 7.5px 0 #ff00e2,
+        0 10px 25px -10px #555;
+    transition: all 0.33s;
+}

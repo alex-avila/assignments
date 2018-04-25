@@ -9,21 +9,33 @@ function convertToHMS(time) {
     hours = Math.floor(time / 3600);
     minutes = Math.floor(((time / 3600) - hours) * 60);
     seconds = Math.floor(((((time / 3600) - hours) * 60) - minutes) * 60);
-    if (hours < 10) {
-        output += '0' + hours + ':';
-    } else {
-        output += hours + ':';
+    var arr = [hours, minutes, seconds];
+    for (var i = 0; i < 3; i++) {
+        if (arr[i] < 10) {
+            output += '0' + arr[i];
+        } else {
+            output += arr[i];
+        }
+        if (i < 2) {
+            output += ':';
+        }
     }
-    if (minutes < 10) {
-        output += '0' + minutes + ':';
-    } else {
-        output += minutes + ':';
-    }
-    if (seconds < 10) {
-        output += '0' + seconds;
-    } else {
-        output += seconds;
-    }
+    
+//    if (hours < 10) {
+//        output += '0' + hours + ':';
+//    } else {
+//        output += hours + ':';
+//    }
+//    if (minutes < 10) {
+//        output += '0' + minutes + ':';
+//    } else {
+//        output += minutes + ':';
+//    }
+//    if (seconds < 10) {
+//        output += '0' + seconds;
+//    } else {
+//        output += seconds;
+//    }
     return output;
 }
 
