@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 html,
 body {
     height: 100%;
@@ -5,11 +8,17 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 16px;
+    font-family: 'Helvetica Neue', sans-serif;
+    background: #eee;
+    line-height: 1.5;
 }
 
 form {
-    background: #eee;
-    padding: 1em;
+    background: #fafafa;
+    padding: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 1px 3px #aaa;
 }
 
 input {
@@ -21,5 +30,80 @@ option,
 button,
 input {
     font-size: 16px;
+    margin: 0.62em 0;
+    line-height: 1.5
+}
+
+.radio input,
+.radio span {
+    display: inline-block;
+}
+
+div input[type="checkbox"],
+div span {
+    display: inline-block;
+}
+
+div span {
+    padding-left: 0.62em;
+}
+
+button {
+    margin: 1em auto 0;
+    align-self: center;
+    width: 20%;
+    padding: 0.5em 1em;
+    border: none;
+/*    border-radius: 20px;*/
+/*
+    background: linear-gradient(
+        45deg,
+        rgb(128, 0, 255),
+        rgb(128, 0, 255)
+    );
+*/
+    color: #333;
+    background: #fafafa;
+    font-weight: 500;
+    box-shadow: 0 2px 4px #999;
+    transition: all 1s;
+}
+
+/*
+button:hover {
+    box-shadow: 0 3px 6px #999;
+}
+*/
+
+select {
+    text-align: center;
+}
+
+input[type="text"],
+input[type="number"] {
+    border: none;
+    background: #fafafa;
+    border-bottom: 1px solid #aaa;
+    outline: none;
+}
+
+label {
+    padding: 1em 0 0.25em;
+    font-weight: 500;
+    color: #aaa;
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    color: #555;
     margin: 0.5em 0;
+}
+
+.pane-2,
+.pane-1 {
+    width: 50%;
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
 }

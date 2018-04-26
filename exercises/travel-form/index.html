@@ -3,41 +3,79 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Travel Form</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        
         <form name="travel">
-            <input name="firstName" placeholder="First name">
-            <input name="lastName" placeholder="Last name">
-            <input name="age" type="number" placeholder="Age">
-            <div>
-                <input type="radio" name="gender">
-                <input type="radio" name="gender">
-                <input type="radio" name="gender">
-                <input type="radio" name="gender">
+            <h2>Travel Information</h2>
+            <div class="pane-1">
+                <input name="firstName" type="text" placeholder="First name" required>
+                <input name="lastName" type="text" placeholder="Last name" required>
+                <input name="age" type="number" placeholder="Age">
+                <label>Gender</label>
+                <div class="radio">
+                    <div>
+                        <input type="radio" name="gender" value="Male">
+                        <span>Male</span>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender"  value="Female">
+                        <span>Female</span>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender"  value="Eunuch">
+                        <span>Eunuch</span>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender"  value="Other">
+                        <span>Other</span>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender"  value="Prefers not to specify">
+                        <span>I prefer not to specify</span>
+                    </div>
+                </div>
             </div>
-            <select name="location">
-                <option value="New York">
-                    New York
-                </option>
-                <option value="Los Angeles">
-                    Los Angeles
-                </option>
-                <option value="Beijing" selected>
-                    Beijing
-                </option>
-            </select>
-            <div>
-                <input type="checkbox" name="diet">
-                <input type="checkbox" name="diet">
-                <input type="checkbox" name="diet">
-                <input type="checkbox" name="diet">
+            
+            <div class="pane-2">
+                <label>Location</label>
+                <select name="location" required>
+                    <option value="New York">
+                        New York
+                    </option>
+                    <option value="Los Angeles">
+                        Los Angeles
+                    </option>
+                    <option value="Beijing" selected>
+                        Beijing
+                    </option>
+                </select>
+                <label>Diet Restrictions</label>
+                <div>
+                    <div>
+                        <input type="checkbox" name="diet" value="Vegetarian">
+                        <span>Vegetarian</span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="diet" value="Vegan">
+                        <span>Vegan</span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="diet" value="Lactose intolerant">
+                        <span>Lactose intolerant</span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="diet" value="Kosher">
+                        <span>Kosher</span>
+                    </div>
+                </div>
             </div>
+            
             <button>SUBMIT</button>
+            
         </form>
-        
+
         <script src="app.js"></script>
     </body>
 </html>

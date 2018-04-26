@@ -4,12 +4,89 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Pest Control</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- content -->
+    <div class="backgrounds">
+        <div class="background lighter-blue"></div>
+        <div class="background light-blue"></div>
+        <div class="background blue"></div>
+        <div class="background green"></div>
+        <div class="background kinda-brown"></div>
+    </div>
     
+    <div class="container">
+        <h1>Mario Pest Control</h1>
+        <ul class="baddies">
+            <li class="baddie">
+                <div class="name-and-coin">
+                    <h2 class="name">Goomba</h2>
+                    <span class="dot"></span>
+                    <div class="coin">
+                        <h2 class="price">5</h2>
+                    </div>
+                </div>
+                <img src="images/goomba.png">
+                <div class="number-caught">
+                    <input id="caught-num" type="number" name="goomba" placeholder="# Caught">
+                    <button>ADD</button>
+                </div>
+            </li>
+            <li class="baddie">
+                <div class="name-and-coin">
+                    <h2 class="name">Bob-omb</h2>
+                    <span class="dot"></span>
+                    <div class="coin">
+                        <h2 class="price">7</h2>
+                    </div>
+                </div>
+                <img src="images/bob-omb.png">
+                <div class="number-caught">
+                    <input id="caught-num" type="number" name="bob-omb" placeholder="# Caught">
+                    <button>ADD</button>
+                </div>
+            </li>
+            <li class="baddie">
+                <div class="name-and-coin">
+                    <h2 class="name">Cheep-cheep</h2>
+                    <span class="dot"></span>
+                    <div class="coin">
+                        <h2 class="price">11</h2>
+                    </div>
+                </div>
+                <img src="images/cheep-cheep.png">
+                <div class="number-caught">
+                    <input id="caught-num" type="number" name="goomba" placeholder="# Caught">
+                    <button>ADD</button>
+                </div>
+            </li>
+        </ul>
+
+        <div class="total">
+            <div class="line total-line">
+                <p>Total</p>
+                <p id="total-price">0 Coins</p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-info email">
+                <h3>Email</h3>
+                <p>mario@mario.pests.com</p>
+            </div>
+            <div class="footer-info website">
+                <h3>Website</h3>
+                <p>mario.services.com</p>
+            </div>
+            <div class="footer-info location">
+                <h3>Location</h3>
+                <p>2 Peach's Castle Road,<br>Mushroom Kingdom</p>
+            </div>
+        </footer>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
