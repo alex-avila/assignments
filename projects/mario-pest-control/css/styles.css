@@ -96,13 +96,7 @@ h1 {
     max-width: 370px;
     margin: 1em;
     padding: 0 1em 1em;
-    background: linear-gradient(
-        180.08deg,
-        #F2F2F2 0.06%,
-        #FBFBFB 24.89%,
-        #FFFFFF 50.28%,
-        #E9E9E9 99.94%
-    );
+    background: linear-gradient(180deg, #FFFFFF 0%, #F2F2F2 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 }
@@ -114,20 +108,6 @@ h1 {
     align-items: center;
     justify-content: space-between;
 }
-
-/*
-.name {
-    margin-top: 0;
-}
-
-.coin {
-    margin-top: 0;
-}
-
-.price {
-    margin-top: 0;
-}
-*/
 
 .dot {
     background: #aaa;
@@ -152,27 +132,28 @@ h1 {
     margin: 0 0 1em;
 }
 
+/* this is confusing */
 .number-caught {
     width: 100%;
     text-align: center;
 }
 
-#caught-num {
+.caught-num {
     background: none;
     width: 40%;
-    font-size: 1.25em;
+    font-size: 1.75em;
     border: none;
     outline: none;
-    border-bottom: 2px solid #aaa;
+    border-bottom: 2px solid #ddd;
     padding: 0.1em 0;
     text-align: center;
-    margin: 0 1em;
+    margin: 0.25em 1em 0.5em;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 button {
@@ -188,13 +169,13 @@ button {
 }
 
 button:hover {
-    box-shadow: 
+    box-shadow:
         0 4px 4px rgba(0, 0, 0, 0.25),
         0 0 15px rgba(255, 7, 7, 0.5);
     }
 
 button:active {
-    box-shadow: 
+    box-shadow:
         0 4px 10px rgba(0, 0, 0, 0.25),
         0 0 15px rgba(255, 7, 7, 0.5);
 }
@@ -202,32 +183,37 @@ button:active {
 
 /* Total */
 .total {
-    width: 350px;
+    width: 90%;
+    max-width: 370px;
     margin: auto;
     background: linear-gradient(180deg, #FFFFFF 0%, #F2F2F2 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 6px;
+    border-radius: 20px;
     padding: 1em;
     font-size: 24px;
-    font-weight: 500;
     transition: all 0.5s;
 }
 
 .line {
-    padding: 0 1em;
     display: flex;
     justify-content: space-between;
 }
 
-.total-line {
+.line p {
+    margin: 0;
+    padding: 0.9em 1em;
+}
+
+#total-line {
+    margin-top: 1em;
     border-top: 1px solid black;
-    padding: 0 1em;
+    font-weight: 500;
 }
 
 
 /* Footer */
 footer {
-    font-size: 0.8em;
+    font-size: 1em;
     max-width: 350px;
     margin: 2em auto 0;
     border-top: 3px dashed #555;
@@ -246,12 +232,3 @@ h3 {
 .footer-info p {
     margin: 0.5em 0;
 }
-
-
-
-
-
-
-
-
-

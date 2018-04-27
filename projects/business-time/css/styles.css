@@ -1,0 +1,44 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Helvetica Neue';
+}
+
+div {
+    height: 100%;
+}
+
+.main-box {
+    position: relative;
+    background: #534242;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    box-shadow: 15px 0 50px #aaa;
+    transition: all 1s;
+}
+
+.menu {
+    background: #986c6c;
+    height: 50px;
+    width: 50px;
+}
+
+.illusion-box {
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    background: #fafafa;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: 0;
+    width: 50%;
+}
+
+.illusion-box p {
+    padding: 2em 0;
+}

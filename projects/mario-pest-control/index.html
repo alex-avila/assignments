@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Pest Control</title>
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css"><link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <div class="background green"></div>
         <div class="background kinda-brown"></div>
     </div>
-    
+
     <div class="container">
         <h1>Mario Pest Control</h1>
         <ul class="baddies">
@@ -30,7 +30,7 @@
                 </div>
                 <img src="images/goomba.png">
                 <div class="number-caught">
-                    <input id="caught-num" type="number" name="goomba" placeholder="# Caught">
+                    <input class="caught-num" id="goomba" type="number" name="goomba" placeholder="# Caught">
                     <button>ADD</button>
                 </div>
             </li>
@@ -44,7 +44,7 @@
                 </div>
                 <img src="images/bob-omb.png">
                 <div class="number-caught">
-                    <input id="caught-num" type="number" name="bob-omb" placeholder="# Caught">
+                    <input class="caught-num" id="bobomb" type="number" name="bob-omb" placeholder="# Caught">
                     <button>ADD</button>
                 </div>
             </li>
@@ -58,18 +58,17 @@
                 </div>
                 <img src="images/cheep-cheep.png">
                 <div class="number-caught">
-                    <input id="caught-num" type="number" name="goomba" placeholder="# Caught">
+                    <input class="caught-num" id="cheepcheep" type="number" name="cheep-cheep" placeholder="# Caught">
                     <button>ADD</button>
                 </div>
             </li>
-        </ul>
-
-        <div class="total">
-            <div class="line total-line">
-                <p>Total</p>
-                <p id="total-price">0 Coins</p>
+            <div id="total" class="total">
+                <div class="line" id="total-line">
+                    <p>Total</p>
+                    <p id="total-coins">0 Coins</p>
+                </div>
             </div>
-        </div>
+        </ul>
 
         <footer>
             <div class="footer-info email">
