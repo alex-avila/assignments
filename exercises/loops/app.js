@@ -11,6 +11,7 @@ function findChar(str, char) {
             found = true;
             console.log(i);
         }
+        console.log(i);
     }
     if (!found) {
         console.log('Character not found.')
