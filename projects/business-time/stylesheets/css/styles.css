@@ -1,44 +1,114 @@
-html,
+* {
+    box-sizing: border-box;
+}
+
 body {
-    height: 100%;
     margin: 0;
-    font-family: 'Helvetica Neue';
+    font-family: 'Helvetica';
+    line-height: 2;
 }
 
-div {
-    height: 100%;
-}
-
-.main-box {
-    position: relative;
-    background: #534242;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    box-shadow: 15px 0 50px #aaa;
-    transition: all 1s;
+img {
+    max-width: 100%;
 }
 
 .menu {
-    background: #986c6c;
-    height: 50px;
-    width: 50px;
+    display: none;
 }
 
-.illusion-box {
-    color: black;
-    text-transform: uppercase;
-    text-align: center;
-    background: #fafafa;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.62em;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.logo {
+    padding: 0.25em 0.5em;
+    font-size: 2em;
+}
+
+.menu-btn {
+    padding: 0.25em 0.5em;
+    font-size: 2em;
+}
+
+.featured {
+    position: relative;
+}
+
+.featured img {
+    display: block;
+}
+
+.featured-text {
+    background: rgba(255, 255, 255, 0.6);
     position: absolute;
-    left: 50%;
-    top: 0;
-    z-index: 0;
-    width: 50%;
+    bottom: 0;
+    padding: 1em 1.62em;
+    margin: 1.5em;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.33);
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: 9px;
 }
 
-.illusion-box p {
-    padding: 2em 0;
+.featured-text p {
+    margin-top: 0;
+}
+
+.featured-text h2 {
+    margin: 0;
+}
+
+.featured-btn {
+    text-align: center;
+    background: black;
+    color: white;
+    align-self: center;
+    padding: 0.52em 1.5em;
+    border-radius: 100px;
+    font-weight: 500;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.content-wrapper {
+    padding: 1em;
+}
+
+.card {
+    padding: 0.62em 0.62em 1em;
+    margin: 1em 0;
+    border-radius: 9px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    border-radius: 4.5px;
+}
+
+.card-text {
+    padding: 0 1em;
+}
+
+.ghost-btn {
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 100px;
+    padding: 0.62em 1em;
+}
+
+.ghost-btn p {
+    margin: 0;
+}
+
+.ghost-btn i {
+    font-size: 1em;
+    margin-left: 0.5em;
 }
