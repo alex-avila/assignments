@@ -1,114 +1,231 @@
-* {
-    box-sizing: border-box;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
 }
 
 body {
-    margin: 0;
-    font-family: 'Helvetica';
-    line-height: 2;
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
-.menu {
-    display: none;
+i {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  line-height: 2;
+  font-size: 18px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Raleway", sans-serif;
+}
+
+h1 {
+  font-size: 2.369em;
+}
+
+h2 {
+  font-size: 1.777em;
+}
+
+h3 {
+  font-size: 1.333em;
+}
+
+.main-wrapper {
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s;
+  box-shadow: 0 20px 20px #aaa;
+}
+
+.content-wrapper {
+  padding: 1em;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.62em;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.62em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background: white;
 }
 
 .logo {
-    padding: 0.25em 0.5em;
-    font-size: 2em;
+  padding: 0.25em 0.5em;
+  font-size: 2em;
 }
 
 .menu-btn {
-    padding: 0.25em 0.5em;
-    font-size: 2em;
+  padding: 0.25em 0.5em;
+  font-size: 2em;
+}
+
+.menu {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em 0 0;
+}
+.menu a {
+  padding: 1em 0;
+  font-weight: bold;
 }
 
 .featured {
-    position: relative;
-}
-
-.featured img {
-    display: block;
+  position: relative;
 }
 
 .featured-text {
-    background: rgba(255, 255, 255, 0.6);
-    position: absolute;
-    bottom: 0;
-    padding: 1em 1.62em;
-    margin: 1.5em;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.33);
-    -webkit-backdrop-filter: blur(40px);
-    border-radius: 9px;
+  background: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  bottom: 0;
+  padding: 1em 1.62em;
+  margin: 1.5em;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.33);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: 9px;
 }
 
-.featured-text p {
-    margin-top: 0;
+footer {
+  background: #fafafa;
+  padding: 1em 2em;
+  color: #777;
+  font-size: 0.75em;
+  /* background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/PlayStation_logo.svg/2000px-PlayStation_logo.svg.png);
+  background-size: 75%;
+  background-position: right -50px bottom -10px;
+  background-repeat: no-repeat; */
 }
 
-.featured-text h2 {
-    margin: 0;
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 0 0.5em;
+}
+.footer-links a {
+  padding: 0.5em 0;
+}
+
+.button {
+  margin: 1.25em 0 0.62em;
+  cursor: pointer;
 }
 
 .featured-btn {
-    text-align: center;
-    background: black;
-    color: white;
-    align-self: center;
-    padding: 0.52em 1.5em;
-    border-radius: 100px;
-    font-weight: 500;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-}
-
-
-.content-wrapper {
-    padding: 1em;
-}
-
-.card {
-    padding: 0.62em 0.62em 1em;
-    margin: 1em 0;
-    border-radius: 9px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.card img {
-    border-radius: 4.5px;
-}
-
-.card-text {
-    padding: 0 1em;
+  text-align: center;
+  background: black;
+  color: white;
+  align-self: center;
+  padding: 0.52em 1.5em;
+  border-radius: 100px;
+  font-weight: 500;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
 .ghost-btn {
-    display: inline-flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 100px;
-    padding: 0.62em 1em;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 100px;
+  padding: 0.25em 1em;
 }
-
 .ghost-btn p {
-    margin: 0;
+  margin: 0;
+}
+.ghost-btn i {
+  font-size: 1em;
+  margin-left: 0.5em;
 }
 
-.ghost-btn i {
-    font-size: 1em;
-    margin-left: 0.5em;
+.card {
+  padding: 0.62em 0.62em 1em;
+  margin: 1em 0;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+.card img {
+  border-radius: 4.5px;
+}
+.card .card-text {
+  padding: 0 1em;
+}
+.card h3 {
+  margin: 0.618rem 0;
+}
+
+/*# sourceMappingURL=css/styles.css.map */

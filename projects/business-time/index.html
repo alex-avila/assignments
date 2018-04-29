@@ -3,24 +3,25 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>NPS</title>
+        <title>Business Time</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway|Montserrat" rel="stylesheet">
         <link rel="stylesheet" href="stylesheets/css/styles.css">
     </head>
     <body>
 
-        <div class="menu">
-            <p>GAMES</p>
-            <p>ACCOUNT</p>
-            <p>ACCESSORIES</p>
-            <p>APPAREL</p>
+        <div id="menu" class="menu">
+            <a href="#">GAMES</a>
+            <a href="#">ACCOUNT</a>
+            <a href="#">ACCESSORIES</a>
+            <a href="#">APPAREL</a>
         </div>
 
-        <div class="main-wrapper">
+        <div id="main-wrapper" class="main-wrapper">
             <nav>
                 <i class="logo material-icons">weekend</i>
-                <i class="menu-btn material-icons">menu</i>
+                <i id="menu-btn" class="menu-btn material-icons">menu</i>
             </nav>
 
             <section class="featured">
@@ -30,7 +31,7 @@
                     <p>
                         Journey through a world filled with strange artefacts and crumbling ruins to unlock its deepest mysteries.
                     </p>
-                    <a class="featured-btn">PLAY NOW</a>
+                    <a class="button featured-btn">PLAY NOW</a>
                 </div>
             </section>
 
@@ -40,7 +41,7 @@
                     <div class="card-text">
                         <h3>Lorem Ipsum</h3>
                         <p>Pellentesque aliquam eget risus id sodales. Suspendisse vel tincidunt odio, in blandit ipsum.</p>
-                        <a class="button ghost-btn">
+                        <a href="#" class="button ghost-btn">
                             <p>Learn more</p>
                             <i class="material-icons">arrow_forward</i>
                         </a>
@@ -51,7 +52,7 @@
                     <div class="card-text">
                         <h3>Ipsum Lorem</h3>
                         <p>Cras egestas, nulla vel condimentum viverra, diam odio tempus diam, et congue dui neque id orci.</p>
-                        <a class="button ghost-btn">
+                        <a href="#" class="button ghost-btn">
                             <p>Learn more</p>
                             <i class="material-icons">arrow_forward</i>
                         </a>
@@ -60,8 +61,17 @@
             </section>
 
             <footer>
-            </footer>
+                <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">News</a>
+                    <a href="#">Developer</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="social-icons">
 
+                </div>
+                <p>Copyright &copy; 2018 Fictional Company Inc. All rights reserved.</p>
+            </footer>
         </div>
 
         <script src="app.js"></script>

@@ -1,0 +1,24 @@
+// Typographic Rules
+body {
+  font-family: $body-font;
+  line-height: 2;
+  font-size: $regular-size;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $header-font;
+}
+
+h1 {
+    font-size: $largest-size;
+}
+
+h2 {
+    font-size: $larger-size;
+}
+
+h3 {
+    font-size: $large-size;
+}

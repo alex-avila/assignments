@@ -1,16 +1,13 @@
-var main = document.getElementById('main-box');
-var illusion = document.getElementById('illusion');
+var main = document.getElementById('main-wrapper');
 var menu = document.getElementById('menu');
+var menuBtn = document.getElementById('menu-btn');
 
 main.style.right = '0px';
 
-menu.addEventListener('click', function() {
-    console.log(main.style.right);
+menuBtn.addEventListener('click', function() {
     if (main.style.right == '0px') {
-        console.log('hey');
         main.style.right = '50%';
     } else {
-        console.log('hey');
         main.style.right = '0';
     }
 });

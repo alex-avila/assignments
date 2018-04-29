@@ -1,39 +1,15 @@
-// https://sass-guidelin.es/#architecture
-// Base folder: boilerplate code
-    // reset file, typographic rules,
-    // and probably standard styles for commonly used html elements
-    // If a lot of css animations are used, use an _animations.scss file
-    // reset, typography, base...
-// layout folder: code associated with layout or global wireframe
-    // header, footer, navigation, sidebar, grid system...
-// Components folder: code for small things/widgets
-    // There are usually a lot of files here
-    // since sites should mostly be tiny modules
-    // buttons, media, thumbnails...
-// Pages folder: page specific styles
-    // The home page not uncommonly has specific styles
-    // home, contact, store...
-// Themes folder: themes if you want to have multiple themes in a web project
-    // theme, admin...
-// Abstracts folder: tools and helpers go here.
-    // Global variables, functions, mixins and placeholders
-    // this folder should not output css
-    // variables, mixins, functions, placeholders...
-// Vendors folder: css files from external libraries and frameworks
-    // normalize, bootstrap, jquery...
+@import 'abstracts/variables';
 
-// Main file (this one)
-    // should contain nothing but @import and comments
-    // files should be imported in the following order
-        // abstracts
-        // vendors
-        // base
-        // layout
-        // components
-        // pages
-        // themes
+@import 'vendors/reset';
 
-// Shame file: (optional) put all your shameful code here
-    // imported after any other file at the end of the stylesheet
+@import 'base/base';
+@import 'base/typography';
+
+@import 'layout/grid';
+@import 'layout/navbar';
+@import 'layout/menu';
+@import 'layout/featured';
+@import 'layout/footer';
 
 @import 'components/buttons';
+@import 'components/cards';

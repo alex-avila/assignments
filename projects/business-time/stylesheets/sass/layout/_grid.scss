@@ -1,0 +1,11 @@
+// General Grid/Layout Rules
+.main-wrapper {
+    position: relative;
+    z-index: 1;
+    transition: all 0.5s;
+    box-shadow: 0 20px 20px #aaa;
+}
+
+.content-wrapper {
+    padding: 1em;
+}
