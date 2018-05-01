@@ -1,0 +1,18 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-btn {
+    @include respond-to('large') {
+        display: none;
+    }
+}
+
+.desktop-menu {
+    display: none;
+
+    @include respond-to('large') {
+        display: block;
+    }
+}
