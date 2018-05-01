@@ -1,6 +1,7 @@
 $font-stack: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
 $small: 0.75em;
 $regular: 16px;
+$regular-desktop: 18px;
 $big: 1.333em;
 $bigger: 1.777em;
 $biggest: 2.369em;
@@ -9,7 +10,5 @@ $line-height: 2;
 
 
 $breakpoints: (
-    // 'medium': (min-width: 800px),
     'large': (min-width: 800px),
-    'huge': (min-width: 1200px),
 );

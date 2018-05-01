@@ -3,12 +3,23 @@
     padding: 0.5em;
     border-radius: 9px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+    @include respond-to('large') {
+        margin: 5em 1em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 30px;
+        box-shadow: none;
+        border-radius: none;
+    }
+
     img {
         border-radius: 4.5px;
         @include respond-to('large') {
             grid-column: 1 / 2;
         }
     }
+
     &:nth-child(2) {
         img {
             @include respond-to('large') {
@@ -21,30 +32,22 @@
                 text-align: right;
                 grid-column: 1 / 2;
                 grid-row: 1 / 2;
+                a {
+                    align-self: flex-end;
+                    transform: scaleX(-1);
+                }
             }
         }
-        .card-text a {
-            @include respond-to('large') {
-                align-self: flex-end;
-                transform: scaleX(-1);
-            }
-        }
-    }
-
-    @include respond-to('large') {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 30px;
-        box-shadow: none;
-        border-radius: none;
     }
 }
 
 .card-text {
     padding: 1em;
+
     h3 {
         margin: 0 0 1em;
     }
+
     @include respond-to('large') {
         max-height: 230px;
         display: flex;

@@ -27,4 +27,7 @@
         margin-left: 0.5em;
         transform: scaleX(1.25);
     }
+    @include respond-to('large') {
+        padding: 1em 1.25em;
+    }
 }

@@ -2,6 +2,9 @@ body {
     font-family: $font-stack;
     font-size: $regular;
     line-height: $line-height;
+    @include respond-to('large') {
+        font-size: $regular-desktop;
+    }
 }
 
 h1 {

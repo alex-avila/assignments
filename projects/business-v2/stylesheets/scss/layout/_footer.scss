@@ -10,11 +10,11 @@ footer {
     padding: 1em 0;
     a {
         padding: 1em 0;
+        @include respond-to('large') {
+            padding-right: 1em;
+        }
     }
     @include respond-to('large') {
         flex-direction: row;
-        a {
-            padding-right: 1em;
-        }
     }
 }

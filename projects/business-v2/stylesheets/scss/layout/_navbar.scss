@@ -9,14 +9,12 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .menu-btn,
-    .logo,
-    .desktop-menu {
-        padding: 0.75em 1rem;
-        @include respond-to('large') {
-            padding: 1.5em 1em;
-        }
-    }
+}
+
+.menu-btn,
+.logo,
+.desktop-menu {
+    padding: 0.75em 1rem;
 }
 
 .menu-btn {
