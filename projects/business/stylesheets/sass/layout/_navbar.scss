@@ -1,0 +1,20 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  height: 80px;
+  padding: 0.62em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background: white;
+  position: relative;
+  z-index: 2;
+  .logo {
+    padding: 0.25em 0.5em;
+    font-size: 2em;
+  }
+  .menu-btn {
+    padding: 0.25em 0.5em;
+    font-size: 2em;
+  }
+}

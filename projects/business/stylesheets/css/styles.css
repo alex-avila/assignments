@@ -74,15 +74,15 @@ a {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   line-height: 2;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 h1,
 h2,
 h3 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 h1 {
@@ -105,6 +105,8 @@ h3 {
 }
 
 .content-wrapper {
+  max-width: 1000px;
+  margin: auto;
   padding: 1em;
 }
 
@@ -112,17 +114,19 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 50px;
+  height: 80px;
   padding: 0.62em;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   background: white;
+  position: relative;
+  z-index: 2;
 }
-
-.logo {
+nav .logo {
   padding: 0.25em 0.5em;
   font-size: 2em;
 }
-
-.menu-btn {
+nav .menu-btn {
   padding: 0.25em 0.5em;
   font-size: 2em;
 }
@@ -136,19 +140,23 @@ nav {
   flex-direction: column;
   align-items: center;
   padding: 1em 0 0;
+  font-size: 1.333em;
 }
 .menu a {
   padding: 1em 0;
-  font-weight: bold;
 }
 
 .featured {
   position: relative;
+  line-height: 0;
 }
 
 .featured-text {
+  line-height: 2;
+  display: none;
   background: rgba(255, 255, 255, 0.6);
   position: absolute;
+  z-index: 1;
   bottom: 0;
   padding: 1em 1.62em;
   margin: 1.5em;
@@ -156,18 +164,39 @@ nav {
   flex-direction: column;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.33);
   -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
   border-radius: 9px;
+}
+@media (min-width: 900px) {
+  .featured-text {
+    font-size: 1.333em;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 0 0 10%;
+    border-radius: 0;
+    top: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    color: white;
+    justify-content: center;
+  }
+  .featured-text p {
+    width: 40%;
+  }
 }
 
 footer {
   background: #fafafa;
-  padding: 1em 2em;
+  padding: 1em 2em 2em;
   color: #777;
   font-size: 0.75em;
-  /* background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/PlayStation_logo.svg/2000px-PlayStation_logo.svg.png);
-  background-size: 75%;
-  background-position: right -50px bottom -10px;
-  background-repeat: no-repeat; */
+}
+footer div,
+footer p {
+  max-width: 1000px;
+  margin: auto;
 }
 
 .footer-links {
@@ -194,6 +223,12 @@ footer {
   border-radius: 100px;
   font-weight: 500;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 900px) {
+  .featured-btn {
+    align-self: flex-start;
+    filter: invert(100%);
+  }
 }
 
 .ghost-btn {

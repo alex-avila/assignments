@@ -7,5 +7,6 @@
 }
 
 .content-wrapper {
+    @include max-width(1000px);
     padding: 1em;
 }

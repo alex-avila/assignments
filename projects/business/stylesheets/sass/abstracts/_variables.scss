@@ -1,0 +1,14 @@
+// Typographic variables
+$body-font: "Helvetica Neue", sans-serif;
+$header-font: "Helvetica Neue", sans-serif;
+$regular-size: 16px;
+$large-size: 1.333em;
+$larger-size: 1.777em;
+$largest-size: 2.369em;
+$small-size: 0.75em;
+
+// Breakpoints
+$breakpoints: (
+    'medium': (min-width: 500px),
+    'large': (min-width: 900px)
+);

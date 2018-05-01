@@ -13,6 +13,11 @@
       border-radius: 100px;
       font-weight: 500;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+
+      @include respond-to('large') {
+          align-self: flex-start;
+          filter: invert(100%);
+      }
 }
 
 .ghost-btn {
