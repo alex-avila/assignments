@@ -15,4 +15,9 @@
     @error 'No value found for `#{$breakpoint}`. '
          + 'Please make sure it is defined in `$breakpoints` map.';
   }
+};
+
+@mixin max-width($pixels) {
+    max-width: $pixels;
+    margin: auto;
 }

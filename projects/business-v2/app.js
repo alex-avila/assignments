@@ -3,7 +3,7 @@ var menu = document.getElementById('menu');
 var menuBtn = document.getElementById('menu-btn');
 var featuredImg = document.getElementById('featured-img');
 
-var largeBreakpoint = 600;
+var largeBreakpoint = 800;
 
 main.style.right = '0px';
 

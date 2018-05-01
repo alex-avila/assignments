@@ -1,9 +1,26 @@
 nav {
+    background: white; // temporary
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    .menu-btn,
+    .logo,
+    .desktop-menu {
+        padding: 0.75em 1rem;
+        @include respond-to('large') {
+            padding: 1.5em 1em;
+        }
+    }
 }
 
 .menu-btn {
+    cursor: pointer;
     @include respond-to('large') {
         display: none;
     }
@@ -11,7 +28,9 @@ nav {
 
 .desktop-menu {
     display: none;
-
+    a {
+        padding: 0 1em;
+    }
     @include respond-to('large') {
         display: block;
     }

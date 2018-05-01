@@ -1,0 +1,30 @@
+.button {
+    border-radius: 200px;
+    padding: 0.33em 1.25em;
+    margin: 1em 0 0.5em;
+    cursor: pointer;
+}
+
+.featured-btn {
+    display: block;
+    background: black;
+    color: white;
+    align-self: center;
+    @include respond-to('large') {
+        align-self: flex-start;
+    }
+}
+
+.ghost-btn {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    font-style: oblique;
+    border: 1.5px solid black;
+    color: black;
+    i {
+        font-size: $regular;
+        margin-left: 0.5em;
+        transform: scaleX(1.25);
+    }
+}
