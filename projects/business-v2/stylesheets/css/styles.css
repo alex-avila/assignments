@@ -62,6 +62,7 @@ img {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 body {
@@ -110,7 +111,7 @@ nav {
   background: white;
   position: relative;
   z-index: 1;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-content {
@@ -168,7 +169,7 @@ nav {
 .featured {
   position: relative;
   line-height: 0;
-  height: 60vh;
+  height: 80vh;
 }
 
 .featured-img {
@@ -289,6 +290,12 @@ footer {
   }
 }
 
+.buy-btn {
+  background: #ff3333;
+  color: white;
+  align-self: center;
+}
+
 .card {
   margin: 1em;
   padding: 0.5em;
@@ -353,6 +360,8 @@ footer {
 
 article {
   padding-top: 0 em;
+  display: flex;
+  flex-direction: column;
 }
 
 .article-wrapper {
@@ -362,6 +371,7 @@ article {
 }
 .article-wrapper img {
   margin-top: 1em;
+  border-radius: 9px;
 }
 
 .article-body p:first-child {

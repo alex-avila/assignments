@@ -1,5 +1,7 @@
 article {
     padding-top: 0 em;
+    display: flex;
+    flex-direction: column;
 }
 
 .article-wrapper {
@@ -7,6 +9,7 @@ article {
     @include max-width(750px);
     img {
         margin-top: 1em;
+        border-radius: 9px;
     }
 }
 
