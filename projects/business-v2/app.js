@@ -17,13 +17,13 @@ menuBtn.addEventListener('click', function() {
 });
 
 if (window.innerWidth >= largeBreakpoint) {
-    featuredImg.src = 'images/hzd-wide.jpg';
+    featuredImg.style.backgroundImage = 'url(images/hzd-wide.jpg)';
 }
 
 window.addEventListener('resize', function() {
     if (window.innerWidth >= largeBreakpoint) {
-        featuredImg.src = 'images/hzd-wide.jpg';
+        featuredImg.style.backgroundImage = 'url(images/hzd-wide.jpg)';
     } else {
-        featuredImg.src = 'images/horizon-zero-dawn.jpg';
+        featuredImg.style.backgroundImage = 'url(images/horizon-zero-dawn.jpg)';
     }
 });

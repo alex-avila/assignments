@@ -1,10 +1,13 @@
 article {
-    padding-top: 2em;
+    padding-top: 0 em;
 }
 
 .article-wrapper {
-    padding: 2em 1em 0;
+    padding: 1em 1em 0;
     @include max-width(750px);
+    img {
+        margin-top: 1em;
+    }
 }
 
 .article-body {

@@ -168,6 +168,21 @@ nav {
 .featured {
   position: relative;
   line-height: 0;
+  height: 60vh;
+}
+
+.featured-img {
+  height: 100%;
+  width: 100%;
+  background: url(../../images/horizon-zero-dawn.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+@media (min-width: 800px) {
+  .featured-img {
+    background-position: bottom 5% center;
+  }
 }
 
 @media (min-width: 800px) {
@@ -188,6 +203,7 @@ nav {
   bottom: 0;
   background: rgba(255, 255, 255, 0.5);
   -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
   padding: 1em;
   margin: 1em;
   border-radius: 4px;
@@ -197,6 +213,7 @@ nav {
     border-radius: 0;
     background: none;
     -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     position: static;
     justify-content: center;
     filter: invert(100%);
@@ -335,13 +352,16 @@ footer {
 }
 
 article {
-  padding-top: 2em;
+  padding-top: 0 em;
 }
 
 .article-wrapper {
-  padding: 2em 1em 0;
+  padding: 1em 1em 0;
   max-width: 750px;
   margin: auto;
+}
+.article-wrapper img {
+  margin-top: 1em;
 }
 
 .article-body p:first-child {

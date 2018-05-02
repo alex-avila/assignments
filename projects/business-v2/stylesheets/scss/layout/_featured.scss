@@ -1,6 +1,19 @@
 .featured {
     position: relative;
     line-height: 0;
+    height: 60vh;
+}
+
+.featured-img {
+    height: 100%;
+    width: 100%;
+    background: url(../../images/horizon-zero-dawn.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    @include respond-to('large') {
+        background-position: bottom 5% center;
+    }
 }
 
 .featured-box {
@@ -25,6 +38,8 @@
     bottom: 0;
     background: rgba(255, 255, 255, 0.5);
     -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+    // box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
     padding: 1em;
     margin: 1em;
     border-radius: 4px;
@@ -33,6 +48,7 @@
         border-radius: 0;
         background: none;
         -webkit-backdrop-filter: none;
+        backdrop-filter: none;
         position: static;
         // new properties
         justify-content: center;
