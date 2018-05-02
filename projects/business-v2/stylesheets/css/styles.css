@@ -1,3 +1,11 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -202,13 +210,16 @@ nav {
   }
 }
 
+.featured-box {
+  animation: fadeIn 1.5s ease-in;
+}
 @media (min-width: 700px) {
   .featured-box {
     position: absolute;
     top: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.15) 100%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.15) 100%);
   }
 }
 
