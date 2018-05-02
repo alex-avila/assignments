@@ -26,6 +26,13 @@
         background: linear-gradient(
             90deg,
             rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.5) 100%
+        );
+    }
+    @include respond-to('large') {
+        background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.6) 0%,
             rgba(0, 0, 0, 0.15) 100%
         );
     }
