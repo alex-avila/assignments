@@ -1,15 +1,17 @@
 footer {
     background: #fafafa;
-    padding: 0 1rem 2rem;
+    padding: 0 1rem 1rem;
     font-size: $small;
+    color: #aaa;
 }
 
 .footer-links {
     display: flex;
     flex-direction: column;
-    padding: 1em 0;
+    padding: 0.5em 0;
     a {
-        padding: 1em 0;
+        color: #686de0;
+        padding: 0.5em 0;
         @include respond-to('large') {
             padding-right: 1em;
         }

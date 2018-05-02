@@ -12,14 +12,25 @@ nav {
 }
 
 .menu-btn,
-.logo,
 .desktop-menu {
     padding: 0.75em 1rem;
 }
 
+.logo {
+    border: 2px solid black;
+    font-weight: $bold;
+    font-size: 1.25em;
+    padding: 0 0.75em;
+    margin: 0.5em 0 0.5em 1em;
+    a {
+        color: inherit;
+    }
+}
+
 .menu-btn {
+    font-size: 2em;
     cursor: pointer;
-    @include respond-to('large') {
+    @include respond-to('medium') {
         display: none;
     }
 }
@@ -29,7 +40,7 @@ nav {
     a {
         padding: 0 1em;
     }
-    @include respond-to('large') {
+    @include respond-to('medium') {
         display: block;
     }
 }

@@ -1,3 +1,23 @@
+.cards {
+    @include respond-to('medium') {
+        display: flex;
+        .card {
+            flex: 1;
+        }
+        .card:nth-child(1) {
+            margin-right: 0.5em;
+        }
+        .card:nth-child(2) {
+            margin-left: 0.5em;
+        }
+    }
+    // Reset for large breakpoint
+    @include respond-to('large') {
+        display: block;
+    }
+}
+
+
 .card {
     margin: 1em;
     padding: 0.5em;
@@ -42,6 +62,8 @@
 }
 
 .card-text {
+    display: flex;
+    flex-direction: column;
     padding: 1em;
 
     h3 {

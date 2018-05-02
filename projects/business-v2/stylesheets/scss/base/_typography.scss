@@ -17,6 +17,9 @@ h2 {
 
 h3 {
     font-size: $regular;
+    @include respond-to('large') {
+        font-size: $regular-desktop;
+    }
 }
 
 h1,
