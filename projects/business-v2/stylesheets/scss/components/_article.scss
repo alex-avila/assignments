@@ -1,0 +1,18 @@
+article {
+    padding-top: 2em;
+}
+
+.article-wrapper {
+    padding: 2em 1em 0;
+    @include max-width(750px);
+}
+
+.article-body {
+    p:first-child {
+        text-indent: 0;
+    }
+    p {
+        margin: 1em 0;
+        text-indent: 3em;
+    }
+}

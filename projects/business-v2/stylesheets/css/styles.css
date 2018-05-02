@@ -95,6 +95,7 @@ h3 {
 
 .main-wrapper {
   position: relative;
+  background-color: white;
   z-index: 1;
   transition: all 0.5s;
   box-shadow: 20px 0 30px rgba(0, 0, 0, 0.15);
@@ -331,6 +332,24 @@ footer {
     align-self: flex-start;
     height: inherit;
   }
+}
+
+article {
+  padding-top: 2em;
+}
+
+.article-wrapper {
+  padding: 2em 1em 0;
+  max-width: 750px;
+  margin: auto;
+}
+
+.article-body p:first-child {
+  text-indent: 0;
+}
+.article-body p {
+  margin: 1em 0;
+  text-indent: 3em;
 }
 
 /*# sourceMappingURL=css/styles.css.map */
