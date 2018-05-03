@@ -1,0 +1,156 @@
+{
+    "menu": {
+        "appetizers": [
+            {
+                "name": "No-Bake Energy Bites",
+                "ingridients": [
+                    "1 cup rolled oats",
+                    "1/2 cup mini semi-sweet chocolate chips",
+                    "1/2 cup ground flax seed",
+                    "1/2 cup crunchy peanut butter",
+                    "1/3 cup honey",
+                    "1 teaspoon vanilla extract"
+                ],
+                "description": "This is a healthy take on the traditional no bake cookies So good and good for you! I am always asked for this recipe every time I make them. They are a hit with the kids and the adults, and always go quick! I store them in the freezer because I think they taste best frozen, but not necessary."
+            },
+            {
+                "name": "Baked Kale Chips",
+                "ingridients": [
+                    "1 bunch kale",
+                    "1 tablespoon olive oil",
+                    "1 teaspoon seasoned salt"
+                ],
+                "description": "A low calorie nutritious snack. Like potato chips, you cannot stop at just eating one. They are great for parties and a good conversation topic."
+            }
+        ],
+        "cold sandwiches": [
+            {
+                "name": "Special Eggplant Sub",
+                "ingridients": [
+                    "2 eggs",
+                    "1 cup dry bread crumbs",
+                    "1 medium eggplant, peeled and sliced 1/4 inch thick",
+                    "4 submarine sandwich buns (10 inches), split",
+                    "Leaf lettuce",
+                    "1 jar (7-1/4 ounces) roasted red peppers, drained and sliced",
+                    "8 slices part-skim mozzarella cheese",
+                    "2 medium tomatoes, thinly sliced",
+                    "1 can(4-1/4 ounces) chopped ripe olives, drained",
+                    "Italian or vinaigrette salad dressing"
+                ],
+                "description": "The idea for this unique sandwich was inspired by a light eggplant dish I made for hot summer evenings. I decided to use the golden eggplant slices as a base for sandwiches. My family goes wild for the delicious combination of toppings."
+            },
+            {
+                "name": "Apple Tuna Sandwich",
+                "ingridients": [
+                    "1/3 cup fat-free mayonnaise",
+                    "1/4 cup finely chopped celery",
+                    "1/4 cup finely chopped walnuts",
+                    "2 tablesspoons finely chopped onion",
+                    "1 tablespoon sweet pickle relish",
+                    "1 teaspoon sugar",
+                    "1 pouch (7.1 ounces) light water-packed tuna",
+                    "1/2 cup chopped red apple",
+                    "6 slices reduced-calorie bread, toasted",
+                    "6 lettuce leaves"
+                ],
+                "description": "My husband and his buddies love to pack these tasty sandwiches when they go on fishing trips. The tangy tuna salad gets fun flavor from ssweet pickle relish and lots of crunch from apples, celery and walnuts. The satisfying sandwiches are a complete meal in themselves."
+            }
+        ],
+        "hot sandwiches": [
+            {
+                "name": "Greek Sloppy Joe",
+                "ingridients": [
+                    "1 pound lean ground beef (90% lean)",
+                    "1 small red onion, chopped",
+                    "2 garlic cloves, minced",
+                    "1 can (15 ounces) tomato sauce",
+                    "1 teaspoon dried oregano",
+                    "Romaine leaves",
+                    "1 medium eggplant, peeled and sliced 1/4 inch thick",
+                    "6 kaiser rolls, split and toasted",
+                    "1/2 cup crumbles feta cheese"
+                ],
+                "description": "I always loved the taste of feta cheese. I did not want just to do a meat patty with feta inside, so I came up with this sloppy joe version."
+            },
+            {
+                "name": "Pork Panini & Spiced Fries",
+                "ingridients": [
+                    "1 tablespoon olive oil",
+                    "1/2 teaspoon salt",
+                    "1/2 teaspoon ground cumin",
+                    "1/2 teaspoon paprika",
+                    "1/4 teaspoon pepper",
+                    "1/4 teaspoon cayenne pepper",
+                    "1 pound medium red potatoes",
+                    "1 loaf (1 pound) French bread",
+                    "1/3 cup mayonnaise",
+                    "4 teaspoons chili sauce",
+                    "1 teaspoon prepared mustard",
+                    "1/8 teaspoon ground cumin",
+                    "1-1/2 pounds cooked pork, sliced",
+                    "8 dill pickle slices",
+                    "4 slices Swiss cheese"
+                ],
+                "description": "The spread on this sandwich is a unique blend that goes perfectly with prk. It's easy enough for a weeknight, but special enough for company."
+            }
+        ],
+        "desserts": [
+            {
+                "name": "Baked Berry Cheesecake",
+                "ingridients": [
+                    "75g/3oz digestive biscuits",
+                    "40g/1-1/2oz butter",
+                    "25g/1oz demerara sugar",
+                    "50g/2oz butter, softened",
+                    "175g/6oz caster sugar",
+                    "450g/1 lb cream cheese (full fat soft cheese)",
+                    "25g/1oz plain flour",
+                    "1 lemon, juice and finely grated rind",
+                    "3 eggs, separated",
+                    "150ml/5fl oz double cream, lightly whipped"
+                ],
+                "description": "Blueberries and raspberries make a colourful topping for Mary Berry's classic based cheesecake."
+            },
+            {
+                "name": "Wicked chocolate Mousse",
+                "ingridients": [
+                    "225g plain chocolate such as bournville, broken into small pieces",
+                    "a knob of butter",
+                    "1 tbsp brandy, optional",
+                    "3 large eggs, separated",
+                    "150ml double cream, lightly whipped"
+                ],
+                "description": "Plain and simple chocolate mousse - no frills. A good pudding to serve if you have all ages coming for luch. It can be made in glasses or ramekins."
+            }
+        ],
+        "drinks": [
+            {
+                "name": "Fruit-Flavored Water",
+                "ingridients": [
+                    "5 cups water",
+                    "1 cup ice cubes (optional)",
+                    "1/2 cup small strawberries",
+                    "1 lime, sliced"
+                ],
+                "description": "Tired of plain old boring water? Here's a cool and fruity twist on it! Mix up your fruits for a tasty surprise! Citrus fruit and berries work best. If you want more flavor, add more fruits, and if you want less flavor use less fruit. You can squeeze the juice out to color the water or just put whole slices and berries in."
+            },
+            {
+                "name": "Viennexican Coffe",
+                "ingridients": [
+                    "1 cup hot brewed coffee",
+                    "3 tablespoons whole milk",
+                    "1 tablespoon heavy whipping cream",
+                    "1 1/2 teaspoons brown sugar",
+                    "1 teaspoon cocoa powder",
+                    "1/2 teaspoon vanilla extract",
+                    "1/2 teaspoon orange extract",
+                    "1/2 teaspoon ground cinnamon",
+                    "1/8 teaspoon ground cloves",
+                    "1/8 teaspoon ground nutmeg"
+                ],
+                "description": "I created this coffee drink out of a craving for a little kick to my coffee. Based on my love of hot chai, I began to feel that North Americans have a distinct lack of health-giving herbs and spices in out narive cuisine. Hopefully a delicious hot cup of Viennexican can assist. Thinking of the spiciness of Viennese coffees and of the chocolate and fruit flavors of South American beverages, I belive the combination makes a beautiful result for the taste buds and the system as a whole!"
+            }
+        ]
+    }
+}
