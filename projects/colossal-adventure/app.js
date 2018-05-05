@@ -1,27 +1,33 @@
 var ask = require('readline-sync');
 
-// UNCERTAINTIES --> DONE
+// ALGORITHMS
 function randomChance(odds) {
     return Math.floor(Math.random() * odds) === 0 ? true : false;
 }
+
 function random(length) {
     return Math.floor(Math.random() * length);
 }
+
 function willMonsterAppear() {
     return randomChance(3);
 }
+
 function randomMonster() {
     var liveMonsters = monsters.filter(monster => monster.isAlive === true);
     return liveMonsters[random(liveMonsters.length)];
 }
+
 function willMonsterAttack() {
     return randomChance(2);
 }
+
 function willTheyEscape() {
     return randomChance(2);
 }
-function whatIsTheAttackPower() {
-    return random(30) + 10;
+
+function getAttackPower(attacker) {
+    return random(30) + attacker.baseAttack;
 }
 
 
@@ -31,6 +37,7 @@ function beginGame() {
     player.name = ask.question('What is your name? ');
     console.log(`\nHello ${player.name}. You can walk or you can check your inventory [w/i]`);
 }
+
 function endGame(how) {
     if (how === 'won') {
         console.log('You won');
@@ -51,175 +58,205 @@ function endGame(how) {
 
 // VARIABLES
 var player = {
-    name: '',
-    hp: 200,
-    inventory: ['A wooden sword', 'Tacky clothes'],
-    isAlive: true
-}
-var monsters = [
-    {
-        name: 'Cthulu',
-        hp: 5,
+        name: '',
+        hp: 100,
+        baseAttack: 30,
+        inventory: [
+            {
+                type: 'weapon',
+                name: 'A wooden sword',
+                description: 'The most basic sword you could possibly have'
+        },
+            {
+                type: 'sheild',
+                name: 'Tacky clothes',
+                description: 'Please change your outfit. It looks horrible and it has no effect'
+        }
+    ],
         isAlive: true
     },
-    {
-        name: 'A Dementor',
-        hp: 5,
-        isAlive: true
-    },
-    {
-        name: 'Area X',
-        hp: 1,
-        isAlive: true
-    }
-];
-var specialItems = ['One coin', 'Guns (Devil May Cry style)', 'Link\'s new outfit'];
-var endSession = false;
-var sheildStrength = 0.25;
-var weaponStrength = 1000;
-var chance = 0;
-var hasWeapon = false;
+    monsters = [
+        {
+            name: 'Cthulu',
+            hp: 50,
+            baseAttack: 10,
+            isAlive: true
+        },
+        {
+            name: 'Dementor #12',
+            hp: 25,
+            baseAttack: 5,
+            isAlive: true
+        },
+        {
+            name: 'Area X',
+            hp: 100,
+            baseAttack: 15,
+            isAlive: true
+        }
+    ],
+    specialItems = [
+        {
+            weapon: 'unique',
+            name: 'A coin',
+            description: 'An extra life'
+        },
+        {
+            type: 'weapon',
+            name: 'Devil May Cry Guns',
+            description: 'Increases your attack power by 25%'
+        },
+        {
+            type: 'shield',
+            name: 'Link\'s new outfit',
+            description: 'Decreases damage taken by 12%'
+        },
+        {
+            type: 'weapon',
+            name: 'Mario\'s Cap',
+            description: 'Increases your attack power by 25%'
+        }
+    ],
+    endSession = false;
 
 // GOD ACTIONS
-function giveItem() {
+function giveHPAndItem() {
+    // Give health
     player.hp += 25;
+    // Give random item and remove it from specialItems
     specialItem = specialItems[random(specialItems.length)];
     specialItems = specialItems.filter(item => item != specialItem);
     player.inventory.push(specialItem);
 }
 
+function createMonster() {
+    monsterAppeared = true;
+    monster = randomMonster();
+}
+
+
 // ABSTRACTED ACTIONS
 function attack(victim, attacker) {
-    attacker.attackPower = whatIsTheAttackPower();
-    if (attacker.name === player.name) {
-        var hasWeapon = attacker.inventory.some(item => item === 'Guns (Devil May Cry style)');
-        if (hasWeapon) {
-            victim.hp -= attacker.attackPower + Math.floor(attacker.attackPower * weaponStrength);
-        } else {
-            victim.hp -= attacker.attackPower;
-        }
-        if (victim.hp <= 0) {
-            victim.hp = 0;
-            die(victim);
-        }
+    attacker.attackPower = getAttackPower(attacker);
+    victim.hp -= attacker.attackPower;
+    if (victim.name === player.name) {
+        console.log(`Oh no, ${monster.name} attacked you for ${attacker.attackPower} points`);
     } else {
-        var hasShield = victim.inventory.forEach(item => item === 'shield' ? true : false);
-        if (hasShield) {
-            victim.hp -= attacker.attackPower - Math.floor(attacker.attackPower * sheildStrength);
-        } else {
-            victim.hp -= attacker.attackPower;
-        }
-        if (victim.hp <= 0) {
-            victim.hp = 0;
+        console.log(`You damaged ${victim.name} for ${attacker.attackPower} points`);
+    }
+    var survived = victim.hp > 0;
+    if (!survived) {
+        victim.hp = 0;
+        if (victim.name === player.name) {
             console.log(`${attacker.name} seems to have killed you.`);
+            endGame('death');
+        } else {
+            console.log(`You killed ${victim.name}`);
             die(victim);
+        }
+    } else if (survived) {
+        if (victim.name === player.name) {
+            console.log(`Your HP is now ${player.hp}`);
+        } else {
+            console.log(`Its HP is now ${monster.hp}`);
         }
     }
 }
+
 function die(who) {
     if (who.name != player.name) {
         previousHP = player.hp;
-        giveItem();
+        giveHPAndItem();
         console.log(`Oh look, your hp went up from ${previousHP} to ${player.hp}`);
     }
     who.isAlive = false;
 }
 
+
 // PLAYER ACTIONS
 function walk() {
     if (monsters.some(monster => monster.isAlive === true)) {
-        if (willMonsterAppear()) {
-            monsterAppeared = true;
-            monster = randomMonster();
+        var monsterAppeared = willMonsterAppear();
+        if (monsterAppeared) {
+            createMonster();
             if (willMonsterAttack()) {
-                monsterAttacked = true;
                 attack(player, monster);
+            } else {
+                console.log(`Oh no, ${monster.name} has appeared.`);
             }
+        } else if (!monsterAppeared) {
+            console.log('Just walk. Nothing else is happening.');
         }
-    }
-    else {
+    } else {
         console.log('Looks like all monsters are dead');
         endGame('won');
     }
 }
+
 function run() {
-    escaped = Math.floor(Math.random * 2) === 0 ? true : false;
-}
-function checkInventory() {
-    var inventory = 0;
-    console.log(`HP: ${player.hp}`);
-    if (player.inventory.length === 0) {
-        console.log('Your inventory is empty');
+    var escaped = randomChance(2) ? true : false;
+    if (escaped) {
+        console.log('You escaped. You can continue to walk now.');
     } else {
-        console.log('Your inventory:');
-        player.inventory.forEach(item => console.log(item));
+        console.log(`You attempt to escape, but not before ${monster.name} has a chance to attack you.`);
+        attack(player, monster);
+        if (player.isAlive) {
+            console.log('Luckily, you survived');
+        }
     }
 }
 
-var chance = 0;
+function checkInventory() {
+    var inventory = 0;
+    console.log(`Name: ${player.name}\nHP: ${player.hp}`);
+    console.log('Inventory:');
+    player.inventory.forEach(item => console.log(`- ${item.name}`));
+}
+
+var indecisionCount = 0;
+
 function confrontation() {
-    confrontationChoice = ask.question('\n\n> ');
-    switch (confrontationChoice.toUpperCase()) {
+    console.log('Run or attack? [r/a]');
+    choice = ask.question('\n\n> ');
+    switch (choice.toUpperCase()) {
         case 'R':
+            indecisionCount = 0;
             run();
-            if (willTheyEscape()) {
-                console.log('You escaped. You can continue to walk now.');
-            } else {
-                attack(player, monster);
-                console.log(`You escaped, but not before ${monster.name} had a chance to attack you`);
-                console.log(`Your HP is now ${player.hp}`);
-                console.log('You must go on though');
-            }
-            return true;
             break;
         case 'A':
+            indecisionCount = 0;
+            console.log(`You decided to attack ${monster.name}.`);
             attack(monster, player);
-            if (hasWeapon) {
-                console.log(`You damaged ${monster.name} for ${player.attackPower * weaponStrength} points`);
-            } else {
-                console.log(`You damaged ${monster.name} for ${player.attackPower} points`);
+            if (monster.isAlive) {
+                console.log(`But ${monster.name} decided to attack you back.`);
+                attack(player, monster);
             }
-            console.log(`Its HP is now ${monster.hp}`);
-            return true;
             break;
         default:
-            chance++;
-            if (chance === 2) {
-                die(player);
+            indecisionCount++;
+            if (indecisionCount === 2) {
+                endGame('death');
             } else {
                 console.log('If you don\'t choose one of the options I\'m gonna kill you');
             }
     }
 }
 
+
 beginGame();
-while(player.isAlive && !endSession) {
+while (player.isAlive && !endSession) {
     choice = ask.question('\n\n> ');
     switch (choice.toUpperCase()) {
         case 'W':
             var monsterAppeared = false;
-            var monsterAttacked = false;
             walk();
-            if (monsterAppeared) {
-                if (player.isAlive) {
-                    if (monsterAttacked) {
-                        console.log(`Oh no, ${monster.name} attacked you.`);
-                        console.log(`Your HP is now ${player.hp}`);
-                    } else {
-                        console.log(`Oh no, ${monster.name} has appeared.`);
-                    }
-                    console.log('Run or Attack? [r/a]')
-                    var confrontationChoice;
+            if (monsterAppeared && player.isAlive) {
+                confrontation();
+                if (indecisionCount != 0) {
                     confrontation();
-                    if (confrontationChoice.toUpperCase() != 'R' && confrontationChoice.toUpperCase() != 'A') {
-                        confrontation();
-                    }
+                } else if (player.isAlive) {
+                    console.log('\nKeep walking.');
                 }
-            } else if (!endSession) {
-                console.log('You can continue to walk.')
-            }
-            if (!player.isAlive) {
-                console.log(`You died`);
             }
             break;
         case 'I':
