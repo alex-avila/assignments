@@ -39,7 +39,7 @@ img {
     opacity: 0;
     cursor: pointer;
     z-index: 2;
-    padding: 1em;
+    padding: 2em;
 }
 
 .todo input,
@@ -82,7 +82,7 @@ img {
     border-radius: 4px;
     background-size: cover !important;
     background-position: center !important;
-    filter: grayscale(100%);
+    filter: grayscale(1);
 }
 
 .title {
@@ -97,13 +97,106 @@ img {
 }
 
 .add-btn {
+    cursor: pointer;
     /* position: absolute; */
     position: fixed;
     bottom: 20px;
     right: 20px;
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
     background: black;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-btn i {
+    color: white;
+    font-size: 2em;
+}
+
+#todo-form-wrapper {
+    display: none;
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 0.5em 1.33em 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form textarea,
+form button {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    padding: 0.618rem;
+    margin: 1em 0;
+}
+
+form input {
+    border-bottom: #000 solid 2px;
+    /* border-right: #000 solid 2px; */
+    /* border: #000 solid 1.5px; */
+}
+
+form textarea {
+    border: #000 solid 2px;
+}
+
+form input:first-of-type {
+    font-size: 24px;
+    
+} 
+
+form textarea {
+    /* resize: vertical; */
+    resize: none;
+    height: 100px;
+}
+
+form button {
+    margin: auto;
+    margin-top: 1em;
+    padding: 0.618em 1em;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 100px;
+}
+
+.delete-btn {
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    background: black;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.delete-btn i {
+    font-size: 1em;
+}
+
+i {
+    cursor: pointer;
+}
+
+#todoFormBtn {
+    cursor: pointer;
 }
