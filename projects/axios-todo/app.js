@@ -13,6 +13,7 @@ var HTML = `<div class="main-wrapper">
                 </div>
             </div>`;
 
+
 function createSkeletonHTML() {
     
     // Add main-wrapper div
@@ -40,6 +41,14 @@ function createSkeletonHTML() {
     doneSection.classList.add('done-section');
     doneSection.appendChild(h1);
     doneSection.appendChild(doneTodos);
+
+    // Add button
+    var addBtn = document.createElement('div');
+    addBtn.classList.add('add-btn');
+    addBtn.addEventListener('click', function() {
+        console.log('Go to new screen that to fill out things for new todo item.');
+        console.log('Once those things are filled out and saved, do a post function');
+    });
     
     // Create variables to use later
     tasksDiv = todos;
@@ -48,6 +57,7 @@ function createSkeletonHTML() {
     // Add sections to main-wrapper
     mainWrapper.appendChild(tasksSection);
     mainWrapper.appendChild(doneSection);
+    mainWrapper.appendChild(addBtn);
     
     return mainWrapper;
     
@@ -105,19 +115,28 @@ async function createTodosHTML() {
     }
     document.body.appendChild(HTML);
     var titles = document.getElementsByClassName('title-and-price');
-    for (var i = 0; i < titles.length + 1; i++) {
+    for (var i = 0; i < titles.length; i++) {
         if (titles[i].nextElementSibling) {
             // Sets the initial value to none, so you only have to click once when page loads
             titles[i].nextElementSibling.style.display = 'none';
             titles[i].addEventListener('click', function(e) {
-            // This was kind of clever or at least it felt like it
-            var detailsElem = e.path[1].nextElementSibling;
-            if (detailsElem.style.display === 'none') {
-                detailsElem.style.display = 'block';
-            } else {
-                detailsElem.style.display = 'none';
-            }
-        });
+                // This was kind of clever or at least it felt like it
+                if (e.target.classList[0] === 'title') {
+                    var detailsElem = e.path[1].nextElementSibling;
+                    if (detailsElem.style.display === 'none') {
+                        detailsElem.style.display = 'block';
+                    } else {
+                        detailsElem.style.display = 'none';
+                    }
+                } else if (e.target.classList[0] === 'title-and-price') {
+                    var detailsElem = e.path[0].nextElementSibling;
+                    if (detailsElem.style.display === 'none') {
+                        detailsElem.style.display = 'block';
+                    } else {
+                        detailsElem.style.display = 'none';
+                    }
+                }
+            });
         }
     }
 }
