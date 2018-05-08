@@ -1,3 +1,5 @@
+import './sass/main.scss';
+
 var url = 'https://api.vschool.io/alex/todo/';
 var tasksDiv,
     doneDiv;
