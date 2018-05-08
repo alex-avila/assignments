@@ -223,11 +223,23 @@ axios.get(url).then(function(response) {
     var deleteBtns = document.querySelectorAll('.delete-btn');
     for (var i = 0; i < deleteBtns.length; i++) {
         deleteBtns[i].addEventListener('click', function(e) {
-            console.log(e.path[3].id);
-            var id = e.path[3].id;
-            axios.delete(url + id).then(function(response) {
-                console.log(response.data);
-            });
+            if (e.path.length === 11) {
+                var id = e.path[3].id;
+                axios.delete(url + id).then(function(response) {
+                    if (response.status == 200) {
+                        console.log(e.path);
+                        e.path[4].removeChild(document.getElementById(id));
+                    }
+                });
+            } else if (e.path.length === 10) {
+                var id = e.path[2].id;
+                axios.delete(url + id).then(function(response) {
+                    if (response.status == 200) {
+                        console.log(e.path);
+                        e.path[3].removeChild(document.getElementById(id));
+                    }
+                });
+            }
         });
     }
 
