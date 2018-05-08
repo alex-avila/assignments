@@ -1,20 +1,68 @@
+import anime from 'animejs';
 import './sass/main.scss';
 
 var url = 'https://api.vschool.io/alex/todo/';
 var tasksDiv,
-    doneDiv;
+    doneDiv,
+    isUpdate = false,
+    idToUpdate = '';
 
-var HTML = `<div class="main-wrapper">
-                <div class="tasks-section">
-                    <h1>Tasks</h1>
-                    <div id="todos"></div>
-                </div>
-                <div class="done-section">
-                    <h1>Done</h1>
-                    <div id="done-todos"></div>
-                </div>
-            </div>`;
+var HTML = '<div class="main-wrapper"><div class="tasks-section"><h1>Tasks</h1>' + '<div id="todos"></div></div><div class="done-section"><h1>Done</h1>' + '<div id="done-todos"></div></div></div>';
 
+axios.get(url).then(function(response) {
+    createTodosHTML(response.data);
+
+    // UPDATE COMPLETED
+    updateCompleted();
+
+    // ADD EDIT BUTTONS TO TODOS
+    addButtonsHTML();
+
+    // DELETE ITEMS
+    deleteTodo();
+
+    // EDIT ITEMS
+    editTodo();
+});
+
+
+// AXIOS FUNCTIONS
+function updateCompleted() {
+    var checkboxes = document.querySelectorAll('.todo input');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener('click', function(e) {
+            var id = e.path[1].id;
+            axios.put(url + id, {completed: e.target.checked})
+            // MOVE ITEMS FROM DONE TO TASKS AND VICE VERSA
+            moveTodos(e);
+        })
+    }
+}
+
+function deleteTodo() {
+    var deleteBtns = document.querySelectorAll('.delete-btn');
+    for (var i = 0; i < deleteBtns.length; i++) {
+        deleteBtns[i].addEventListener('click', function(e) {
+            if (e.path.length === 12) {
+                var id = e.path[4].id;
+                axios.delete(url + id).then(function(response) {
+                    if (response.status == 200) {
+                        e.path[5].removeChild(document.getElementById(id));
+                    }
+                });
+            } else if (e.path.length === 11) {
+                var id = e.path[3].id;
+                axios.delete(url + id).then(function(response) {
+                    if (response.status == 200) {
+                        e.path[4].removeChild(document.getElementById(id));
+                    }
+                });
+            }
+        });
+    }
+}
+
+// HTML FUNCTIONS
 function addTodoFormHTML() {
     var todoFormHTML = `<form name="todoForm">
                             <input name="todoForm__title" placeholder="Title" required>
@@ -28,6 +76,7 @@ function addTodoFormHTML() {
     todoFormContainer.innerHTML = todoFormHTML;
     return todoFormContainer;
 }
+
 
 function createSkeletonHTML() {
     
@@ -60,16 +109,19 @@ function createSkeletonHTML() {
     // Add todo form
     var todoFormHTML = addTodoFormHTML();
 
-    // Add button
+    // Add addBtn
     var addBtn = document.createElement('div');
     addBtn.innerHTML = '<i class="material-icons">add</i>';
     addBtn.classList.add('add-btn');
     todoFormHTML.style.display = 'none';
     addBtn.addEventListener('click', function() {
+        document.getElementById('todoFormBtn').textContent = 'Add Task'
+        isUpdate = false;
         if (todoFormHTML.style.display == 'none') {
             todoFormHTML.style.display = 'block';
         } else {
             todoFormHTML.style.display = 'none';
+            clearForm();
         }
     });
     
@@ -132,26 +184,8 @@ function createTodosHTML(todos) {
     });
     document.body.appendChild(HTML);
 
-    // POST FUNCTIONALITY
-    document.todoForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var newTodo = {
-            title: document.todoForm.todoForm__title.value
-        };
-        if (document.todoForm.todoForm__description.value) {
-            newTodo.description = document.todoForm.todoForm__description.value;
-        }
-        if (document.todoForm.todoForm__price.value) {
-            newTodo.price = document.todoForm.todoForm__price.value;
-        }
-        if (document.todoForm.todoForm__imgUrl.value) {
-            newTodo.imgUrl = document.todoForm.todoForm__imgUrl.value;
-        }
-        console.log(newTodo);
-        axios.post(url, newTodo).then(function(response) {
-            console.log(response);
-        });
-    });
+    // POST/PUT FUNCTIONALITY
+    createOrUpdateTodo(idToUpdate);
 
     // EXPANDABLE/COLLAPSABLE FUNCTIONALITY
     // Add collapse/expand functionality by clicking titles
@@ -184,65 +218,115 @@ function createTodosHTML(todos) {
 
 }
 
-axios.get(url).then(function(response) {
-    createTodosHTML(response.data);
 
-    // UPDATE COMPLETED
-    var checkboxes = document.querySelectorAll('.todo input');
-    for (var i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].addEventListener('click', function(e) {
-            var id = e.path[1].id;
-            axios.put(url + id, {completed: e.target.checked}).then(function(response) {
-                console.log(response.data);
-            });
-
-            // MOVE ITEMS FROM DONE TO TASKS AND VICE VERSA
-            if (e.target.checked) {
-                var waitIntervel = setTimeout(function() {
-                    console.log(e.path[1]);
-                    document.getElementById('done-todos').appendChild(e.path[1]);
-                }, 2000);
-            } else if (!e.target.checked) {
-                var waitIntervel = setTimeout(function() {
-                    console.log(e.path[1]);
-                    document.getElementById('todos').appendChild(e.path[1]);
-                }, 2000);
-            }
-
-        })
-    }
-
-    // ADD X TO TODOS
+function addButtonsHTML() {
     var todoElems = document.querySelectorAll('.todo');
     for (var i = 0; i < todoElems.length; i++) {
-        var deleteBtn = document.createElement('div');
+        var buttonsDiv = document.createElement('div');
+        buttonsDiv.classList.add('buttons');
+
+        var deleteBtn = document.createElement('span');
         deleteBtn.classList.add('delete-btn');
         deleteBtn.innerHTML = '<i class="material-icons">clear</i>';
-        todoElems[i].childNodes[3].appendChild(deleteBtn);
-    }
 
-    // DELETE ITEMS
-    var deleteBtns = document.querySelectorAll('.delete-btn');
-    for (var i = 0; i < deleteBtns.length; i++) {
-        deleteBtns[i].addEventListener('click', function(e) {
-            if (e.path.length === 11) {
-                var id = e.path[3].id;
-                axios.delete(url + id).then(function(response) {
-                    if (response.status == 200) {
-                        console.log(e.path);
-                        e.path[4].removeChild(document.getElementById(id));
-                    }
-                });
-            } else if (e.path.length === 10) {
-                var id = e.path[2].id;
-                axios.delete(url + id).then(function(response) {
-                    if (response.status == 200) {
-                        console.log(e.path);
-                        e.path[3].removeChild(document.getElementById(id));
-                    }
-                });
+        var editBtn = document.createElement('span');
+        editBtn.classList.add('edit-btn');
+        editBtn.innerHTML = '<i class="material-icons">mode_edit</i>';
+
+        buttonsDiv.appendChild(editBtn);
+        buttonsDiv.appendChild(deleteBtn);
+        todoElems[i].childNodes[3].appendChild(buttonsDiv);
+    }
+}
+
+function moveTodos(e) {
+    if (e.target.checked) {
+        var waitIntervel = setTimeout(function() {
+            document.getElementById('done-todos').appendChild(e.path[1]);
+        }, 2000);
+    } else if (!e.target.checked) {
+        var waitIntervel = setTimeout(function() {
+            document.getElementById('todos').appendChild(e.path[1]);
+        }, 2000);
+    }
+}
+
+
+// OTHER FUNCTIONS
+function clearForm() {
+    document.todoForm.todoForm__title.value = '';
+    document.todoForm.todoForm__description.value = '';
+    document.todoForm.todoForm__price.value = '';
+    document.todoForm.todoForm__imgUrl.value = '';
+}
+
+
+
+
+
+
+
+
+// Opens form screen and populates inputs with information from the selected item
+// Need to get the id from this function and use it in createOrUpdateTodo()
+function editTodo() {
+    var editBtns = document.querySelectorAll('.edit-btn');
+    for (var i = 0; i < editBtns.length; i++) {
+        editBtns[i].addEventListener('click', function(e) {
+            document.getElementById('todoFormBtn').textContent = 'Update Task';
+            if (e.path.length === 12) {
+                idToUpdate = e.path[4].id;
+                populateInputs(idToUpdate);
+            } else if (e.path.length === 11) {
+                idToUpdate = e.path[3].id;
+                populateInputs(idToUpdate)
             }
         });
     }
+}
 
-});
+function createOrUpdateTodo() {
+    document.todoForm.addEventListener('submit', function(e) {
+        
+        e.preventDefault();
+
+        var newTodo = {title: document.todoForm.todoForm__title.value};
+
+        if (document.todoForm.todoForm__description.value) {
+            newTodo.description = document.todoForm.todoForm__description.value;
+        }
+        if (document.todoForm.todoForm__price.value) {
+            newTodo.price = document.todoForm.todoForm__price.value;
+        }
+        if (document.todoForm.todoForm__imgUrl.value) {
+            newTodo.imgUrl = document.todoForm.todoForm__imgUrl.value;
+        }
+
+        if (isUpdate) {
+            axios.put(url + idToUpdate, newTodo).then(function(response) {
+                console.log(response);
+            });
+        } else {
+            axios.post(url, newTodo);
+        }
+
+    });
+}
+
+function populateInputs(id) {
+    axios.get(url + id).then(function(response) {
+        var todos = response.data;
+        document.todoForm.todoForm__title.value = todos.title;
+        if (todos.description) {
+            document.todoForm.todoForm__description.value = todos.description;
+        }
+        if (todos.price) {
+            document.todoForm.todoForm__price.value = todos.price;
+        }
+        if (todos.imgUrl) {
+            document.todoForm.todoForm__imgUrl.value = todos.imgUrl;
+        }
+        isUpdate = true;
+        document.getElementById('todo-form-wrapper').style.display = 'block';
+    });
+}

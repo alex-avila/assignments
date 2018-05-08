@@ -173,7 +173,6 @@ form input:first-of-type {
 } 
 
 form textarea {
-    /* resize: vertical; */
     resize: none;
     height: 100px;
 }

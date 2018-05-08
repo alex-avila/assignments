@@ -1,6 +1,5 @@
 var ask = require('readline-sync');
 var chalk = require('chalk');
-
 var log = console.log;
 
 // ALGORITHMS --> DONE
@@ -36,38 +35,42 @@ function beginGame() {
     log('\nYou are a pocket monster. The yellow one.');
     log('You\'ve just finished your shift filming for pokemon.');
     log('You want to go home, but three prisoners have escaped nearby.');
-    log('\nYou will encounter them and have the choice to attack or run');
+    log('\nIf you encounter them, you have the choice to attack or run');
     log('While nothing is happening, however, you will simply');
     log('continue walking home. \n\nYou win when you get home safely\n');
-    player.name = ask.question('I forgot what you\'re name was though. Can you remind me?\n\n> ');
-    if (player.name.toUpperCase() != 'PIKACHU') {
-        log(`Hmm, I don't remember ${chalk.bold(player.name)} being your name. Anyway...`);
+    player.name = ask.question('I forgot what you\'re name was though. Can you remind me?\n\n\n> ');
+    if (player.name.toUpperCase() != 'PIKACHU' && player.name.toUpperCase() != 'TIMMY') {
+        player.name = 'Timmy';
+        log(`Hello ${chalk.bold(player.name)}.`);
         // Give common inventory
         player.inventory = [
             {
-                type: 'weapon',
+                type: 'common',
                 name: 'A wooden sword',
                 description: 'The most basic sword you could possibly have'
             },
             {
-                type: 'sheild',
+                type: 'common',
                 name: 'Tacky clothes',
                 description: 'Please change your outfit. It looks horrible and it has no effect'
             }
         ];
     } else {
-        log(`Oh, right. how could I have forgotten that ${chalk.bold(player.name)} is your name.`);
+        player.name = 'Pikachu';
+        log(`Oh, right. how could I have forgotten that ${chalk.bold(player.name)}'s your name.`);
         // Give special inventory
         player.inventory = [
             {
                 type: 'weapon',
                 name: 'Electricity',
-                description: 'Since you are pikachu, you have electricity as an attack'
+                description: 'Since you are pikachu, you have electricity. Increases your attack power by 12%',
+                attack: 0.12
             },
             {
-                type: 'sheild',
+                type: 'shield',
                 name: 'Fur',
-                description: 'Your yellow fur protects you. Damaged taken is reduced by 12%'
+                description: 'Your yellow fur protects you. Damaged taken is reduced by 12%',
+                shield: 0.12
             }
         ];
     }
@@ -80,8 +83,15 @@ function endGame(how) {
         log(chalk.bgGreen.black.bold('You won'));
         endSession = true;
     } else if (how === 'death') {
-        log(chalk.bgRed.white.bold('You died'));
-        player.isAlive = false;
+        if (player.inventory.some(item => item.name === 'A coin')) {
+            log(`You died`);
+            log(`...but you had the coin with you, so you get another chance`);
+            player.hp = 150;
+            player.isAlive = true;
+        } else {
+            log(chalk.bgRed.white.bold('You died'));
+            player.isAlive = false;
+        }
     } else if (how === 'quit') {
         log('Are you sure you want to quit? [y/N]')
         if (ask.question('\n\n> ').toUpperCase() === 'Y') {
@@ -115,25 +125,13 @@ var player = {
         name: '',
         hp: 100,
         baseAttack: 30,
-        inventory: [
-            {
-                type: 'weapon',
-                name: 'A wooden sword',
-                description: 'The most basic sword you could possibly have'
-            },
-            {
-                type: 'sheild',
-                name: 'Tacky clothes',
-                description: 'Please change your outfit. It looks horrible and it has no effect'
-            }
-        ],
         isAlive: true
-    },
-    monsters = [
+    };
+var monsters = [
         {
             name: chalk.red('Cthulu'),
-            hp: 50,
-            baseAttack: 10,
+            hp: 100,
+            baseAttack: 20,
             isAlive: true
         },
         {
@@ -144,37 +142,39 @@ var player = {
         },
         {
             name: chalk.red('Area X'),
-            hp: 100,
-            baseAttack: 20,
+            hp: 150,
+            baseAttack: 30,
             isAlive: true
         }
-    ],
-    specialItems = [
+    ];
+var specialItems = [
         {
             weapon: 'unique',
             name: 'A coin',
-            description: 'An extra life'
+            description: 'Unknown'
         },
         {
             type: 'weapon',
             name: 'Devil May Cry Guns',
-            description: 'Increases your attack power by 25%'
+            description: 'Increases your attack power by 50%',
+            attack: 0.5
         },
         {
             type: 'shield',
             name: 'Link\'s new outfit',
-            description: 'Decreases damage taken by 12%'
+            description: 'Decreases damage taken by 50%',
+            shield: 0.5
         },
         {
             type: 'weapon',
             name: 'Mario\'s Cap',
-            description: 'Increases your attack power by 25%'
+            description: 'Increases your attack power by 50%',
+            attack: 0.55
         }
-    ],
-    endSession = false,
-    absDistance = 10,
+    ];
+var endSession = false,
+    absDistance = 20,
     location = 0;
-//    progressLine = createProgressBar();
 
 // GOD ACTIONS
 function giveHPAndItem() {
@@ -193,41 +193,44 @@ function createMonster() {
 
 
 // ABSTRACTED ACTIONS
-function attack(victim, attacker) {
-    attacker.attackPower = getAttackPower(attacker);
-    var printAttackPower = chalk.hex('#6c25de')(attacker.attackPower);
-    victim.hp -= attacker.attackPower;
-    if (victim.name === player.name) {
-        log(`Oh no, ${attacker.name} attacked you for ${printAttackPower} points`);
-    } else {
-        log(`You damaged ${victim.name} for ${printAttackPower} points`);
-    }
-    var survived = victim.hp > 0;
-    if (!survived) {
-        victim.hp = 0;
-        if (victim.name === player.name) {
-            log(`${attacker.name} seems to have killed you.`);
-            endGame('death');
-        } else {
-            log(`You killed ${victim.name}`);
-            die(victim);
-        }
-    } else if (survived) {
-        if (victim.name === player.name) {
-            log(chalk`Your HP is now {green.bold ${player.hp}}`);
-        } else {
-            log(chalk`Its HP is now {green ${monster.hp}}`);
-        }
-    }
-}
-
 function die(who) {
     if (who.name != player.name) {
         previousHP = player.hp;
         giveHPAndItem();
         log(chalk`Oh look, your hp went up from {green ${previousHP}} to {green.bold ${player.hp}}`);
+        var newItem = player.inventory[player.inventory.length - 1];
+        log(chalk`And you gained:\n- ${newItem.name}\n- - ${newItem.description}`);
     }
     who.isAlive = false;
+}
+
+
+// MONSTER ACTIONS
+function mAttack() {
+    var shieldEffect = 0
+    var shields = [];
+    // if an item in inventory has an attack prop, reset weaponEffect
+    if (player.inventory.some(item => item.shield)) {
+        var filteredInventory = player.inventory.filter(item => {
+            return item.type === 'shield';
+        });
+        filteredInventory.forEach(item => {
+            shields.push(item.shield);
+        });
+        shieldEffect = shields.reduce((a, b) => a - b);
+    }
+    monster.attackPower = getAttackPower(monster)
+    monster.attackPower -= Math.floor(monster.attackPower * shieldEffect);
+    player.hp -= monster.attackPower;
+    var printAttackPower = chalk.hex('#6c25de')(monster.attackPower);
+    log(`Oh no, ${monster.name} attacked you for ${printAttackPower} points`);
+    if (player.hp <= 0) {
+        player.hp = 0;
+        log(`${monster.name} seems to have killed you.`);
+        endGame('death');
+    } else {
+        log(chalk`Your HP is now {green.bold ${player.hp}}`);
+    }
 }
 
 
@@ -238,7 +241,7 @@ function walk() {
         if (monsterAppeared) {
             createMonster();
             if (willMonsterAttack()) {
-                attack(player, monster);
+                mAttack(); // CHANGED
             } else {
                 log(`Oh no, ${monster.name} has appeared.`);
             }
@@ -257,10 +260,36 @@ function run() {
         log('You escaped. You can continue to walk now.');
     } else {
         log(`You attempt to escape, but not before ${monster.name} has a chance to attack you.`);
-        attack(player, monster);
+        mAttack(); // CHANGED
         if (player.isAlive) {
             log('Luckily, you survived');
         }
+    }
+}
+
+function attack() {
+    var weaponEffect = 0
+    var weaponsPower = [];
+    // if an item in inventory has an attack prop, reset weaponEffect
+    if (player.inventory.some(item => item.attack)) {
+        player.inventory.filter(item => {
+            return item.type === 'weapon';
+        }).forEach(item => {
+            weaponsPower.push(item.attack);
+        });
+        weaponEffect = weaponsPower.reduce((a, b) => a - b);
+    }
+    player.attackPower = getAttackPower(player);
+    player.attackPower += Math.floor(player.attackPower * weaponEffect);
+    var printAttackPower = chalk.hex('#6c25de')(player.attackPower);
+    monster.hp -= player.attackPower;
+    log(`You damaged ${monster.name} bt ${printAttackPower} points`);
+    if (monster.hp <= 0) {
+        monster.hp = 0;
+        log(`You killed ${monster.name}`);
+        die(monster);
+    } else {
+        log(chalk`Its HP is now {green ${monster.hp}}`);
     }
 }
 
@@ -268,11 +297,10 @@ function checkInventory() {
     var inventory = 0;
     log(`Name: ${player.name}\nHP: ${player.hp}`);
     log('Inventory:');
-    player.inventory.forEach(item => log(`- ${item.name}`));
+    player.inventory.forEach(item => log(`- ${item.name}\n- - ${item.description}`));
 }
 
 var indecisionCount = 0;
-
 function confrontation() {
     log('Run or attack? [r/a]');
     choice = ask.question('\n\n> ');
@@ -283,10 +311,10 @@ function confrontation() {
             break;
         case 'A':
             indecisionCount = 0;
-            attack(monster, player);
+            attack(); // CHANGED
             if (monster.isAlive) {
                 log(`But ${monster.name} decided to attack you back.`);
-                attack(player, monster);
+                mAttack(); // CHANGED
             }
             break;
         default:
@@ -327,7 +355,7 @@ while (player.isAlive && !endSession) {
                     log('Keep walking');
                     updateLocation();
                 }
-            } else if (!monsterAppeared) {
+            } else if (!monsterAppeared && !endSession) {
                 // if monster didn't appear update location
                 updateLocation();
             }

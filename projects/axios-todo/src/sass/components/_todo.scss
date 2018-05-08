@@ -1,0 +1,37 @@
+.todo .checkmark {
+    z-index: 1;
+    height: 20px;
+    width: 20px;
+    border: 1px solid $black;
+    border-radius: 4px;
+}
+
+.todo input:checked ~ .checkmark {
+    background: $black;
+}
+
+.todo input:checked ~ .title-and-price {
+    text-decoration: line-through;
+}
+
+.price-dot {
+    display: block;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background: $black;
+    margin: 0 0.618em;
+}
+
+.todo .image {
+    height: 150px;
+    width: 100%;
+    border-radius: 4px;
+    background-size: cover !important;
+    background-position: center !important;
+    filter: grayscale(1);
+}
+
+.title {
+    font-weight: $bold-weight;
+}
