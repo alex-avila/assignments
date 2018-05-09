@@ -1,8 +1,8 @@
 var url = 'https://api.vschool.io/alex/todo/';
 
-var skeletonHTML = '<div class="tasks-section"><h1>Tasks</h1>' + 
-'<div id="todos"></div></div><div class="done-section"><h1>Done</h1>' +
-'<div id="done-todos"></div></div>';
+var skeletonHTML = '<div class="tasks-section"><h1>Tasks</h1>' +
+    '<div id="todos"></div></div><div class="done-section"><h1>Done</h1>' +
+    '<div id="done-todos"></div></div>';
 var isLoad = true;
 var isUpdate = false;
 
@@ -32,7 +32,7 @@ function createStaticHTML() {
     addBtn.innerHTML = '<i class="material-icons">add</i>';
     addBtn.classList.add('add-btn');
     todoFormContainer.style.display = 'none';
-    addBtn.addEventListener('click', function() {
+    addBtn.addEventListener('click', function () {
         todoFormContainer = document.getElementById('todo-form-wrapper');
         // var todoFormBtn = todoFormContainer.children[0].children[4];
         todoFormBtn.textContent = 'Add Task';
@@ -44,7 +44,7 @@ function createStaticHTML() {
             clearForm();
         }
     });
-    
+
     return [todoFormContainer, addBtn];
 }
 
@@ -96,7 +96,7 @@ function createAPIDataHTML(data) {
 
     // MAKE TODO INFOR EXPANDABLE AND COLLAPSABLE
     var titles = [];
-    for (var i = 0; i < mainWrapper.childNodes.length; i++){
+    for (var i = 0; i < mainWrapper.childNodes.length; i++) {
         var arr = mainWrapper.childNodes[i].childNodes[1].childNodes;
         for (var j = 0; j < arr.length; j++) {
             titles.push(arr[j].childNodes[2]);
@@ -106,7 +106,7 @@ function createAPIDataHTML(data) {
         if (titles[i].nextElementSibling) {
             // Sets the initial value to none, so you only have to click once when page loads
             titles[i].nextElementSibling.style.display = 'none';
-            titles[i].addEventListener('click', function(e) {
+            titles[i].addEventListener('click', function (e) {
                 // This was kind of clever or at least it felt like it
                 if (e.target.classList[0] === 'title' || e.target.classList[0] === 'price') {
                     var detailsElem = e.path[1].nextElementSibling;
@@ -139,7 +139,7 @@ function createAPIDataHTML(data) {
 }
 
 function insertAPIDataHTML() {
-    axios.get(url).then(function(response) {
+    axios.get(url).then(function (response) {
         // Create HTML
         createAPIDataHTML(response.data);
         // ADD EVENT LISTENERS
@@ -154,9 +154,11 @@ function insertAPIDataHTML() {
 function updateCompleted() {
     var checkboxes = document.querySelectorAll('.todo input');
     for (var i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].addEventListener('click', function(e) {
+        checkboxes[i].addEventListener('click', function (e) {
             var id = e.path[1].id;
-            axios.put(url + id, {completed: e.target.checked}).then(function() {
+            axios.put(url + id, {
+                completed: e.target.checked
+            }).then(function () {
                 insertAPIDataHTML();
             });
         })
@@ -186,17 +188,17 @@ function addButtonsHTML() {
 function deleteTodo() {
     var deleteBtns = document.querySelectorAll('.delete-btn');
     for (var i = 0; i < deleteBtns.length; i++) {
-        deleteBtns[i].addEventListener('click', function(e) {
+        deleteBtns[i].addEventListener('click', function (e) {
             if (e.path.length === 12) {
                 var id = e.path[4].id;
                 console.log(id);
-                axios.delete(url + id).then(function(response) {
+                axios.delete(url + id).then(function (response) {
                     insertAPIDataHTML();
                 });
             } else if (e.path.length === 11) {
                 var id = e.path[3].id;
                 console.log(id);
-                axios.delete(url + id).then(function(response) {
+                axios.delete(url + id).then(function (response) {
                     insertAPIDataHTML();
                 });
             }
@@ -207,7 +209,7 @@ function deleteTodo() {
 function editTodo() {
 
     function populateInputs(id) {
-        axios.get(url + id).then(function(response) {
+        axios.get(url + id).then(function (response) {
             var todos = response.data;
             document.todoForm.title.value = todos.title;
             if (todos.description) {
@@ -226,7 +228,7 @@ function editTodo() {
 
     var editBtns = document.querySelectorAll('.edit-btn');
     for (var i = 0; i < editBtns.length; i++) {
-        editBtns[i].addEventListener('click', function(e) {
+        editBtns[i].addEventListener('click', function (e) {
             document.getElementById('todoFormBtn').textContent = 'Update Task';
             if (e.path.length === 12) {
                 idToUpdate = e.path[4].id;
@@ -240,11 +242,13 @@ function editTodo() {
 }
 
 function createOrUpdateTodo() {
-    document.todoForm.addEventListener('submit', function(e) {
-        
+    document.todoForm.addEventListener('submit', function (e) {
+
         e.preventDefault();
 
-        var newTodo = {title: document.todoForm.title.value};
+        var newTodo = {
+            title: document.todoForm.title.value
+        };
 
         if (document.todoForm.description.value) {
             newTodo.description = document.todoForm.description.value;
@@ -257,11 +261,11 @@ function createOrUpdateTodo() {
         }
 
         if (isUpdate) {
-            axios.put(url + idToUpdate, newTodo).then(function(response) {
+            axios.put(url + idToUpdate, newTodo).then(function (response) {
                 insertAPIDataHTML();
             });
         } else {
-            axios.post(url, newTodo).then(function() {
+            axios.post(url, newTodo).then(function () {
                 insertAPIDataHTML();
             });
         }
@@ -270,7 +274,7 @@ function createOrUpdateTodo() {
 }
 
 function initialGetRequest() {
-    axios.get(url).then(function(response) {
+    axios.get(url).then(function (response) {
         insertAPIDataHTML()
     });
 }

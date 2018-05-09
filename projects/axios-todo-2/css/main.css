@@ -129,6 +129,9 @@ p {
 }
 
 #todo-form-wrapper {
+  max-width: 500px;
+  height: 100%;
+  margin: auto;
   display: none;
   background: white;
   position: fixed;
@@ -213,4 +216,4 @@ form button {
   grid-column: title/title;
 }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=css/main.css.map */
