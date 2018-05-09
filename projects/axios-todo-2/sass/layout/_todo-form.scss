@@ -1,0 +1,49 @@
+#todo-form-wrapper {
+    display: none;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 0.5em 1.33em 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    input,
+    textarea,
+    button {
+        font-size: $regular-font-size;
+        border: none;
+        outline: none;
+        padding: 0.618rem;
+        margin: 1em 0;
+        font-family: $font-stack;
+    }
+    input {
+        border-bottom: #000 solid 2px;
+        &:first-of-type {
+            font-size: $large-font-size;
+            font-family: $headers-font;
+        }
+    }
+    textarea {
+        border: #000 solid 2px;
+        resize: none;
+        height: 100px;
+    }
+    button {
+        margin: auto;
+        margin-top: 1em;
+        padding: 0.618em 1em;
+        background: $black;
+        color: $white;
+        border: none;
+        border-radius: 100px;
+        cursor: pointer;
+    }
+}
+
