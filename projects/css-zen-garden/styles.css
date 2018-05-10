@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Libre Baskerville';
+    font-size: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Julius Sans One';
+    font-weight: lighter;
+    line-height: 1.2;
+    color: rgba(46, 72, 76);
+}
+
+p {
+    margin: 0.618em 0;
+}
+
+.wrapper {
+    display: grid;
+    background: url(images/bamboo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left 6% center;
+    background-attachment: fixed;
+}
+
+
+/* HEADER */
+
+.header {
+    /* position: absolute; */
+    width: 100%;
+    background-color: rgb(19, 67, 71);
+}
+
+.header__heading {
+    position: relative;
+    background: url(images/huntington.jpg);
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    font-family: 'Julius Sans One';
+    margin-top: 10px;
+    padding: 1.618em 0 32.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.heading__logo {
+    width: 50px;
+    filter: opacity(0.62);
+}
+
+.heading__title {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.title__title {
+    color: white;
+    margin: 0.75em 0 0.5em;
+    font-weight: 400;
+}
+
+.title__subtitle {
+    font-family: 'Libre Baskerville';
+    font-style: italic;
+    font-size: 1.25em;
+    padding: 0 0 1em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.header__link {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-content: center;
+    height: 29%;
+    width: 100%;
+    font-size: 1.6em;
+    position: absolute;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.link__text {
+    grid-column: 2 / 3;
+    justify-self: center;
+    margin: 0.1em 0 0;
+}
+
+.link__arrow {
+    display: block;
+    justify-self: center;
+    align-self: center;
+    font-size: 2em;
+    font-weight: 900;
+    transform: scale(2);
+    margin: 0.1em 0 0;
+}
+
+
+
+/* CONTENT */
+
+.contents {
+    font-size: 13px;
+    line-height: 2.1;
+}
+
+.content {
+    padding: 0.33em 2.59em 2.75em;
+}
+
+.content__intro {
+    padding: 1.618em 2.59em 2.618em;
+    background: #fff;
+}
+
+.content h2 {
+    margin: 0;
+    padding: 1.618em 0 0;
+    margin: inherit 0 0.618em 0;
+}
+
+.content p {
+    margin: 0.618em 0 0;
+    padding: 0;
+    color: rgb(50, 80, 80);
+}
+
+.content__participation {
+    background-image: url(images/contours-opaque.png);
+    background-color: rgba(138, 188, 159, 0.4);
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: center;
+}
+
+.content__requirements {
+    background: rgba(255, 255, 255, 1);
+}

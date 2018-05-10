@@ -1,3 +1,5 @@
+
+
 var url = 'https://api.vschool.io/alex/todo/';
 
 var skeletonHTML = '<div class="tasks-section"><h1>Tasks</h1>' +
@@ -270,12 +272,6 @@ function createOrUpdateTodo() {
             });
         }
 
-    });
-}
-
-function initialGetRequest() {
-    axios.get(url).then(function (response) {
-        insertAPIDataHTML()
     });
 }
 
