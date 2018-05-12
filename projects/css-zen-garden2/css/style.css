@@ -1,0 +1,306 @@
+@font-face {
+    font-family: 'Verde Moderna';
+    src: url(../fonts/verdemoderna.woff) format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    font-size: 16px;
+    transition: all 0.25s;
+    color: rgb(50, 80, 80);
+}
+
+img {
+    max-width: 100%;
+}
+
+p {
+    line-height: 2;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Julius Sans One', sans-serif;
+    line-height: 1.2;
+    color: rgb(46, 72, 76);
+}
+
+a {
+    text-decoration: none;
+    color: #0d8ba1;
+    transition: all 0.25s;
+}
+
+.download-thing,
+.nothing {
+    display: none;
+}
+
+.download {
+    font-family: 'Verde Moderna';
+    color: #809b7e;
+    padding: 2em 0.25em 0.5em;
+    border-radius: 3px;
+    background: #809b7e46;
+}
+
+.download-thing a {
+    padding: 0.25em 0.25em;
+    font-family: 'Julius Sans One';
+    color: #809b7e;
+    transition: all 0.25s;
+}
+
+.icons {
+    font-family: 'Verde Moderna';
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.wrapper {
+    display: grid;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.84em;
+    background:
+        url(../images/gridlines.png), 
+        url(../images/contours@2x.png),
+        linear-gradient(
+            rgba(87, 135, 113, 0.3),
+            rgba(87, 135, 113, 0.3)
+        ),
+        url(../images/bamboo.png);
+    background-attachment: scroll, scroll, fixed;
+    background-size: auto, 6in, cover;
+    background-repeat: repeat, repeat, no-repeat;
+}
+
+.header {
+    position: relative;
+    background-color: rgb(45, 99, 96);
+    background: 
+        linear-gradient(
+            rgb(45, 99, 96),
+            rgb(45, 99, 96)
+        ), 
+        url(../images/gridlines.png),
+        url(../images/contours@2x.png),
+        url(../images/huntington.jpg);
+    background-attachment: fixed, fixed, fixed, scroll;
+    background-size: 100% 10px, auto, 3in, cover;
+    background-position-y: 0px, 10px, 10px, 45%;
+    background-position-x: left;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: baseline;
+    background-repeat: no-repeat, repeat, repeat, no-repeat;
+    padding: 0 0 75px;
+}
+.heading {
+    padding: 2.62em 0 0;
+}
+.logo {
+    width: 45px;
+    filter: opacity(0.7)
+}
+.title__title {
+    color: rgb(255, 255, 255);
+    font-weight: lighter;
+    font-size: 1.618em;
+    margin: 5px 0 0;
+}
+.title__subtitle {
+    font-style: oblique;
+    padding: 10px 0 20px;
+    color: rgba(255, 255, 255, 0.6);
+}
+.button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;;
+}
+.button-box {
+    background: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.6);
+    height: 65px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+}
+.button__text {
+    font-family: 'Julius Sans One';
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.2em;
+    grid-column: 2 / 3;
+    transition: all 0.25s;
+}
+.button__arrow {
+    font-size: 3em;
+    transform: scale(0.5, 1);
+    transition: all 0.25s;
+}
+
+.content {
+    padding: 1em 10% 2em;
+    background: white;
+}
+
+.content p {
+    margin: 1em 0;
+}
+
+.content h2 {
+    font-weight: lighter;
+    margin: 1.5em 0 -4px;
+}
+
+.content h2:first-of-type {
+    margin-top: 1.7em;
+}
+
+.section-2 {
+    background: 
+        linear-gradient(
+            rgba(44, 120, 44, 0.05),
+            rgba(57, 116, 57, 0.05)
+        );
+    background-attachment: scroll, scroll, scroll, fixed;
+    background-position: left 7%; 
+    /* background: none; */
+}
+
+.footer {
+    grid-row-start: 5;
+    background:
+        url(../images/gridlines.png),
+        url(../images/contours-opaque.png),
+        url(../images/koi.jpg);
+    background-size: auto, 4in, cover;
+    background-attachment: fixed, fixed, scroll;
+    background-position: left 80%;
+}
+
+.footer__text {
+    font-size: 1.2em;
+    font-style: oblique;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 1em;
+}
+
+.footer__text a {
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.7)
+}
+
+.icons {
+    padding: 0.75em;
+    background: #134347;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 2.25em;
+}
+.icons {
+    font-family: 'Verde Moderna';
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1em;
+}
+.icon {
+    background: #134347;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.25s;
+}
+
+.extra {
+    background: linear-gradient(
+        rgba(162, 203, 162, 0.14),
+        rgba(162, 203, 162, 0.14)
+    );
+}
+
+.design-link {
+    color: #c0cac3;
+    border-bottom: 1px solid #9ea5a525;
+    padding: 1em 5%;
+    background: rgb(238, 245, 239);
+}
+.design-link > a {
+    color: #607476;
+    font-size: 1.2em;
+    display: inline-block;
+    line-height: 1.5;
+    font-family: 'Julius Sans One', sans-serif;
+}
+.design-link p {
+    font-size: 0.92em;
+    line-height: 1.5;
+    margin: 0;
+    font-style: oblique;
+}
+.design-link p a {
+    color: #616857;
+    font-family: 'Libre Baskerville';
+    font-style: normal;
+}
+.more {
+    background: linear-gradient(
+        rgba(44, 120, 44, 0.05),
+        rgba(57, 116, 57, 0.05)
+    );
+}
+.more-item {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.25;
+    border-bottom: 1px solid #5b717125;
+    padding: 1em 5%;
+}
+.more-item a {
+    color: #607476;
+}
+
+
+
+
+
+.icon:hover {
+    color: #134347;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    -webkit-clip-path: circle(47%);
+    clip-path: circle(47%);
+}
+
+.button__text:hover,
+.button__arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.download-thing a:hover {
+    color: #fff;
+    background: #3d8a9f;
+}
+
+.download-thing a::before {
+    content: 'D';
+    font-family: 'Verde Moderna';
+    padding: 0.2em;
+    border-radius: 3px;
+    background: #809b7e46;
+}
+
+.download-thing a::before:hover {
+    content: 'D';
+    font-family: 'Verde Moderna';
+    padding: 0.2em;
+    border-radius: 3px;
+    background: #205b6b;
+}

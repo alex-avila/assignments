@@ -1,0 +1,26 @@
+@media (min-width: 321px) {
+    .logo {
+        width: 52px;
+    }
+    .title {
+        font-size: 1.333em;
+    }
+    .button__text::after {
+        content: ' DESIGNS';
+    }
+    .footer__text {
+        font-size: 1.62em;
+    }
+    .icons {
+        font-size: 2.5em;
+    }
+    .links-box,
+    .more-box {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .design-link,
+    .more-item {
+        width: 50%;
+    }
+}

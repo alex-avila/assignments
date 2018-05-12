@@ -1,0 +1,114 @@
+@media (min-width: 1133px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        font-size: 16px;
+    }
+    .header {
+        box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr;
+        justify-items: center;
+        align-items: center;
+        padding: 0;
+    }
+    .heading {
+        grid-column: 1 / 2;
+        padding: 3em;
+        font-size: 1.5em;
+        text-align: left;
+
+    }
+    .logo {
+        width: 120px;
+        filter: opacity(1);
+    }
+    .button {
+        position: static;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(
+            rgba(11, 14, 11, 0.05),
+            rgba(11, 14, 11, 0.05)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-box {
+        background: none;
+        width: 85%;
+    }
+    .button__text,
+    .button__arrow {     
+        vertical-align: middle;   
+        line-height: 3.9;
+        height: 70px;
+        padding: 0;
+        background: rgba(255, 255, 255, 0.1);
+    }
+    .button__arrow {
+        line-height: 1.47;
+        transform: scale(1);
+        margin-left: 2px;
+    }
+    .footer {
+        grid-column: 1 / -1;
+    }
+    .content {
+        grid-column: 1 / 2;
+    }
+    .extra {
+        grid-column: 2 / 3;
+    }
+    .links {
+        grid-row: 2 / 3;
+    }
+    .more {
+        grid-row: 3 / 5;
+    }
+    .nothing {
+        display: block;
+        grid-row: 4 / 5;
+        background: rgb(238, 245, 239);
+    }
+    .links-box,
+    .more-box {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding-top: 1em;
+        background: rgb(238, 245, 239);
+    }
+    .more-box {
+        padding: 2em 0 0;
+        background: linear-gradient(
+        rgba(44, 120, 44, 0.1),
+        rgba(57, 116, 57, 0.1)
+    )
+    }
+    .design-link,
+    .more-item {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .more-item:first-of-type {
+        border-top: 1px solid #5b717125;
+    }
+    .footer {
+        box-shadow: inset 10px 0 200px rgba(255, 255, 255, 0.3);
+    }
+    .footer__text {
+        font-size: 2em;
+        padding: 3% 12%;
+    }
+    .icons {
+        font-size: 4em;
+        justify-content: space-evenly;
+        padding: 0.8em 10%;
+    }
+}

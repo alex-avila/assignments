@@ -1,0 +1,24 @@
+@media (min-width: 601px) {
+    .download-thing {
+        display: block;
+    }
+    .heading {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: min-content;
+        font-size: 1.222em;
+        padding: 50px 0 0;
+    }
+    .logo {
+        width: 80px;
+        margin: -22px 0 0;
+        grid-row: 1 / 2;
+    }
+    .title__subtitle {
+        font-size: 0.8em;
+    }
+    .footer__text {
+        font-size: 1.65em;
+        padding: 0.2em 2.3em;
+    }
+}
