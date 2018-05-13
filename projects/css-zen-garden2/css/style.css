@@ -198,7 +198,7 @@ a {
 
 .footer__text a {
     font-style: normal;
-    color: rgba(255, 255, 255, 0.7)
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .icons {
@@ -267,9 +267,38 @@ a {
     color: #607476;
 }
 
+.download-thing a::before {
+    content: 'D';
+    font-family: 'Verde Moderna';
+    padding: 0.2em;
+    border-radius: 3px;
+    background: #809b7e46;
+}
 
 
 
+
+a:hover {
+    color: #49968e;
+}
+
+.design-link p a:hover {
+    color: #49968e;
+}
+
+.content a:hover {
+    color: #0599c2;
+    text-decoration: underline;
+}
+
+.excluded-link {
+    color: rgb(50, 80, 80);
+}
+
+.footer__text a:hover {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: underline;
+}
 
 .icon:hover {
     color: #134347;
@@ -287,37 +316,5 @@ a {
 .download-thing a:hover {
     color: #fff;
     background: #3d8a9f;
-}
-
-.download-thing a::before {
-    content: 'D';
-    font-family: 'Verde Moderna';
-    padding: 0.2em;
-    border-radius: 3px;
-    background: #809b7e46;
-}
-
-.download-thing a::before:hover {
-    content: 'D';
-    font-family: 'Verde Moderna';
-    padding: 0.2em;
-    border-radius: 3px;
-    background: #205b6b;
-}
-
-a:hover {
-    color: #49968e;
-}
-
-.design-link p a:hover {
-    color: #49968e;
-}
-
-.content a:hover {
-    color: #0599c2;
-    text-decoration: underline;
-}
-
-.excluded-link {
-    color: rgb(50, 80, 80);
+    text-decoration: none;
 }
