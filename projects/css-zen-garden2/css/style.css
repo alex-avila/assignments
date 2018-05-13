@@ -304,3 +304,20 @@ a {
     border-radius: 3px;
     background: #205b6b;
 }
+
+a:hover {
+    color: #49968e;
+}
+
+.design-link p a:hover {
+    color: #49968e;
+}
+
+.content a:hover {
+    color: #0599c2;
+    text-decoration: underline;
+}
+
+.excluded-link {
+    color: rgb(50, 80, 80);
+}
