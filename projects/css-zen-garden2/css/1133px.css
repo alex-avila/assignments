@@ -21,6 +21,9 @@
         text-align: left;
 
     }
+    .section-1 {
+        padding-top: 2.7em;
+    }
     .logo {
         width: 120px;
         filter: opacity(1);
@@ -81,11 +84,11 @@
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
-        padding-top: 1em;
+        padding-top: 3em;
         background: rgb(238, 245, 239);
     }
     .more-box {
-        padding: 2em 0 0;
+        padding: 6em 0 0;
         background: linear-gradient(
         rgba(44, 120, 44, 0.1),
         rgba(57, 116, 57, 0.1)
