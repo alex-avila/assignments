@@ -1,0 +1,5 @@
+.colored-box {
+    padding: 0.25em 1em;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px -10px #777;
+}

@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: 1fr;
-    grid-gap: 20px;
+    grid-gap: 10px;
     font-size: 16px;
 }
 
@@ -13,4 +13,12 @@
 
 .view-more {
     align-self: flex-end;
+    font-weight: bold;
+    margin-top: 1em;
+    cursor: pointer;
+    margin-bottom: 1.618em;
+}
+
+.view-more:hover {
+    text-decoration: underline;
 }

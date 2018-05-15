@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Avenir';
+    font-size: 16px;
+    padding: 2em;
+    background: rgb(255, 255, 177);
+}
+
+h1 {
+    font-size: calc(1rem * 1.25 * 1.25);
+    margin: 0.33em 0 0;
+}
+
+h2 {
+    font-size: 1.25em;
+    margin: 0.5em 0;
+}
+
+p {
+    line-height: 1.5;
+    margin: 0em 0 0.75em;
+}
+
+.colored-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1em;
+    max-width: 1000px;
+    margin: auto;
+}

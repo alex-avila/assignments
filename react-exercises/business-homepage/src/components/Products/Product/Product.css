@@ -7,9 +7,9 @@
     font-weight: 500;
 }
 
-/* .product__description {
+.product__description {
     font-size: 14px;
-} */
+}
 
 .title-and-price {
     display: flex;
@@ -25,8 +25,10 @@
 }
 
 .product__image {
-    height: 200px;
+    height: 300px;
     width: 100%;
-    background: url(https://images.unsplash.com/photo-1494858723852-d3cc2477e12c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a66c81d6441ca061f1e4647df4f41e40&auto=format&fit=crop&w=1656&q=80);
+    /* background: url(https://images.unsplash.com/photo-1494858723852-d3cc2477e12c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a66c81d6441ca061f1e4647df4f41e40&auto=format&fit=crop&w=1656&q=80); */
     background-size: cover;
+    background-position: center;
+    margin-bottom: 0.5em;
 }
