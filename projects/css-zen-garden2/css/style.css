@@ -308,13 +308,25 @@ a:hover {
     clip-path: circle(47%);
 }
 
-.button__text:hover,
-.button__arrow:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
 .download-thing a:hover {
     color: #fff;
     background: #3d8a9f;
     text-decoration: none;
+}
+
+
+.button__text {
+    height: 100%;
+    line-height: 4.5;
+}
+
+.button__arrow {
+    transform: none;
+    height: 100%;
+    line-height: 1.85;
+}
+.button__text:hover,
+.button__arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
 }

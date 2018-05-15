@@ -114,4 +114,9 @@
         justify-content: space-evenly;
         padding: 0.8em 10%;
     }
+    .button__text:hover,
+    .button__arrow:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
 }
