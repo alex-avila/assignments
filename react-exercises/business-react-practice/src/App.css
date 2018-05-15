@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.wrapper {
+    font-family: 'Avenir';
+    font-size: 18px;
+    line-height: 2;
+    max-width: 800px;
+    margin: auto;
+}

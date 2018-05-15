@@ -1,0 +1,27 @@
+.nav {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav__item:nth-child(2) {
+    margin-left: auto;
+}
+
+.nav__item {
+    margin-right: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav__item:last-child {
+    margin-right: 0;
+}
+
+.logo {
+    font-size: 1.414em;
+    font-weight: 100;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}

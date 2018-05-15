@@ -1,0 +1,31 @@
+
+.info {
+    height: 100%;
+    display: flex;
+    margin-top: -70px;
+}
+
+.info-wrapper {
+    display: flex;
+}
+
+.info__image {
+    height: 350px;
+    width: 50%;
+    background: url(../../images/super-mario-movie.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 10px 5px rgba(0,0,0,0.15)) sepia(0.7) grayscale(0.7) contrast(0.5);
+}
+
+.info__text {
+    align-self: center;
+    margin-top: 20px;
+    width: 50%;
+}
+
+.info__text__title {
+    margin: 0;
+    line-height: 1;
+}

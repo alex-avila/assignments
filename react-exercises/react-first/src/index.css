@@ -1,0 +1,27 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(242, 234, 234);
+    font-family: 'Avenir Next';
+    font-weight: 600;
+    font-size: 22px;
+}
+
+#bar {
+    height: 150px;
+    width: 150px;
+    align-self: flex-start;
+    border-radius: 50%;
+    background: linear-gradient(-135deg, rgb(100, 154, 255), rgb(225, 179, 255));
+    box-shadow: 0 0 10px rgba(100, 154, 255, 0.459);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 0 3px #fafafa;
+    letter-spacing: 3px;
+}
