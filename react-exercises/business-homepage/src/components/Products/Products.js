@@ -6,10 +6,16 @@ import './Products.css';
 
 const Products = () => {
     return (
-        <section className="products">
-            <Product />
-            <Product />
-            <Product />
+        <section className="products-section content-wrap">
+            <h2>Products</h2>
+            <div className="products">
+                <Product />
+                <Product />
+                <Product />
+            </div>
+            <div className="view-more">
+                <p>View More >></p>
+            </div>
         </section>
     );
 };
