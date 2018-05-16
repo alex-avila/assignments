@@ -75,9 +75,9 @@ a {
             rgba(87, 135, 113, 0.3)
         ),
         url(../images/bamboo.png);
-    background-attachment: scroll, scroll, fixed;
-    background-size: auto, 6in, cover;
-    background-repeat: repeat, repeat, no-repeat;
+    background-attachment: scroll, scroll, scroll, fixed;
+    background-size: auto, 6in, auto, cover;
+    background-repeat: repeat, repeat, auto, no-repeat;
 }
 
 .header {
