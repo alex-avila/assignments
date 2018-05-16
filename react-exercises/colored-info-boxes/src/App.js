@@ -66,13 +66,49 @@ const App = () => {
       info: 'I got bored of writing this. I got bored of writing this. I got bored of writing this.'
     }
   ]
+
+  // Mapping JSX Elements usiung a function //
+  // const generateBoxes = () => {
+  //   return propsArr.map((props, index) => {
+  //     return (
+  //       <ColoredBox
+  //         key={props.name + String(index)}
+  //         background={props.background}
+  //         title={props.title}
+  //         subtitle={props.subtitle}
+  //         information={props.info}
+  //       />
+  //     )
+  //   })
+  // }
+
+  // Mapping JSX Elements using a variable //
+  const mappedBoxes = propsArr.map((props, index) => {
+    return (
+      <ColoredBox
+        key={props.name + String(index)}
+        background={props.background}
+        title={props.title}
+        subtitle={props.subtitle}
+        information={props.info}
+      />
+    )
+  });
   return (
     <div className='colored-boxes'>
-      {
+      {/* Mapping JSX Elements using a function */}
+      {/* {generateBoxes()} */}
+
+      {/* Mapping JSX Elements using a variable */}
+      {mappedBoxes}
+
+      {/* Mapping JSX Elements using map directly */}
+      {/* {
         propsArr.map((props, index) => {
           return <ColoredBox key={index} background={props.background} title={props.title} subtitle={props.subtitle} information={props.info} />
         })
-      }
+      } */}
+
     </div>
   );
 }
