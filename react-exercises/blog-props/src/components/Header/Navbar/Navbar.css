@@ -1,0 +1,10 @@
+.nav__wrapper {
+    max-width: 800px;
+    margin: auto;
+}
+
+.nav__with-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
