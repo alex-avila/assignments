@@ -1,7 +1,16 @@
+nav {
+    background: white;
+    transition: all 0.25s;
+    font-size: 0.816em;
+    position: absolute;
+    width: 100%;
+}
+
 .nav__wrapper {
     max-width: 710px;
     margin: auto;
     font-weight: 800;
+    transition: all 0.25s;
 }
 
 .nav__with-button {

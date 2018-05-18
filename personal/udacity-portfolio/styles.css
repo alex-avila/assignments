@@ -10,6 +10,13 @@ TypeScale used: (1.414 multiplier or 1 : 1.414 ratio)
 3.998em
 */
 
+/* 
+#4744ff purple
+#8a2eff blue
+#211a1d black
+#8075ff light blue
+#f8f0fb purple white
+*/
 
 * {
     box-sizing: border-box;
@@ -23,7 +30,7 @@ body {
     max-width: 900px;
     margin: 2em auto auto;
     font-family: 'Work Sans';
-    color: #2d3c49;
+    color: #211A1D;
 }
 
 
@@ -34,18 +41,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 3px solid #7d97ad;
+    border-bottom: 3px solid #4744FF;
     text-align: right;
     padding: 0 0 1em;
 }
 
 .header__logo {
-    background: url(images/udacity.png);
+    background: url(images/logo.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 70px;
-    width: 70px;
+    height: 110px;
+    width: 110px;
 }
 
 .header__title,
@@ -56,10 +63,12 @@ body {
 .header__title {
     font-size: 3.998em;
     font-weight: 100;
+    color: #211A1D;
 }
 
 .header__subtitle {
     font-size: 1.414em;
+    color: rgb(75, 58, 65);
 }
 
 
@@ -90,7 +99,15 @@ body {
 }
 
 .work__title {
-    color: #7d97ad;
+    color: #8075FF;
+}
+
+.work__underline {
+    display: block;
+    height: 3px;
+    width: 60px;
+    background: rgb(155, 146, 254);
+    margin: -5px 0 1em 0px;
 }
 
 .work__items {

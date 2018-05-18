@@ -47,8 +47,8 @@ class Navbar extends React.Component {
             navWrapperClass += ' nav__wrapper__flex';
         }
         return (
-            <nav>
-                <div className={navWrapperClass}>
+            <nav style={this.state.isScreenBig ? {background: 'none'} : null}>
+                <div className={navWrapperClass} style={this.state.isScreenBig ? {color: 'white'} : {color: 'black'}}>
                     <div className="nav__with-button">
                         <h1>Start Bootstrap</h1>
                         {
