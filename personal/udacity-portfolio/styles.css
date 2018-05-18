@@ -1,3 +1,16 @@
+/* 
+TypeScale used: (1.414 multiplier or 1 : 1.414 ratio)
+0.354em
+0.5em
+0.707em
+1em
+1.414em
+1.999em
+2.827em
+3.998em
+*/
+
+
 * {
     box-sizing: border-box;
 }
@@ -6,22 +19,18 @@ body {
     margin: 0;
 }
 
-h1,
-h2,
-h3,
-p {
-    margin: 0;
-}
-
 .wrapper {
     max-width: 900px;
     margin: 2em auto auto;
-    font-family: 'Futura';
+    font-family: 'Work Sans';
     color: #2d3c49;
-    line-height: 1.5;
 }
 
-header {
+
+
+/* HEADER */
+
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,7 +39,7 @@ header {
     padding: 0 0 1em;
 }
 
-.logo {
+.header__logo {
     background: url(images/udacity.png);
     background-size: contain;
     background-position: center;
@@ -38,6 +47,24 @@ header {
     height: 70px;
     width: 70px;
 }
+
+.header__title,
+.header__subtitle {
+    margin: 0;
+}
+
+.header__title {
+    font-size: 3.998em;
+    font-weight: 100;
+}
+
+.header__subtitle {
+    font-size: 1.414em;
+}
+
+
+
+/* CONTENT */
 
 .content {
     padding: 1.618em 0 2em;
@@ -56,6 +83,12 @@ header {
     margin: 1.618em 0 0;
 }
 
+.work__title,
+.item__info__title {
+    font-size: 1.999em;
+    margin: 0.354em 0;
+}
+
 .work__title {
     color: #7d97ad;
 }
@@ -63,28 +96,30 @@ header {
 .work__items {
     display: grid;
     grid-gap: 1em;
-    grid-template-columns: repeat(3, 1fr);
-    text-align: center;
+    /* 
+    calc(33% - 1em) because it appears that grid does not include grid gap 
+    in the 33% calculation
+     */
+     grid-template-columns: repeat(auto-fit, minmax(calc(33% - 1em), 1fr));
+     /* I indlude the line above because it is a good example of how grid works (apparently) */
+     grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+     text-align: center;
 }
 
 .work__item1 .item__thumbnail {
     background: url(images/app.jpg);
-    background-size: cover;
-    background-position: center 25%;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 222px;
 }
+
 .work__item2 .item__thumbnail {
     background: url(images/sunflower.jpg);
-    background-size: cover;
-    background-position: center 25%;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 222px;
 }
+
 .work__item3 .item__thumbnail {
     background: url(images/bokeh.jpg);
+}
+
+/* apply styles to all thumbnails after image has been declared */
+.work__item .item__thumbnail {
     background-size: cover;
     background-position: center 25%;
     background-repeat: no-repeat;

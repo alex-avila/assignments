@@ -1,0 +1,24 @@
+{
+    "superheroes": [
+        {
+            "alias": "deadpool",
+            "image": "images/deadpool.jpg",
+            "catchphrase": "House blowing up build character."
+        },
+        {
+            "alias": "green lantern",
+            "image": "images/green-lantern.jpg",
+            "catchphrase": "In brightest day, in blackest night, no evil shall escape my sight. Let those who worship evil's might, beware my power, GREEN LANTERN'S LIGHT!"
+        },
+        {
+            "alias": "the flash",
+            "image": "images/the-flash.jpg",
+            "catchphrase": "My name is Barry Allen."
+        },
+        {
+            "alias": "spider-man",
+            "image": "images/spider-man.jpg",
+            "catchphrase": "It's your Friendly Neighborhood Spider-Man!"
+        }
+    ]
+}

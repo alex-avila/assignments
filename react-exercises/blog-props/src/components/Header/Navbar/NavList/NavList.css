@@ -1,0 +1,11 @@
+.nav__list {
+
+}
+
+.row {
+    display: flex;
+}
+
+.row .nav__item:not(:last-child) {
+    margin-right: 1em;
+}

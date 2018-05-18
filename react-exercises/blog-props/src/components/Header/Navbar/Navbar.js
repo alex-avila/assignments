@@ -1,11 +1,13 @@
 import React from 'react'
 import './Navbar.css'
 
+import NavList from './NavList/NavList'
+
 const menuBreakpoint = 992;
 
 class Navbar extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             isToggleOn: false,
             isScreenBig: false
@@ -24,7 +26,8 @@ class Navbar extends React.Component {
 
     handleResize() {
         this.setState(prevState => ({
-            isScreenBig: window.innerWidth >= menuBreakpoint ? true : false
+            isScreenBig: window.innerWidth >= menuBreakpoint ? true : false,
+            isToggleOn: window.innerWidth >= menuBreakpoint ? false : prevState.isToggleOn
         }));
     }
 
@@ -33,10 +36,19 @@ class Navbar extends React.Component {
         window.addEventListener('resize', this.handleResize);
     }
 
+    componentWillUnmount() {
+        this.handleResize();
+        window.addEventListener('resize', null);
+    }
+
     render() {
+        let navWrapperClass = 'nav__wrapper';
+        if (this.state.isScreenBig) {
+            navWrapperClass += ' nav__wrapper__flex';
+        }
         return (
             <nav>
-                <div className="nav__wrapper">
+                <div className={navWrapperClass}>
                     <div className="nav__with-button">
                         <h1>Start Bootstrap</h1>
                         {
@@ -49,12 +61,7 @@ class Navbar extends React.Component {
                     </div>
                     {
                         (this.state.isToggleOn || this.state.isScreenBig) &&
-                        <div className="nav__list">
-                            <div className="nav__item">HOME</div>
-                            <div className="nav__item">ABOUT</div>
-                            <div className="nav__item">SAMPLE POST</div>
-                            <div className="nav__item">CONTACT</div>
-                        </div>
+                        <NavList isScreenBig={this.state.isScreenBig}/>
                     }
                 </div>
             </nav>
