@@ -1,0 +1,41 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.footer__divider {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: #ddd;
+    margin: 2em 0;
+}
+
+.footer__icons {
+    display: flex;
+    margin: 3em 0 2em;
+}
+
+.footer__icon__container {
+    background: black;
+    padding: 0.618em;
+    border-radius: 50%;
+}
+
+.footer__icon__container:not(:last-child) {
+    margin-right: 2em;
+}
+
+.footer__icon {
+    display: block;
+    height: 25px;
+    width: 25px;
+}
+
+.footer__copyright {
+    font-family: 'Lora';
+    color: gray;
+    font-size: 0.87em;
+}

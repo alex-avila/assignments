@@ -1,7 +1,6 @@
 nav {
     background: white;
-    transition: all 0.25s;
-    font-size: 0.816em;
+    font-size: 0.82em;
     position: absolute;
     width: 100%;
 }
@@ -10,7 +9,6 @@ nav {
     max-width: 710px;
     margin: auto;
     font-weight: 800;
-    transition: all 0.25s;
 }
 
 .nav__with-button {
@@ -24,4 +22,22 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@keyframes slideIn {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        top: 0;
+    }
+    to {
+        top: -100%;
+    }
 }

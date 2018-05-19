@@ -1,0 +1,20 @@
+.blog-list {
+    max-width: 610px;
+    margin: 5em auto auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog__prev-btn {
+    text-transform: uppercase;
+    font-family: 'Open Sans';
+    font-weight: 800;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+    border: none;
+    line-height: 1;
+    background: #0085a1;
+    color: white;
+    margin-left: auto;
+    padding: 1.25em 1.618em 1.20em;
+}

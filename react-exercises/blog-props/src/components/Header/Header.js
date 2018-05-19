@@ -7,8 +7,8 @@ const Header = (props) => {
     const homeBackground = {
         background: 
             `linear-gradient(
-                rgba(10, 10, 20, 0.4),
-                rgba(10, 10, 20, 0.4)
+                rgba(10, 10, 20, 0.45),
+                rgba(10, 10, 20, 0.45)
             ),
             url(${props.background})`,
         backgroundSize: 'cover',

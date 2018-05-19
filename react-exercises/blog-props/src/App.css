@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lora|Open+Sans:300,400,800');
+@import url('https://fonts.googleapis.com/css?family=Lora:400,400i|Open+Sans:300,400,800');
 
 * {
     box-sizing: border-box;
@@ -8,4 +8,9 @@ body {
     margin: 0;
     /* font-family: 'Lora', serif; */
     font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }

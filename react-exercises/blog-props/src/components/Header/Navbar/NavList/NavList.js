@@ -3,7 +3,6 @@ import React from 'react';
 import './NavList.css'
 
 const NavList = (props) => {
-    console.log(props.isScreenBig);
     return (
         <div className={`nav__list ${props.isScreenBig ? 'row' : 'column'}`}>
             <div className="nav__item">HOME</div>
