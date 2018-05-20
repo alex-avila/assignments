@@ -24,20 +24,24 @@ nav {
     justify-content: space-between;
 }
 
+.slide-out {
+    animation: slideOut 0.25s;
+}
+
 @keyframes slideIn {
     from {
-        top: -100%;
+        transform: translateY(-100%)
     }
     to {
-        top: 0;
+        transform: translateY(0);
     }
 }
 
 @keyframes slideOut {
     from {
-        top: 0;
+        transform: translateY(0)
     }
     to {
-        top: -100%;
+        transform: translateY(-100%);
     }
 }

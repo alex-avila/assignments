@@ -1,58 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JANE DOETTE | FRONT-END NINJA</title>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="wrapper">
+<html>
 
-        <header class="header">
-            <div class="header__logo"></div>
-            <div class="header__text">
-                <h1 class="header__title">ALEX AVILA</h1>
-                <h2 class="header__subtitle">front_end_developer.ninja</h2>
-            </div>
-        </header>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="images/logo.png" />
+        <title>ALEX AVILA | front_end_dev.ninja</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+            crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/responsive.css">
+    </head>
 
-        <main class="content">
-            <div class="featured-image"></div>
-            <div class="work">
-                <h2 class="work__title">Featured Work</h2>
-                <span class="work__underline"></span>
-                <div class="work__items">
-                    <div class="work__item work__item1">
-                        <div class="item__thumbnail"></div>
-                        <div class="item__info">
-                            <h3 class="item__info__title">APPIFY</h3>
-                            <div class="item__info__link">https://github.com/udacity/Appify/</div>
-                        </div>
-                    </div>
-                    <div class="work__item work__item2">
-                        <div class="item__thumbnail"></div>
-                        <div class="item__info">
-                            <h3 class="item__info__title">SUNFLOWER</h3>
-                            <div class="item__info__link">https://github.com/udacity/Sunflower/</div>
-                        </div>
-                    </div>
-                    <div class="work__item work__item3">
-                        <div class="item__thumbnail"></div>
-                        <div class="item__info">
-                            <h3 class="item__info__title">BOKEH</h3>
-                            <div class="item__info__link">https://github.com/udacity/Bokeh/</div>
-                        </div>
+    <body>
+
+        <div class="wrapper">
+
+            <header class="header">
+
+                <div class="header__wrapper content-wrap">
+                    <div class="header__logo"></div>
+                    <div class="header__text">
+                        <h1 class="header__title">ALEX AVILA</h1>
+                        <h2 class="header__subtitle">front_end_dev.ninja</h2>
                     </div>
                 </div>
-            </div>
-        </main>
 
-        <!-- <footer>
-            <div>&copy; 2018 ALEX AVILA, INC.</div>
-        </footer> -->
+                <span class="header__underline"></span>
 
-    </div>
-</body>
+            </header>
+
+            <main class="content">
+
+                <div class="featured-image"></div>
+
+                <section class="work">
+
+                    <div class="work__headline content-wrap">
+                        <h2 class="work__title">Featured Work</h2>
+                        <span class="work__underline"></span>
+                    </div>
+
+                    <div class="work__items">
+                        <a href="https://github.com/alex-avila/assignments/tree/master/projects/business-v2" target="_blank" class="work__item work__item1">
+                            <img src="images/business-img.png" alt="Fake business project mockup">
+                            <h3 class="item__title">BUSINESS</h3>
+                        </a>
+                        <a href="https://github.com/alex-avila/assignments/tree/master/projects/axios-todo-2" target="_blank" class="work__item work__item2">
+                            <img src="images/axios-todo-img.png" alt="Todo list project that uses Axios.">
+                            <h3 class="item__title">AXIOS TODO</h3>
+                        </a>
+                        <a href="https://dribbble.com/Alex_Avila" target="_blank" class="work__item work__item3">
+                            <img src="images/dailyui-037.png" alt="Weather app UI.">
+                            <h3 class="item__title">DRIBBBLE</h3>
+                        </a>
+                    </div>
+
+                </section>
+
+            </main>
+
+            <footer>
+
+                <div class="footer__wrapper content-wrap">
+
+                    <div class="footer__icons">
+                        <a class="icon" href="https://github.com/alex-avila" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a class="icon" href="https://dribbble.com/Alex_Avila" target="_blank">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+
+                    <div class="footer__copyright">© 2018 ALEX AVILA, INC.</div>
+
+                </div>
+                
+            </footer>
+
+        </div>
+
+    </body>
+
 </html>
