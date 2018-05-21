@@ -100,7 +100,7 @@ class Navbar extends React.Component {
         let navWrapperClass = this.state.isScreenBig ?
             'nav__wrapper nav__wrapper__flex' : 'nav__wrapper';
         return (
-            <Transition in={this.state.entered} timeout={250}>
+            <Transition in={this.state.entered} timeout={500}>
                 {(state) =>(
                     <nav style={this.determinNavView()}>
                         <div className={navWrapperClass}>
