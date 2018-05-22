@@ -1,0 +1,20 @@
+.list-item {
+    background: white;
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0 rgb(0, 0, 0);
+}
+
+.list-item__image {
+    height: 275px;
+    width: 100%;
+    border-radius: 7px 7px 0 0;
+    border-bottom: 3px solid black;
+    filter: grayscale(1) contrast(110%);
+}
+
+.list-item__name {
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+}

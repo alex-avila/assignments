@@ -1,0 +1,18 @@
+header {
+    background: rgb(255, 255, 255);
+    color: black;
+    /* box-shadow: 0 5px 0 rgb(0, 0, 0); */
+    border-bottom: 3px solid black;
+}
+
+.header-wrapper {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0.618em 1.618em;
+}
+
+header h1 {
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Menlo';
+}
