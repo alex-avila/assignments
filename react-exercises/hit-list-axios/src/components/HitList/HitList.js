@@ -19,9 +19,10 @@ class HitList extends Component {
     }
 
     render() {
-        const mappedTargets = this.state.targets.map(target => {
+        const mappedTargets = this.state.targets.map((target, i) => {
             return (
                 <ListItem
+                    key={target.name + i}
                     name={target.name}
                     image={target.image}
                 />
