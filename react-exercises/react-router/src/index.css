@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    background: #202529;
+    color: white;
+    font-family: 'Avenir';
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #1BC6B4;
+    font-weight: bold;
+}
+
+.content-wrap {
+    max-width: 1000px;
+    margin: auto;
+}
+
+footer {
+    color: #4c555c;
+}
+
+
+/* 
+Colors:
+202529 dark gray
+32383d less dark gray
+4c555c even less dark gray
+a1b4c4 super pale blue
+1bc6b4 turqoise? accent color
+*/

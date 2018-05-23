@@ -1,0 +1,25 @@
+nav {
+    background: linear-gradient(-45deg, #32383D, #4C555C 250%);
+    box-shadow: 0 1px #4C555C;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-wrapper h1 {
+    text-transform: uppercase;
+    font-family: 'Avenir Next';
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.nav__link:not(:last-child) {
+    margin: 0 3em 0 0;
+}
+
+.selected {
+    color: rgb(183, 225, 221);
+}
