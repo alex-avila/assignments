@@ -1,0 +1,7 @@
+.badges-wrapper {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: 1fr 1fr;
+    flex-wrap: wrap;
+    margin: 1em 0 0 0;
+}
