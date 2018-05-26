@@ -1,0 +1,13 @@
+.laps {
+    width: 150px;
+    background: #364A8D;
+    color: #C2CBF4;
+    align-self: stretch;
+    padding: 1em;
+    box-shadow: inset 10px 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.laps h3 {
+    margin-top: 0;
+    text-decoration: underline;
+}

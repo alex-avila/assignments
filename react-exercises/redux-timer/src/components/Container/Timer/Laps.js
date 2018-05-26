@@ -2,12 +2,17 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
+import Lap from './Lap'
+
+import './Laps.css'
+
 const Laps = ({ laps }) => {
-    const mappedLaps = laps.map((lap, i) => <li key={i}>{lap}</li>)
+    const mappedLaps = laps.map((lap, i) => <Lap key={i} lap={lap}></Lap>)
     return (
-        <ul>
-            {mappedLaps}
-        </ul>
+        <div className="laps">
+            <h3>Laps</h3>
+            { mappedLaps }
+        </div>
     );
 }
 

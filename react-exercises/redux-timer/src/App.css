@@ -1,0 +1,9 @@
+.wrapper {
+    height: 100%;
+    font-family: 'Avenir';
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(167, 174, 177);
+}

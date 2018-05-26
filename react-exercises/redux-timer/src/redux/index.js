@@ -8,7 +8,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'START_TIMER':
+        case 'PLAY_PAUSE':
             !state.play ? startInterval(state.time) : clearInterval(interval)
             return {
                 ...state,
@@ -36,9 +36,9 @@ const reducer = (state = initialState, action) => {
 }
 
 
-export const startTimer = () => {
+export const playPause = () => {
     return {
-        type: 'START_TIMER'
+        type: 'PLAY_PAUSE'
     }
 }
 
@@ -57,7 +57,6 @@ export const addLap = () => {
 
 let count = 0;
 const updateTime = (time) => {
-    // store.dispatch(updateTime(time))
     count++
     return {
         type: 'UPDATE_TIME',

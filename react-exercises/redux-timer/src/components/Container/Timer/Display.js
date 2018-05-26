@@ -1,11 +1,9 @@
 import React from 'react'
 
-import { connect } from 'react-redux'
-
-const Display = (props) => {
+const Display = ({time}) => {
     return (
-        <h3>{props.time}</h3>
+        <h1 className="timer__time">{time}</h1>
     )
 }
 
-export default connect(state => ({time: state.time}), {})(Display)
+export default Display
