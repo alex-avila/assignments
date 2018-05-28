@@ -57,17 +57,17 @@ export const addLap = () => {
 
 let count = 0;
 const updateTime = (time) => {
-    count++
+    count += 0.1
     return {
         type: 'UPDATE_TIME',
-        time: count
+        time: count.toFixed(1)
     }
 }
 
 // run an action every second to update time
 let interval;
 const startInterval = time => {
-    interval = setInterval(() => store.dispatch(updateTime(time)), 1000)
+    interval = setInterval(() => store.dispatch(updateTime(time)), 100)
 }
 
 
