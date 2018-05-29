@@ -3,7 +3,7 @@
     background: #364A8D;
     color: #C2CBF4;
     align-self: stretch;
-    padding: 1em;
+    padding: 1em 1em 1em 2em;
     box-shadow: inset 10px 0 10px rgba(0, 0, 0, 0.15);
 }
 
