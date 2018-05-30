@@ -1,20 +1,16 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { getWeather } from './redux'
+import React from 'react'
 
+import GraphContainer from './components/GraphContainer'
 
-class App extends Component {
-  componentDidMount() {
-    this.props.getWeather()
-  }
+import './App.css'
 
-  render() {
-    return (
-      <div>
-        <h1>{this.props.weather}</h1>
-      </div>
-    )
-  }
+const App = () => {
+  return (
+    <div>
+      {/* Prominent weather display with a nice svg background */}
+      <GraphContainer />
+    </div>
+  )
 }
 
-export default connect(state => ({weather: state.weather}), { getWeather })(App)
+export default App
