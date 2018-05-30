@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { getWeather } from '../redux'
 
 import '../../node_modules/react-vis/dist/style.css'
 import {
@@ -15,21 +14,38 @@ import {
 
 
 class Graph extends Component {
-    componentDidMount() {
-        this.props.getWeather()
-    }
-    
     render() {
+        const { dailyPlots, hourlyPlots, modeIndex, graphModes } = this.props
+        const dailyTickFormat = v => `${v.getMonth()}/${v.getDate()}`
+        const hourlyTickFormat = v => `${v.getHours()}`
         return (
-            <XYPlot height={250} width={300} yPadding={25} xType={'time'}>
-                <VerticalGridLines tickTotal={6} />
+            <XYPlot 
+                height={225} 
+                width={350} 
+                yPadding={10} 
+                xType={'time'} 
+                animation
+            >
+                <VerticalGridLines tickTotal={8} />
                 <HorizontalGridLines />
-                <XAxis tickFormat={v => `${v.getMonth()}/${v.getDate()}`} tickTotal={9} />
-                <YAxis />
-                <LineSeries data={this.props.dailyPlots} curve={'curveMonotoneX'} />
+                <XAxis
+                    tickFormat={graphModes[modeIndex] === 'daily' ?
+                        dailyTickFormat : hourlyTickFormat
+                    }
+                    tickTotal={8}
+                    title="Time"
+                />
+                <YAxis title="Degrees" />
+                <LineSeries
+                    data={graphModes[modeIndex] === 'daily' ?
+                        dailyPlots : hourlyPlots
+                    }
+                    color={'#B2C1F5'}
+                    curve={'curveMonotoneX'}
+                />
             </XYPlot>
         )
     }
 }
 
-export default connect(state => ({ weather: state.weather, dailyPlots: state.dailyPlots }), { getWeather })(Graph)
+export default connect(state => state, {})(Graph)

@@ -1,0 +1,26 @@
+.select__wrapper--inner {
+    display: flex;
+    justify-content: center;
+    padding: 0 0 1em;
+}
+
+.select__selection {
+    cursor: pointer;
+}
+
+.select__selection:first-child {
+    margin-right: 1em;
+}
+
+.selected {
+    font-weight: 500;
+}
+
+.selected::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: black;
+    color: green;
+}
