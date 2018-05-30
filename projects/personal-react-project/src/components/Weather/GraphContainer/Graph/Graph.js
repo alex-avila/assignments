@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import '../../node_modules/react-vis/dist/style.css'
+import '../../../../../node_modules/react-vis/dist/style.css'
 import {
     XYPlot,
     LineSeries,

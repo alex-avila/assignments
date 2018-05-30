@@ -2,9 +2,9 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import './TextDisplay.css'
+import './TempDisplay.css'
 
-const TextDisplay = props => {
+const TempDisplay = props => {
     return (
         <div className="prominent-temp">
             <h1>{Math.round(props.currentTemp)}°</h1>
@@ -12,4 +12,4 @@ const TextDisplay = props => {
     );
 }
 
-export default connect(state => ({currentTemp: state.currentTemp}), {})(TextDisplay)
+export default connect(state => ({currentTemp: state.currentTemp}), {})(TempDisplay)

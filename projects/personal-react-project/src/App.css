@@ -9,3 +9,16 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+.app-wrapper {
+    animation: 1s fadeIn ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
