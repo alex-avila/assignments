@@ -83,7 +83,7 @@ export const getNews = () => {
             const articleData = response.data.articles
             const articles = []
             // get top three articles from news api
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 5; i++) {
                 articles.push(articleData[i])
             }
             dispatch({

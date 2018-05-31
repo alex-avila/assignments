@@ -5,7 +5,6 @@
     align-self: center;
     border: 5px solid rgba(255, 255, 255, 0.5);
     border-left: 5px solid #fff;
-    box-shadow: 0 0 3px #fff;
     animation: rotate 1.5s infinite linear;
 }
 

@@ -24,6 +24,12 @@ class News extends Component {
         return (
             <div className="news__wrapper--outer">
                 <div className="news__wrapper--inner">
+                    {/* <nav>
+                        <div>Top Headlines</div>
+                        <div>Technology</div>
+                        <div>Science</div>
+                        <div>Entertainment</div>
+                    </nav> */}
                     { mappedNews }
                 </div>
             </div>
