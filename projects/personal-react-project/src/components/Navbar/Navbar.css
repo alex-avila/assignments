@@ -1,0 +1,26 @@
+.nav__wrapper--outer {
+    background: white;
+    align-self: stretch;
+}
+
+.nav__wrapper--inner,
+.nav__links {
+    display: flex;
+}
+
+.nav__links {
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+
+.nav__links a {
+    text-decoration: none;
+    color: rgb(68, 67, 73);
+    font-weight: 500;
+    padding: 1em 0;
+}
+
+.nav__links a:not(:last-child) {
+    /* margin-right: 2em; */
+}

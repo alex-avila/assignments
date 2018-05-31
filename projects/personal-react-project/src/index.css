@@ -9,6 +9,7 @@ body,
 }
 
 body {
+    margin: 0;
     /* small background */
     background: url(./images/small-bg.svg) top right 50% no-repeat / cover;
     background-attachment: fixed;
