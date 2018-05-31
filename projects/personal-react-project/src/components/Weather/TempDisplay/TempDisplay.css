@@ -6,8 +6,10 @@
 }
 
 .prominent-temp h1 {
-    font-size: 5em;
+    font-size: 6em;
     font-weight: 100;
     color: white;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    text-shadow: 
+        0 0 2px rgba(0, 0, 0, 0.1),
+        0 0 10px rgba(255, 255, 255, 0.5);
 }

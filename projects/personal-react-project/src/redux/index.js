@@ -21,6 +21,11 @@ const reducer = (state = initialState, action) => {
                 currentTemp: action.currentTemp,
                 isLoading: false
             }
+        case 'GET_NEWS':
+            return {
+                ...state,
+                articles: action.articles
+            }
         case 'TOGGLE_MODE':
             return {
                 ...state,
@@ -31,8 +36,9 @@ const reducer = (state = initialState, action) => {
     }
 }
 
+const weatherAPIKey = '15d7d4d439f6c0a565d82cfc94fe22a8'
 const location = { lat: '39.9042', lon: '116.4074' }
-const weatherUrl = `https://vschool-cors.herokuapp.com?url=https://api.darksky.net/forecast/15d7d4d439f6c0a565d82cfc94fe22a8/${location.lat},${location.lon}`
+const weatherUrl = `https://vschool-cors.herokuapp.com?url=https://api.darksky.net/forecast/${weatherAPIKey}/${location.lat},${location.lon}`
 export const getWeather = () => {
     return dispatch => {
         axios.get(weatherUrl).then(response => {
@@ -65,6 +71,34 @@ export const toggleMode = () => {
         type: 'TOGGLE_MODE'
     }
 }
+
+
+
+// REMEMBER TO USE ATTRIBUTION LINK //
+const newsAPIKey = '181d29365cb24d89aa4cf86a3fa61cca'
+const newsUrl = `https://newsapi.org/v2/top-headlines?sources=the-washington-post&apiKey=${newsAPIKey}`;
+export const getNews = () => {
+    return dispatch => {
+        axios.get(newsUrl).then(response => {
+            const articleData = response.data.articles
+            const articles = []
+            // get top three articles from news api
+            for (let i = 0; i < 3; i++) {
+                articles.push(articleData[i])
+            }
+            dispatch({
+                type: 'GET_NEWS',
+                articles
+            })
+        })
+    }
+}
+
+
+
+
+
+
 
 const store = createStore(reducer, applyMiddleware(thunk))
 

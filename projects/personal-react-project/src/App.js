@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { getWeather } from './redux'
+import { getWeather, getNews } from './redux'
 
 import withLoading from './shared/withLoading'
 import MainWrapper from './components/MainWrapper';
@@ -19,7 +19,7 @@ const MainWrapperWithLoading = withLoading(MainWrapper)
 class App extends Component {
   componentDidMount() {
     this.props.getWeather()
-    // Get news this.props.getNews()
+    this.props.getNews()
   }
 
   render() {
@@ -48,4 +48,4 @@ class App extends Component {
 // react-redux blocks the updates that would normally happen with react-router-dom
 // withRouter fixes that
 // This is inneficient however so I should change this
-export default withRouter(connect(state => ({ isLoading: state.isLoading }), { getWeather })(App))
+export default withRouter(connect(state => ({ isLoading: state.isLoading }), { getWeather, getNews })(App))
