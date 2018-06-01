@@ -1,0 +1,23 @@
+.news__nav {
+    display: flex;
+}
+
+.news__nav__link {
+    flex: 0 1 25%;
+    text-align: center;
+    padding: 1.618em 2em 0.618em;
+}
+
+.nav__selected {
+    background: #fafafa;
+    font-weight: 500;
+}
+
+.nav__selected::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    background: black;
+    margin: 0.618em auto 0;
+}

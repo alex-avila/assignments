@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import NewsCard from './NewsCard';
+import NewsItem from './NewsItem';
 
 import './News.css'
+import NewsNavbar from './NewsNavbar';
 
 
 class News extends Component {
@@ -12,7 +13,7 @@ class News extends Component {
         const { articles } = this.props
         const mappedNews = articles.map((article, i) => {
             return (
-                <NewsCard
+                <NewsItem
                     key={article.title + i}
                     title={article.title}
                     description={article.description}
@@ -24,12 +25,7 @@ class News extends Component {
         return (
             <div className="news__wrapper--outer">
                 <div className="news__wrapper--inner">
-                    {/* <nav>
-                        <div>Top Headlines</div>
-                        <div>Technology</div>
-                        <div>Science</div>
-                        <div>Entertainment</div>
-                    </nav> */}
+                    <NewsNavbar />
                     { mappedNews }
                 </div>
             </div>

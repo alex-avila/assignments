@@ -5,7 +5,12 @@ import axios from 'axios'
 
 
 const initialState = {
+    weather: {},
+    dailyPlots: [],
+    hourlyPlots: [],
     graphModes: ['daily', 'hourly'],
+    articles: {},
+    currentTemp: 0,
     modeIndex: 1,
     isLoading: true
 }
@@ -13,12 +18,13 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_WEATHER':
+            const { weather } = action
             return {
                 ...state,
-                weather: action.weather,
-                dailyPlots: action.dailyPlots,
-                hourlyPlots: action.hourlyPlots,
-                currentTemp: action.currentTemp,
+                weather,
+                currentTemp: weather.currently.temperature,
+                hourlyPlots: getHourlyPlots(weather.hourly.data),
+                dailyPlots: getDailyPlots(weather.daily.data),
                 isLoading: false
             }
         case 'GET_NEWS':
@@ -36,29 +42,31 @@ const reducer = (state = initialState, action) => {
     }
 }
 
+
+const getHourlyPlots = data => {
+    const hourlyPlots = []
+    for (let i = 0; i < 8; i++) {
+        const time = new Date(data[i].time * 1000)
+        hourlyPlots.push({x: time, y: data[i].temperature})
+    }
+    return hourlyPlots
+}
+
+const getDailyPlots = data => {
+    return data.map(day => {
+        return { x: new Date(day.time * 1000), y: (day.temperatureHigh + day.temperatureLow) / 2}
+    })
+}
+
 const weatherAPIKey = '15d7d4d439f6c0a565d82cfc94fe22a8'
 const location = { lat: '39.9042', lon: '116.4074' }
 const weatherUrl = `https://vschool-cors.herokuapp.com?url=https://api.darksky.net/forecast/${weatherAPIKey}/${location.lat},${location.lon}`
 export const getWeather = () => {
     return dispatch => {
         axios.get(weatherUrl).then(response => {
-            const dailyDate = response.data.daily.data
-            const hourlyData = response.data.hourly.data
-            const hourlyPlots = []
-            // limit hourlyPlots to 8 hours
-            for (let i = 0; i < 8; i++) {
-                const time = new Date(hourlyData[i].time * 1000)
-                hourlyPlots.push({x: time, y: hourlyData[i].temperature})
-            }
             dispatch({
                 type: 'GET_WEATHER',
-                weather: response.data,
-                dailyPlots: 
-                    dailyDate.map((day, i) => {
-                        return { x: new Date(day.time * 1000), y: (day.temperatureHigh + day.temperatureLow) / 2 }
-                    }),
-                hourlyPlots,
-                currentTemp: response.data.currently.temperature
+                weather: response.data
             })
         }).catch(err => {
             console.log(err)
