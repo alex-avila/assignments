@@ -8,11 +8,11 @@ const initialState = {
     weather: {},
     dailyPlots: [],
     hourlyPlots: [],
-    graphModes: ['daily', 'hourly'],
-    articles: {},
     currentTemp: 0,
     modeIndex: 1,
-    isLoading: true
+    graphModes: ['daily', 'hourly'],
+    isLoading: true,
+    articles: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -27,15 +27,16 @@ const reducer = (state = initialState, action) => {
                 dailyPlots: getDailyPlots(weather.daily.data),
                 isLoading: false
             }
+        case 'TOGGLE_MODE':
+            return {
+                ...state,
+                modeIndex: state.modeIndex === 0 ?
+                    state.modeIndex + 1 : state.modeIndex - 1
+            }
         case 'GET_NEWS':
             return {
                 ...state,
                 articles: action.articles
-            }
-        case 'TOGGLE_MODE':
-            return {
-                ...state,
-                modeIndex: state.modeIndex === 0 ? state.modeIndex + 1 : state.modeIndex - 1
             }
         default:
             return state
@@ -46,15 +47,17 @@ const reducer = (state = initialState, action) => {
 const getHourlyPlots = data => {
     const hourlyPlots = []
     for (let i = 0; i < 8; i++) {
-        const time = new Date(data[i].time * 1000)
-        hourlyPlots.push({x: time, y: data[i].temperature})
+        const date = new Date(data[i].time * 1000)
+        hourlyPlots.push({ x: date, y: data[i].temperature })
     }
     return hourlyPlots
 }
 
 const getDailyPlots = data => {
     return data.map(day => {
-        return { x: new Date(day.time * 1000), y: (day.temperatureHigh + day.temperatureLow) / 2}
+        const date = new Date(day.time * 1000)
+        const tempAvg = (day.temperatureHigh + day.temperatureLow) / 2
+        return { x: date, y: tempAvg }
     })
 }
 
