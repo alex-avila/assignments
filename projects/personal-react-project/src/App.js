@@ -9,7 +9,7 @@ import withLoading from './shared/withLoading'
 import MainWrapper from './components/MainWrapper';
 import Navbar from './components/Navbar/Navbar'
 import Weather from './components/Weather/Weather'
-import News from './components/News/News'
+import NewsContainer from './components/News/NewsContainer'
 import Game from './components/Game/Game'
 
 import './App.css'
@@ -35,7 +35,7 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Weather}/>
-            <Route path="/News" component={News}/>
+            <Route path="/News" component={NewsContainer}/>
             <Route path="/Game" component={Game}/>
           </Switch>
         </MainWrapperWithLoading>

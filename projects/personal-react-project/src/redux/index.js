@@ -12,6 +12,7 @@ const initialState = {
     modeIndex: 1,
     graphModes: ['daily', 'hourly'],
     isLoading: true,
+    isNewsLoading: true,
     articles: {}
 }
 
@@ -23,8 +24,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 weather,
                 currentTemp: weather.currently.temperature,
-                hourlyPlots: getHourlyPlots(weather.hourly.data),
-                dailyPlots: getDailyPlots(weather.daily.data),
+                hourlyPlots: createHourlyPlots(weather.hourly.data),
+                dailyPlots: createDailyPlots(weather.daily.data),
                 isLoading: false
             }
         case 'TOGGLE_MODE':
@@ -38,13 +39,19 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 articles: action.articles
             }
+        case 'SWITCH_CATEGORY':
+            return {
+                ...state,
+                articles: action.articles,
+                isNewsLoading: false
+            }
         default:
             return state
     }
 }
 
 
-const getHourlyPlots = data => {
+const createHourlyPlots = data => {
     const hourlyPlots = []
     for (let i = 0; i < 8; i++) {
         const date = new Date(data[i].time * 1000)
@@ -53,7 +60,7 @@ const getHourlyPlots = data => {
     return hourlyPlots
 }
 
-const getDailyPlots = data => {
+const createDailyPlots = data => {
     return data.map(day => {
         const date = new Date(day.time * 1000)
         const tempAvg = (day.temperatureHigh + day.temperatureLow) / 2
@@ -84,30 +91,27 @@ export const toggleMode = () => {
 }
 
 
-
-// REMEMBER TO USE ATTRIBUTION LINK //
-const newsAPIKey = '181d29365cb24d89aa4cf86a3fa61cca'
-const newsUrl = `https://newsapi.org/v2/top-headlines?sources=the-washington-post&apiKey=${newsAPIKey}`;
-export const getNews = () => {
-    return dispatch => {
-        axios.get(newsUrl).then(response => {
-            const articleData = response.data.articles
-            const articles = []
-            // get top three articles from news api
-            for (let i = 0; i < 5; i++) {
-                articles.push(articleData[i])
-            }
-            dispatch({
-                type: 'GET_NEWS',
-                articles
-            })
+const dispatchNewsRequest = (category, dispatch) => {
+    axios.get(newsUrlBeginning + category + newsUrlEnd).then(response => {
+        dispatch({
+            type: 'GET_NEWS',
+            articles: response.data.articles
         })
-    }
+    })
 }
 
 
+// REMEMBER TO USE ATTRIBUTION LINK //
+const newsAPIKey = '181d29365cb24d89aa4cf86a3fa61cca'
+const newsUrlBeginning = `https://newsapi.org/v2/top-headlines?country=us&category=`
+const newsUrlEnd = `&apiKey=${newsAPIKey}`
+export const getNews = () => {
+     return dispatch => {dispatchNewsRequest('general', dispatch)}
+}
 
-
+export const switchCategory = category => {
+    return dispatch => {dispatchNewsRequest(category, dispatch)}
+}
 
 
 

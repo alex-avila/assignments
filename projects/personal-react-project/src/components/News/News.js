@@ -1,12 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { connect } from 'react-redux'
-
-import NewsItem from './NewsItem';
-
-import './News.css'
-import NewsNavbar from './NewsNavbar';
-
+import NewsItem from './NewsItem'
 
 class News extends Component {
     render() {
@@ -23,14 +17,11 @@ class News extends Component {
             )
         })
         return (
-            <div className="news__wrapper--outer">
-                <div className="news__wrapper--inner">
-                    <NewsNavbar />
-                    { mappedNews }
-                </div>
+            <div>
+                { mappedNews }
             </div>
         );
     }
 }
 
-export default connect(state => ({ articles: state.articles }))(News)
+export default News
