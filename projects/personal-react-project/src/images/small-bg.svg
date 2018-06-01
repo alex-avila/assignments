@@ -8,12 +8,24 @@
             <stop stop-color="#9EBAE2" offset="100%"></stop>
         </radialGradient>
         <circle id="path-2" cx="985.5" cy="133.5" r="48.5"></circle>
-        <filter x="-190.2%" y="-190.2%" width="480.4%" height="480.4%" filterUnits="objectBoundingBox" id="filter-3">
-            <feMorphology radius="11.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+        <filter x="-457.7%" y="-457.7%" width="1015.5%" height="1015.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="12.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
             <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="50" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
-            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.23828125 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+            <feGaussianBlur stdDeviation="30" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.570029438 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMorphology radius="29.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter2"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter2" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="30" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.159618433 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMorphology radius="50" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter3"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter3" result="shadowOffsetOuter3"></feOffset>
+            <feGaussianBlur stdDeviation="30" in="shadowOffsetOuter3" result="shadowBlurOuter3"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.118716033 0" type="matrix" in="shadowBlurOuter3" result="shadowMatrixOuter3"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter3"></feMergeNode>
+            </feMerge>
         </filter>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
             <stop stop-color="#FAFAFA" stop-opacity="0.364809783" offset="0%"></stop>
@@ -42,7 +54,7 @@
             <rect id="Rectangle" fill="url(#radialGradient-1)" x="-12" y="0" width="1257" height="882"></rect>
             <g id="Oval">
                 <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
-                <use fill-opacity="0.9" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
             </g>
             <path d="M0,587.791514 C97.4687923,580.597171 196.285653,577 296.450581,577 C396.61551,577 503.131983,580.597171 616,587.791514 C731.332427,593.97006 837.864322,597.059333 935.595685,597.059333 C1033.32705,597.059333 1132.12849,593.97006 1232,587.791514 L1232,882 L0,882 L0,587.791514 Z" id="Rectangle-4" fill-opacity="0.363564312" fill="#E7C5FB"></path>
             <path d="M-11,364.724501 C93.5,390.502149 198,403.390972 302.5,403.390972 C407,403.390972 511.5,390.502149 616,364.724501 C720.5,336.2415 825,322 929.5,322 C1034,322 1138.5,336.2415 1243,364.724501 L1243,588.166429 C1138.5,596.055476 1034,600 929.5,600 C825,600 720.5,596.055476 616,588.166429 C511.5,582.218048 407,579.243858 302.5,579.243858 C198,579.243858 93.5,582.218048 -11,588.166429 L-11,364.724501 Z" id="Rectangle-5" fill="url(#linearGradient-4)"></path>

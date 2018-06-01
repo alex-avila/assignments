@@ -14,9 +14,11 @@ class NewsContainer extends Component {
     render() {
         return (
             <div className="news__wrapper--outer">
-                <div className="news__wrapper--inner">
+                <div className="news__wrapper--general">
                     <NewsNavbar />
-                    <News articles={this.props.articles} isLoading={this.props.isLoading}/>
+                    <div className="news__wrapper--general">
+                        <NewsWithLoading articles={this.props.articles} isLoading={false}/>
+                    </div>
                 </div>
             </div>
         );
