@@ -32,7 +32,7 @@ class NewsNavbar extends Component {
                     className={selected === 'general' ? selectedClassName : className}
                     onClick={e => this.handleClick(e, 'general')}
                 >
-                    Top Headlines
+                    Headlines
                 </div>
                 <div
                     id="technology"

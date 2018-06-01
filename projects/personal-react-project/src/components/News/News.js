@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import NewsItem from './NewsItem'
 
+import './News.css'
+
 class News extends Component {
     render() {
         const { articles } = this.props
@@ -17,7 +19,7 @@ class News extends Component {
             )
         })
         return (
-            <div>
+            <div className="news-items__wrapper">
                 { mappedNews }
             </div>
         );

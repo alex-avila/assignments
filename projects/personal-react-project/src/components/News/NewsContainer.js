@@ -6,7 +6,7 @@ import NewsNavbar from './NewsNavbar';
 import News from './News';
 import withLoading from '../../shared/withLoading'
 
-import './News.css'
+import './NewsContainer.css'
 
 const NewsWithLoading = withLoading(News)
 
@@ -14,11 +14,9 @@ class NewsContainer extends Component {
     render() {
         return (
             <div className="news__wrapper--outer">
-                <div className="news__wrapper--general">
+                <div className="news__wrapper">
                     <NewsNavbar />
-                    <div className="news__wrapper--general">
-                        <NewsWithLoading articles={this.props.articles} isLoading={false}/>
-                    </div>
+                    <NewsWithLoading articles={this.props.articles} isLoading={false}/>
                 </div>
             </div>
         );

@@ -1,5 +1,9 @@
 .news__nav {
+    position: relative;
     display: flex;
+    background: #fafafa;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    z-index: 512;
 }
 
 .news__nav__link {
