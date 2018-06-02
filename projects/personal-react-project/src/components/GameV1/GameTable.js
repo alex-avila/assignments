@@ -30,6 +30,10 @@ class GameTable extends Component {
             ['topM', 'midM', 'botM'],
             ['topR', 'midR', 'botR'],
         ]
+        this.icons = {
+            x: <span className="x"></span>,
+            o: <span className="o"></span>
+        }
         this.availableBoxes = [] // content generated in component mount
         this.moves = 0
         this.win = false
@@ -37,9 +41,13 @@ class GameTable extends Component {
         this.turn = 'player'
     }
 
-    // generate available boxes when component mounts
+    // list available boxes when component mounts
     componentDidMount() {
         this.findAvailableBoxes()
+    }
+
+    random = len => {
+        return Math.floor(Math.random() * len)
     }
     
     generateBoxes = () => {
@@ -49,17 +57,13 @@ class GameTable extends Component {
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 const idName = prefixes[i] + suffixes[j]
-                const box = <li key={idName} id={idName} onClick={this.playerDraw}></li>
+                const box = <li key={idName} className={prefixes[i] + ' ' + suffixes[j]} id={idName} onClick={this.playerDraw}></li>
                 generatedBoxes.push(box)
             }
         }
         return generatedBoxes
     }
-
-    random = len => {
-        return Math.floor(Math.random() * len)
-    }
-
+    
     playerDraw = e => {
         const { id } = e.target
         // if target is available box, draw and set it in state
@@ -77,7 +81,7 @@ class GameTable extends Component {
                     this.checkWinConditions()
                     this.turn = 'computer'
                     if (!this.win) {
-                        setTimeout(() => this.computerDraw(), 500)
+                        setTimeout(() => this.computerDraw(), 250)
                     }
                 }
             )
@@ -87,7 +91,8 @@ class GameTable extends Component {
     computerDraw = () => {
         if (this.availableBoxes.length && this.turn === 'computer') {
             const box = this.availableBoxes[this.random(this.availableBoxes.length - 1)]
-            document.getElementById(box).style.background = 'palevioletred'
+            const boxElem = document.getElementById(box)
+            boxElem.style.background = `palevioletred`
             this.setState(
                 prevState => ({
                     boxes: {
@@ -135,6 +140,7 @@ class GameTable extends Component {
         const oWon = this.winConditions.some((arr) => {
             return arr.every(item => oKeys.indexOf(item) !== -1)
         })
+
         if (xWon) {
             this.win = true
             this.winner = 'player'

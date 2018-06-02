@@ -1,16 +1,29 @@
-.game__wrapper--outer {
-    padding: 2em 1.618em;
+.status {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.game__wrapper--inner {
-    width: 400px;
-    height: 400px;
-    margin: 0 auto;
-    /* padding: 0.05em 1.618em 0.5em; */
-    background: #fafafa;
-    box-shadow: 
-        0 1px 2px rgba(0, 0, 0, 0.1),
-        0 12.5px 0 -6px rgba(255, 255, 255, 0.5),
-        0 24px 0 -12px rgba(255, 255, 255, 0.25)
-    ;
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+  margin: 3em auto;
 }

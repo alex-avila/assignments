@@ -10,7 +10,7 @@ import MainWrapper from './components/MainWrapper';
 import Navbar from './components/Navbar/Navbar'
 import Weather from './components/Weather/Weather'
 import NewsContainer from './components/News/NewsContainer'
-import Game from './components/Game/Game'
+import Game from './components/GameV2/Game'
 
 import './App.css'
 

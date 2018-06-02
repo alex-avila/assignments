@@ -9,7 +9,7 @@
 .news__nav__link {
     flex: 0 1 25%;
     text-align: center;
-    padding: 1.618em 2em 0.618em;
+    padding: 1.618em 0 0.618em;
 }
 
 .nav__selected {
@@ -20,7 +20,7 @@
 .nav__selected::after {
     content: "";
     display: block;
-    width: 50%;
+    width: 50px;
     height: 2px;
     background: black;
     margin: 0.33em auto 0.33em;
