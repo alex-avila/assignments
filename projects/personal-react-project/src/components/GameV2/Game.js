@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import ai from './ai'
+import ai from './ai2'
 
 import './Game.css'
 
@@ -13,7 +13,7 @@ class Game extends Component {
             boxes: {
                 topL: null, topM: null, topR: null,
                 midL: null, midM: null, midR: null,
-                botL: 'o', botM: null, botR: null,
+                botL: null, botM: null, botR: null,
             },
             playerIsNext: true,
             winner: null
@@ -46,13 +46,24 @@ class Game extends Component {
     computerMove = () => {
         if (this.endGame) { return }
         const { availableBoxes, state: { boxes } } = this
-        const winningMove = ai.getBestMove(boxes, 'o', availableBoxes)
+        console.log(ai.minimax(boxes, availableBoxes, true))
+        const moveScores = ai.mathMaxMin(ai.minimax(boxes, availableBoxes, true))
+        console.log(moveScores)
+        let max = moveScores[0]
+        let selection = 0
+        for (let i = 0; i < moveScores.length; i++) {
+            if (moveScores > max) {
+                max = moveScores[i]
+                selection = i
+            }
+        }
+        // const winningMove = ai.getBestMove(boxes, 'o', availableBoxes)
         // const randomSelection = Math.floor(Math.random() * availableBoxes.length)
         // const selection = winningMove ? winningMove : availableBoxes[randomSelection]
         this.setState({
             boxes: {
                 ...boxes,
-                [winningMove]: 'o'
+                [availableBoxes[selection]]: 'o'
             }
         },
             () => {

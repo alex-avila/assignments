@@ -1,10 +1,6 @@
-// It's computer's turn
-// look at every possible move one level deep
-// if one yields a win return the move associated
-
-
 let ai = {
     getState(board, contender) {
+        const oponent = contender === 'o' ? 'x' : 'o'
         const winConditions = [
             ['topL', 'topM', 'topR'],
             ['midL', 'midM', 'midR'],
@@ -18,11 +14,53 @@ let ai = {
         for (let i = 0; i < winConditions.length; i++) {
             let [a, b, c] = winConditions[i]
             if (board[a] === contender && board[b] === contender && board[c] === contender) {
-                return 1
+                return 1 // win or lose
             }
         }
         return 0
     },
+
+    findAvailableMoves(board) {
+        const availableMoves = []
+        for (let space in board) {
+            if (!board[space]) {
+                availableMoves.push(space)
+            }
+        }
+        return availableMoves
+    },
+
+
+    // minimax(board, moves, computer) {
+    //     for (let i = 0; i < moves.length; i++) {
+    //         const newBoard = {...board, [moves[i]]: 'o'}
+    //         const gameState = this.getState(newBoard, 'o')
+
+    //     }
+    // },
+
+    // for every available move
+    minimax(board, moves, contender) {
+        const results = []
+        for (let i = 0; i < moves.length; i++) {
+            const newBoard = {...board, [moves[i]]: contender}
+            const value = this.getState(newBoard, contender)
+            if (value === 1 || value === -1) {
+                results.push(value)
+                if (value === -1) { console.log('woah') }
+            } else {
+                contender = contender === 'o' ? 'x' : 'o'
+                const deepResults = this.minimax(newBoard, this.findAvailableMoves(newBoard), contender)
+                results.push(deepResults)
+            }
+        }
+        if (results.length) { return [...results] }
+    },
+
+
+
+
+
 
 
     // go through every available move
@@ -56,7 +94,7 @@ let ai = {
         // alternate contender
         // contender = contender === 'o' ? 'x' : 'o'
         // this.getBestMove(board, contender, moves)
-    }
+    },
 }
 
 export default ai
