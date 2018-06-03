@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import ai from './ai2'
+import ai from './ai3'
 
 import './Game.css'
 

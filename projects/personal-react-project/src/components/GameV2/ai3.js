@@ -58,41 +58,6 @@ let ai = {
         return
     },
 
-    // mathMaxMin(arr, depth = 1) {
-    //     let arrCount
-    //     let index = 0
-    //     arr.forEach((item1, i) => {
-    //         if (typeof item1 === 'object') {
-    //             arrCount = 0
-    //             if (item1.includes(item2 => typeof item2 === 'object')) {
-    //                 arrCount++
-    //             }
-    //             index = i
-    //         }
-    //     })
-    //     // arrCount === 0 means that the current array does not include arrays
-    //     if (arrCount && arrCount > 0) {
-    //         this.mathMaxMin(arr[index], depth + 1)
-    //     } else if (arrCount === 0) {
-    //         if (depth % 2 === 0) {
-    //             arr[index] = Math.min(...arr[index])
-    //             // console.log(...arr[index])
-    //         } else {
-    //             arr[index] = Math.max(...arr[index])
-    //         }
-    //     } else {
-    //         arr[index] = arr[index]
-    //     }
-
-    //     if (arr.some(item => typeof item === 'object')) {
-    //         this.mathMaxMin(arr)
-    //     } else {
-    //         //   console.log('hello')
-    //         return arr
-    //     }
-    //     return arr
-    // },
-
     minimax(board, moves, max) {
         // DATA HANDLING //
         // make an object with the moves and make each move have a value of null
@@ -166,36 +131,6 @@ let ai = {
     // get the min or max depending on the depth
     // and overwrite that value in the parent array
     // now do this recursively???????
-
-    // mathMaxMin(arr, depth = 1) {
-    //     let arrCount
-    //     let index = 0
-    //     arr.forEach((item1, i) => {
-    //         if (typeof item1 === 'object') {
-    //             arrCount = 0
-    //             if (item1.includes(item2 => typeof item2 === 'object')) {
-    //                 arrCount++
-    //             }
-    //         }
-    //         index = i
-    //     })
-    //     // arrCount === 0 means that the current array does not include arrays
-    //     if (arrCount && arrCount > 0) {
-    //         this.mathMaxMin(arr[index], depth + 1)
-    //     } else if (arrCount) {
-    //         if (depth % 2 === 0) {
-    //             arr[index] = Math.max(...arr[index])
-    //         } else {
-    //             arr[index] = Math.min(...arr[index])
-    //         }
-    //     } else {
-    //         arr[index] = arr[index]
-    //     }
-    //     return arr
-    // },
-
-
-
 
     getBestMove(board, contender, moves) {
         // win = 1
