@@ -25,6 +25,10 @@ class Game extends Component {
     componentDidMount = () => {
         this.setState({ board: this.createBoard() })
         this.findAvailableBoxes()
+        if (Math.random() < 0.5) {
+            this.computerMove()
+            this.setState({ playerIsNext: !this.state.playerIsNext })
+        }
     }
 
     playerMove = box => {
@@ -46,13 +50,13 @@ class Game extends Component {
     computerMove = () => {
         if (this.endGame) { return }
         const { availableBoxes, state: { boxes } } = this
-        console.log(ai.minimax(boxes, availableBoxes, true))
-        const moveScores = ai.mathMaxMin(ai.minimax(boxes, availableBoxes, true))
+        // console.log(ai.minimax(boxes, availableBoxes, true))
+        const moveScores = ai.minimax(boxes, availableBoxes, true)
         console.log(moveScores)
         let max = moveScores[0]
         let selection = 0
         for (let i = 0; i < moveScores.length; i++) {
-            if (moveScores > max) {
+            if (moveScores[i] > max) {
                 max = moveScores[i]
                 selection = i
             }

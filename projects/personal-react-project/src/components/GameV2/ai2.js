@@ -29,16 +29,16 @@ let ai = {
                 let [a, b, c] = winConditions[i]
                 let won = board[a] === target && board[b] === target && board[c] === target
                 if (won) {
-                    return 1 // win
+                    return 10 // win
                 }
             }
-            return 0
+            return 5
         } else {
             for (let i = 0; i < winConditions.length; i++) {
                 let [a, b, c] = winConditions[i]
                 let won = board[a] === target && board[b] === target && board[c] === target
                 if (won) {
-                    return 1 // win
+                    return 10 // win
                 }
             }
         }
@@ -47,7 +47,7 @@ let ai = {
             let [a, b, c] = winConditions[i]
             let won = board[a] === target && board[b] === target && board[c] === target
             if (won) {
-                return 1 // win
+                return 10 // win
             }
         }
 
@@ -58,41 +58,40 @@ let ai = {
         return
     },
 
-    mathMaxMin(arr, depth = 1) {
-        let arrCount
-        let index = 0
-        arr.forEach((item1, i) => {
-            if (typeof item1 === 'object') {
-                arrCount = 0
-                if (item1.includes(item2 => typeof item2 === 'object')) {
-                    arrCount++
-                }
-                index = i
-            }
-        })
-        // arrCount === 0 means that the current array does not include arrays
-        if (arrCount && arrCount > 0) {
-            this.mathMaxMin(arr[index], depth + 1)
-        } else if (arrCount === 0) {
-            if (depth % 2 === 0) {
-                arr[index] = Math.min(...arr[index])
-                // console.log(...arr[index])
-            } else {
-                arr[index] = Math.max(...arr[index])
-            }
-        } else {
-            arr[index] = arr[index]
-        }
+    // mathMaxMin(arr, depth = 1) {
+    //     let arrCount
+    //     let index = 0
+    //     arr.forEach((item1, i) => {
+    //         if (typeof item1 === 'object') {
+    //             arrCount = 0
+    //             if (item1.includes(item2 => typeof item2 === 'object')) {
+    //                 arrCount++
+    //             }
+    //             index = i
+    //         }
+    //     })
+    //     // arrCount === 0 means that the current array does not include arrays
+    //     if (arrCount && arrCount > 0) {
+    //         this.mathMaxMin(arr[index], depth + 1)
+    //     } else if (arrCount === 0) {
+    //         if (depth % 2 === 0) {
+    //             arr[index] = Math.min(...arr[index])
+    //             // console.log(...arr[index])
+    //         } else {
+    //             arr[index] = Math.max(...arr[index])
+    //         }
+    //     } else {
+    //         arr[index] = arr[index]
+    //     }
 
-        if (arr.some(item => typeof item === 'object')) {
-            console.log('hello')
-            this.mathMaxMin(arr)
-        } else {
-            //   console.log('hello')
-            return arr
-        }
-        return arr
-    },
+    //     if (arr.some(item => typeof item === 'object')) {
+    //         this.mathMaxMin(arr)
+    //     } else {
+    //         //   console.log('hello')
+    //         return arr
+    //     }
+    //     return arr
+    // },
 
     minimax(board, moves, max) {
         // DATA HANDLING //
@@ -126,12 +125,12 @@ let ai = {
             moves.forEach(move => {
                 const newBoard = { ...board, [move]: target }
                 let result = this.getState(newBoard, target)
-                if (result === 1) {
-                    results.push(result) // win
-                } else if (result === 0) {
-                    results.push(0)
+                if (result === 10) {
+                    results.push(10) // win
+                } else if (result === 5) {
+                    results.push(5)
                 } else {
-                    results.push(this.minimax(newBoard, this.findAvailableMoves(newBoard), false))
+                    results.push(Math.min(...this.minimax(newBoard, this.findAvailableMoves(newBoard), false)))
                 }
             })
         } else { // min's turn
@@ -139,12 +138,12 @@ let ai = {
             moves.forEach(move => {
                 const newBoard = { ...board, [move]: target }
                 let result = this.getState(newBoard, target)
-                if (result === 1) {
-                    results.push(-1)
-                } else if (result === 0) {
+                if (result === 10) {
                     results.push(0)
+                } else if (result === 5) {
+                    results.push(5)
                 } else {
-                    const minmaxResults = this.minimax(newBoard, this.findAvailableMoves(newBoard), true)
+                    const minmaxResults = Math.max(...this.minimax(newBoard, this.findAvailableMoves(newBoard), true))
                     results.push(minmaxResults)
                 }
             })
