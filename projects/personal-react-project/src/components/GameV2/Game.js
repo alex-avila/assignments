@@ -105,6 +105,9 @@ class Game extends Component {
                 this.availableBoxes.push(box)
             }
         }
+        if (!this.availableBoxes.length && !this.winner) {
+            console.log('tie')
+        }
     }
 
     checkWinConditions = (boxes, justChecking = false) => {
@@ -138,14 +141,42 @@ class Game extends Component {
         this.setState({ winner })
     }
 
+    handleReset = () => {
+        this.endGame = false
+        this.setState(prevState => ({
+            boxes: {
+                topL: null, topM: null, topR: null,
+                midL: null, midM: null, midR: null,
+                botL: null, botM: null, botR: null,
+            },
+            winner: null,
+            playerIsNext: true
+        }), () => {
+            this.findAvailableBoxes()
+            if (Math.random() < 0.5) {
+                this.computerMove()
+                this.setState({ playerIsNext: false })
+            }
+        })
+    }
+
     render = () => {
         const { winner } = this.state
         return (
-            <div className="game-container">
-                <div className="game__board">
-                    {this.createBoard()}
+            <div className="game__wrapper--outer">
+                <div className="game__control-and-info">
+                    <i className="material-icons" onClick={this.handleReset}>refresh</i>
+                    {
+                        winner ? 
+                        <div>{winner ? <p className="game__winner">{winner} won.</p> : null}</div>
+                        : !winner && !this.availableBoxes.length ? <p className="game__winner">You tied.</p> : null
+                    }
                 </div>
-                {winner ? <h1 className="game__winner">Winner: {winner}</h1> : null}
+                <div className="game__wrapper--inner">
+                    <div className="game__board">
+                        {this.createBoard()}
+                    </div>
+                </div>
             </div>
         )
     }

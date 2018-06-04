@@ -22,7 +22,12 @@ class Graph extends Component {
         }
     }
     componentDidMount() {
+        this.setState({windowWidth: window.innerWidth})
         window.addEventListener('resize', (e) => {this.setState({windowWidth: window.innerWidth})})
+    }
+
+    componentWillMount() {
+        window.addEventListener('resize', null)
     }
     render() {
         const height = this.state.windowWidth >= breakpoint ? 300 : 225
