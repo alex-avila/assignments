@@ -9,7 +9,7 @@
 }
 
 .select__selection:first-child {
-    margin-right: 1em;
+    margin-right: 2.25em;
 }
 
 .selected {
@@ -22,5 +22,4 @@
     width: 100%;
     height: 2px;
     background: black;
-    color: green;
 }

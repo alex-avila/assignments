@@ -12,16 +12,28 @@ import {
     YAxis
 } from 'react-vis'
 
+const breakpoint = 500;
 
 class Graph extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            windowWidth: 0
+        }
+    }
+    componentDidMount() {
+        window.addEventListener('resize', (e) => {this.setState({windowWidth: window.innerWidth})})
+    }
     render() {
+        const height = this.state.windowWidth >= breakpoint ? 300 : 225
+        const width = this.state.windowWidth >= breakpoint ? 450 : 350
         const { dailyPlots, hourlyPlots, modeIndex, graphModes } = this.props
         const dailyTickFormat = v => `${v.getMonth()}/${v.getDate()}`
         const hourlyTickFormat = v => `${v.getHours()}`
         return (
             <XYPlot 
-                height={225} 
-                width={350} 
+                height={height}
+                width={width} 
                 yPadding={10} 
                 xType={'time'} 
                 animation

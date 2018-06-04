@@ -4,10 +4,11 @@
     background: #fafafa;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     z-index: 512;
+    justify-content: space-evenly;
 }
 
 .news__nav__link {
-    flex: 0 1 25%;
+    /* width: 50px; */
     text-align: center;
     padding: 1.618em 0 0.618em;
     cursor: pointer;
@@ -16,6 +17,8 @@
 .nav__selected {
     background: #fafafa;
     font-weight: 500;
+    position: relative;
+    z-index: 3;
 }
 
 .nav__selected::after {
@@ -25,4 +28,12 @@
     height: 2px;
     background: black;
     margin: 0.33em auto 0.33em;
+}
+
+@media (max-width: 450px) {
+    .news__nav {
+        overflow: hidden;
+    }
+    /* .news__nav .news__nav__link:not(.nav__selected) {
+    } */
 }
