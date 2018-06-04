@@ -31,8 +31,9 @@ class Game extends Component {
         }
     }
 
-    playerMove = box => {
+    playerMove = (e, box) => {
         if (this.endGame) { return }
+        e.target.style.color = '#000'
         if (this.availableBoxes.indexOf(box) !== -1 && this.state.playerIsNext) {
             this.setState({
                 boxes: { ...this.state.boxes, [box]: 'x' }
@@ -77,6 +78,20 @@ class Game extends Component {
         )
     }
 
+    handleHover = (e, box) => {
+        if (this.availableBoxes.indexOf(box) !== -1 && this.state.playerIsNext) {
+            e.target.style.color = '#ddd'
+            e.target.textContent = 'x'
+        }
+    }
+
+    handleMouseLeave = (e, box) => {
+        if (this.availableBoxes.indexOf(box) !== -1 && this.state.playerIsNext) {
+            e.target.style.color = '#000'
+            e.target.textContent = ''
+        }
+    }
+
     createBoard = () => {
         const prefixes = ['top', 'mid', 'bot'], suffixes = ['L', 'M', 'R']
         return prefixes.map(prefix => {
@@ -87,7 +102,9 @@ class Game extends Component {
                     <div
                         key={data}
                         className={className}
-                        onClick={() => this.playerMove(data)}
+                        onClick={e => this.playerMove(e, data)}
+                        onMouseEnter={e => this.handleHover(e, data)}
+                        onMouseLeave={e => this.handleMouseLeave(e, data)}
                     >
                         {this.state.boxes[data]}
                     </div>
