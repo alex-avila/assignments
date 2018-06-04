@@ -50,20 +50,10 @@ let ai = {
                 return 10 // win
             }
         }
-
-        // if board is full
-
-
-        // if none of those won
         return
     },
 
     minimax(board, moves, max) {
-        // DATA HANDLING //
-        // make an object with the moves and make each move have a value of null
-        // as we go through this function
-        // we will add either a 1, 0, or -1
-
         // STEPS //
         // 1a start as max
         // 2a loop through moves
@@ -85,7 +75,7 @@ let ai = {
 
         let target;
         let results = []
-        if (max) { // max's turn
+        if (max) {      // max's turn
             target = 'o'
             moves.forEach(move => {
                 const newBoard = { ...board, [move]: target }
@@ -98,7 +88,7 @@ let ai = {
                     results.push(Math.min(...this.minimax(newBoard, this.findAvailableMoves(newBoard), false)))
                 }
             })
-        } else { // min's turn
+        } else {        // min's turn
             target = 'x'
             moves.forEach(move => {
                 const newBoard = { ...board, [move]: target }
@@ -113,50 +103,8 @@ let ai = {
                 }
             })
         }
-        // console.log(results)
-        // run results through a function that will return a one level array
         return results
-
-    },
-
-    // depth 1 is max, depth 2 is min, depth 3 is max, depth 4 is min...
-
-    // DESCRIPTION //
-    // take an array and make a new array
-    // that new array will consist of only the min values
-    // of the first level after the overall max level
-
-    // STEPS //
-    // get to an array that doesn't contain an array
-    // get the min or max depending on the depth
-    // and overwrite that value in the parent array
-    // now do this recursively???????
-
-    getBestMove(board, contender, moves) {
-        // win = 1
-        // lose = -1
-        // inconclusive = 0
-        const results = []
-        for (let i = 0; i < moves.length; i++) {
-            let boardCopy = { ...board, [moves[i]]: contender }
-            if (this.getState(boardCopy, contender) === 1) {
-                results.push(1)
-            } else {
-                results.push(0)
-            }
-        }
-
-        for (let i = 0; i < results.length; i++) {
-            if (results[i] === 1) {
-                return moves[i]
-            }
-        }
-        return moves[Math.floor(Math.random() * moves.length)]
-
-        // alternate contender
-        // contender = contender === 'o' ? 'x' : 'o'
-        // this.getBestMove(board, contender, moves)
-    },
+    }
 }
 
 export default ai
