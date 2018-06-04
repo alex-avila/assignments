@@ -50,7 +50,6 @@ class Game extends Component {
     computerMove = () => {
         if (this.endGame) { return }
         const { availableBoxes, state: { boxes } } = this
-        // console.log(ai.minimax(boxes, availableBoxes, true))
         const moveScores = ai.minimax(boxes, availableBoxes, true)
         console.log(moveScores)
         let max = moveScores[0]
@@ -104,9 +103,6 @@ class Game extends Component {
             if (!boxes[box]) {
                 this.availableBoxes.push(box)
             }
-        }
-        if (!this.availableBoxes.length && !this.winner) {
-            console.log('tie')
         }
     }
 

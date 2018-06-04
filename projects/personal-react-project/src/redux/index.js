@@ -13,26 +13,35 @@ const initialState = {
     graphModes: ['daily', 'hourly'],
     isLoading: true,
     isNewsLoading: true,
-    articles: {}
+    articles: {},
+    location: { lat: '39.9042', lng: '116.4074' },
+    locationActive: false
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_WEATHER':
-            const { weather } = action
+            const { weather, locationActive } = action
             return {
                 ...state,
                 weather,
                 currentTemp: weather.currently.temperature,
                 hourlyPlots: createHourlyPlots(weather.hourly.data),
                 dailyPlots: createDailyPlots(weather.daily.data),
-                isLoading: false
+                isLoading: false,
+                locationActive
             }
         case 'TOGGLE_MODE':
             return {
                 ...state,
                 modeIndex: state.modeIndex === 0 ?
                     state.modeIndex + 1 : state.modeIndex - 1
+            }
+        case 'CHANGE_LOCATION':
+            const { lat, lng } = action.location
+            return {
+                ...state,
+                location: { lat, lng }
             }
         case 'GET_NEWS':
             return {
@@ -68,15 +77,24 @@ const createDailyPlots = data => {
     })
 }
 
+export const toggleMode = () => {
+    return {
+        type: 'TOGGLE_MODE'
+    }
+}
 const weatherAPIKey = '15d7d4d439f6c0a565d82cfc94fe22a8'
-const location = { lat: '39.9042', lon: '116.4074' }
-const weatherUrl = `https://vschool-cors.herokuapp.com?url=https://api.darksky.net/forecast/${weatherAPIKey}/${location.lat},${location.lon}`
-export const getWeather = () => {
+const { lat, lng } = initialState.location
+const weatherUrl = `https://vschool-cors.herokuapp.com?url=https://api.darksky.net/forecast/${weatherAPIKey}`
+export const getWeather = (lati = lat, lon = lng, locationActive) => {
     return dispatch => {
-        axios.get(weatherUrl).then(response => {
+        if (!locationActive) {
+            locationActive = false
+        }
+        axios.get(`${weatherUrl}/${lati},${lon}`).then(response => {
             dispatch({
                 type: 'GET_WEATHER',
-                weather: response.data
+                weather: response.data,
+                locationActive
             })
         }).catch(err => {
             console.log(err)
@@ -84,11 +102,21 @@ export const getWeather = () => {
     }
 }
 
-export const toggleMode = () => {
-    return {
-        type: 'TOGGLE_MODE'
+// GEOLOCATOR
+const googleAPIKey = 'AIzaSyDVRbJJDt-Ard7WL5oJGimjVLhOKHcYrWU'
+const geolocatorUrl = `https://www.googleapis.com/geolocation/v1/geolocate?key=${googleAPIKey}`
+export const changeLocation = locationActive => {
+    return dispatch => {
+        axios.post(geolocatorUrl).then(response => {
+            const { location } = response.data
+            dispatch(getWeather(location.lat, location.lng, locationActive))
+        }).catch(err => {
+            console.log(err)
+        })
     }
 }
+
+
 
 
 const dispatchNewsRequest = (category, dispatch) => {
@@ -100,20 +128,17 @@ const dispatchNewsRequest = (category, dispatch) => {
     })
 }
 
-
 // REMEMBER TO USE ATTRIBUTION LINK //
 const newsAPIKey = '181d29365cb24d89aa4cf86a3fa61cca'
 const newsUrlBeginning = `https://newsapi.org/v2/top-headlines?country=us&category=`
 const newsUrlEnd = `&apiKey=${newsAPIKey}`
 export const getNews = () => {
-     return dispatch => {dispatchNewsRequest('general', dispatch)}
+    return dispatch => { dispatchNewsRequest('general', dispatch) }
 }
 
 export const switchCategory = category => {
-    return dispatch => {dispatchNewsRequest(category, dispatch)}
+    return dispatch => { dispatchNewsRequest(category, dispatch) }
 }
-
-
 
 const store = createStore(reducer, applyMiddleware(thunk))
 

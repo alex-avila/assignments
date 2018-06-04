@@ -41,13 +41,13 @@ class NewsNavbar extends Component {
                 >
                     Technology
                 </div>
-                <div
+                {/* <div
                     id="entertainment"
                     className={selected === 'entertainment' ? selectedClassName : className}
                     onClick={e => this.handleClick(e, 'entertainment')}
                 >
                     Entertainment
-                </div>
+                </div> */}
                 <div
                     id="science"
                     className={selected === 'science' ? selectedClassName : className}
