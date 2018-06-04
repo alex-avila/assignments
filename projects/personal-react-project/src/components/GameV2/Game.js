@@ -4,7 +4,6 @@ import ai from './ai3'
 
 import './Game.css'
 
-
 class Game extends Component {
     constructor(props) {
         super(props)
@@ -16,7 +15,8 @@ class Game extends Component {
                 botL: null, botM: null, botR: null,
             },
             playerIsNext: true,
-            winner: null
+            winner: null,
+            isBoardEmpty: true
         }
         this.availableBoxes = []
         this.endGame = false
@@ -120,6 +120,11 @@ class Game extends Component {
             if (!boxes[box]) {
                 this.availableBoxes.push(box)
             }
+        }
+        if (!this.availableBoxes.length) {
+            this.setState({isBoardEmpty: true})
+        } else {
+            this.setState({isBoardEmpty: false})
         }
     }
 

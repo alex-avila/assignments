@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import '../../../../../node_modules/react-vis/dist/style.css'
+
 import {
     XYPlot,
     LineSeries,
@@ -21,6 +22,7 @@ class Graph extends Component {
             windowWidth: 0
         }
     }
+
     componentDidMount() {
         this.setState({windowWidth: window.innerWidth})
         window.addEventListener('resize', (e) => {this.setState({windowWidth: window.innerWidth})})
@@ -29,6 +31,7 @@ class Graph extends Component {
     componentWillMount() {
         window.addEventListener('resize', null)
     }
+
     render() {
         const height = this.state.windowWidth >= breakpoint ? 300 : 225
         const width = this.state.windowWidth >= breakpoint ? 450 : 350
