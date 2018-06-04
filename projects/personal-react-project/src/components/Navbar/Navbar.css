@@ -1,7 +1,9 @@
 .nav__wrapper--outer {
-    background: white;
+    padding-top: 1em;
+    color: black;
+    /* background: white;
     align-self: stretch;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.10); */
 }
 
 .nav__wrapper--inner,
@@ -17,24 +19,21 @@
 
 .nav__link {
     text-decoration: none;
-    color: rgb(68, 67, 73);
+    /* color: rgb(68, 67, 73); */
+    color: black;
     font-weight: 500;
     padding: 1em 0;
 }
 
-/* .nav__link:not(:last-child) {
-    margin-right: 2em;
-} */
-
 .section__selected {
-    color: black;
+    /* color: black; */
     font-weight: 600;
 }
 
 .section__selected::after {
     content: "";
     display: block;
-    width: 100%;
+    width: 60%;
     height: 2px;
     background: black;
     margin: 0.25em auto 0;
