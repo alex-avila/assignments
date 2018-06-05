@@ -8,6 +8,8 @@ const Bounty = (props) => {
             <p>{amount}</p>
             <p>{living ? 'Alive' : 'Dead'}</p>
             <p>{type}</p>
+            <button>EDIT</button>
+            <button>DELETE</button>
         </div>
     )
 }

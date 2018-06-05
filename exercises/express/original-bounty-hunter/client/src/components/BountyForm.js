@@ -15,6 +15,7 @@ class BountyForm extends Component {
                 type: '',
             }
         }
+        this.baseState = this.state
     }
 
     handleChange = e => {
@@ -30,15 +31,7 @@ class BountyForm extends Component {
     handleSubmit = e => {
         e.preventDefault()
         this.props.addBounty(this.state.inputs)
-        this.setState({
-            inputs: {
-                firstName: '',
-                lastName: '',
-                bountyAmount: '',
-                living: '',
-                type: ''
-            }
-        })
+        this.setState(this.baseState)
     }
 
     render() {
