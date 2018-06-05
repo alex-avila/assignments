@@ -1,45 +1,76 @@
+// IMPORTS
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 import axios from 'axios'
 
-const createReducer = (initialState, handlers) => {
-    return function reducer(state = initialState, action) {
-        if (handlers.hasOwnProperty(action.type)) {
-            return handlers[action.type](state, action)
-        } else {
-            return state
-        }
-    }
+// INITIAL STORE
+const initialState = {
+    bounties: []
 }
 
-export const getBounties = () => {
+// ACTIONS
+export const getBounties = (state, action) => {
     return dispatch => {
         axios.get('/bounties').then(response => {
-            console.log(response.data)
+            dispatch({
+                type: 'GET_BOUNTIES',
+                bounties: response.data
+            })
         })
     }
 }
 
-export const addBounty = () => {
-    
+export const addBounty = body => {
+    return dispatch => {
+        axios.post('/bounties', body).then(response => {
+            dispatch({
+                type: 'ADD_BOUNTY',
+                bounty: response.data
+            })
+        })
+    }
 }
 
-export const editBounty = () => {
+export const editBounty = id => {
 
 }
 
-export const deleteBounty = () => {
+export const deleteBounty = id => {
 
 }
 
-const appReducer = createReducer({}, {
-    'GET_BOUNTIES': getBounties,
-    'ADD_BOUNTY': addBounty,
-    'EDIT_BOUNT': editBounty,
-    'DELETE_BOUNTY': deleteBounty
+// REDUCER
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'GET_BOUNTIES':
+            return {
+                ...state,
+                bounties: action.bounties
+            }
+        case 'ADD_BOUNTY':
+            return {
+                ...state,
+                bounties: [...state.bounties, action.bounty]
+            }
+        case 'EDIT_BOUNTY':
+            return {
+
+            }
+        case 'DELETE_BOUNTY':
+            return {
+
+            }
+        default:
+            return state
+    }
+}
+
+// CREATE AND EXPORT STORE
+const store = createStore(reducer, applyMiddleware(thunk))
+
+store.subscribe(() => {
+    console.log(store.getState())
 })
-
-const store = createStore(appReducer, applyMiddleware(thunk))
 
 export default store

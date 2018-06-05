@@ -1,20 +1,15 @@
-import React, { Component } from 'react' 
+import React from 'react'
 
-import { connect } from 'react-redux'
-import { getBounties } from './redux'
+import Bounties from './components/Bounties'
+import FormContainer from './components/FormContainer'
 
-class App extends Component {
-    componentDidMount = () => {
-        this.props.getBounties()
-    }
-
-    render = () => {
-        return (
-            <div>
-                
-            </div>
-        );
-    }
+const App = () => {
+    return (
+        <div>
+            <FormContainer />
+            <Bounties />
+        </div>
+    );
 }
 
-export default connect(null, { getBounties })(App)
+export default App
