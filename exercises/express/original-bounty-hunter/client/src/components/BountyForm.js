@@ -1,74 +1,42 @@
 import React, { Component } from 'react'
 
-import { connect } from 'react-redux'
-import { addBounty } from '../redux'
-
 class BountyForm extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            inputs: {
-                firstName: '',
-                lastName: '',
-                bountyAmount: '',
-                living: '',
-                type: '',
-            }
-        }
-        this.baseState = this.state
-    }
-
-    handleChange = e => {
-        const { name, value } = e.target
-        this.setState(prevState => ({
-            inputs: {
-                ...prevState.inputs,
-                [name]: value
-            }
-        }))
-    }
-
-    handleSubmit = e => {
-        e.preventDefault()
-        this.props.addBounty(this.state.inputs)
-        this.setState(this.baseState)
-    }
-
     render() {
+        const { handleChange, handleSubmit, inputs } = this.props
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input
-                    onChange={this.handleChange}
+                    onChange={handleChange}
                     name="firstName"
-                    value={this.state.inputs.firstName}
+                    value={inputs.firstName}
                     type="text"
                     placeholder="First Name"
                 />
                 <input
-                    onChange={this.handleChange}
+                    onChange={handleChange}
                     name="lastName"
-                    value={this.state.inputs.lastName}
+                    value={inputs.lastName}
                     type="text"
                     placeholder="Last Name"
                 />
                 <input
-                    onChange={this.handleChange}
+                    onChange={handleChange}
                     name="bountyAmount"
-                    value={this.state.inputs.bountyAmount}
+                    value={inputs.bountyAmount}
                     type="text"
                     placeholder="Bounty Amount"
                 />
                 <input
-                    onChange={this.handleChange}
+                    onChange={handleChange}
                     name="living"
-                    value={this.state.inputs.living}
+                    value={inputs.living}
                     type="text"
                     placeholder="Alive or Dead"
                 />
                 <input
-                    onChange={this.handleChange}
+                    onChange={handleChange}
                     name="type"
-                    value={this.state.inputs.type}
+                    value={inputs.type}
                     type="text"
                     placeholder="Affiliation"
                 />
@@ -78,4 +46,4 @@ class BountyForm extends Component {
     }
 }
 
-export default connect(null, { addBounty })(BountyForm)
+export default BountyForm

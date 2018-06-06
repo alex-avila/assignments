@@ -24,5 +24,5 @@ bountyRouter.route('/:id')
         bounties.splice(bounties.indexOf(bounties.find(bounty => bounty.id === Number(req.params.id))), 1)
         res.send(bounties)
     }))
-    
+
 module.exports = bountyRouter

@@ -34,11 +34,11 @@ export const addBounty = body => {
     }
 }
 
-export const editBounty = id => {
+export const editBounty = (id, body) => {
     return dispatch => {
-        axios.put('/bounties/' + id).then(response => {
+        axios.put('/bounties/' + id, body).then(response => {
             dispatch({
-                type: 'UPDATE_BOUNTY',
+                type: 'EDIT_BOUNTY',
                 // single updated bounty
                 bounty: response.data
             })
@@ -51,8 +51,8 @@ export const deleteBounty = id => {
         axios.delete('/bounties/' + id).then(response => {
             dispatch({
                 type: 'DELETE_BOUNTY',
-                // entire bounties arrya
-                bounty: response.data
+                // entire bounties array
+                bounties: response.data
             })
         })
     }
@@ -72,9 +72,11 @@ const reducer = (state = initialState, action) => {
                 bounties: [...state.bounties, action.bounty]
             }
         case 'EDIT_BOUNTY':
+            const newBounties = state.bounties
+            newBounties[newBounties.indexOf(newBounties.find(bounty => bounty.id === action.bounty.id))] = action.bounty
             return {
                 ...state,
-                bounties: [...state.bounties, action.bounty]
+                bounties: newBounties
             }
         case 'DELETE_BOUNTY':
             return {
