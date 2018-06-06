@@ -99,8 +99,6 @@ const reducer = (state = initialState, action) => {
 // CREATE AND EXPORT STORE
 const store = createStore(reducer, applyMiddleware(thunk))
 
-store.subscribe(() => {
-    console.log(store.getState())
-})
+// store.subscribe(() => console.log(store.getState()))
 
 export default store
