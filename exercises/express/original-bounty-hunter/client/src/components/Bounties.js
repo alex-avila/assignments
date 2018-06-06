@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 
+import { connect } from 'react-redux'
+import { getBounties } from '../redux'
+
 import Bounty from './Bounty'
 
 class Bounties extends Component {
+    componentDidMount = () => {
+        this.props.getBounties()
+    }
+
     render = () => {
         const mappedBounties = this.props.bounties.map((bounty, i) => {
             return (
@@ -28,4 +35,4 @@ class Bounties extends Component {
     }
 }
 
-export default Bounties
+export default connect(state => ({ bounties: state.bounties }), { getBounties })(Bounties)

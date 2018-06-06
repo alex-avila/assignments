@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { getBounties, addBounty, editBounty, deleteBounty } from './redux'
+import { addBounty, editBounty, deleteBounty } from './redux'
 
 import Bounties from './components/Bounties'
 import FormContainer from './components/FormContainer'
@@ -21,10 +21,6 @@ class App extends Component {
             currentId: null
         }
         this.baseInputs = this.state.inputs
-    }
-
-    componentDidMount = () => {
-        this.props.getBounties()
     }
 
     handleChange = e => {
@@ -63,10 +59,13 @@ class App extends Component {
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}
                 />
-                <Bounties handleEdit={this.handleEdit} handleDelete={this.handleDelete} bounties={this.props.bounts}/>
+                <Bounties 
+                    handleEdit={this.handleEdit} 
+                    handleDelete={this.handleDelete} 
+                />
             </div>
         )
     }
 }
 
-export default connect(state => ({ bounts: state.bounties }), { getBounties, addBounty, editBounty, deleteBounty })(App)
+export default connect(null, { addBounty, editBounty, deleteBounty })(App)

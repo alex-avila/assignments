@@ -72,11 +72,18 @@ const reducer = (state = initialState, action) => {
                 bounties: [...state.bounties, action.bounty]
             }
         case 'EDIT_BOUNTY':
-            const newBounties = state.bounties
-            newBounties[newBounties.indexOf(newBounties.find(bounty => bounty.id === action.bounty.id))] = action.bounty
+            // const newBounties = state.bounties
+            // newBounties[newBounties.indexOf(newBounties.find(bounty => bounty.id === action.bounty.id))] = action.bounty
             return {
                 ...state,
-                bounties: newBounties
+                bounties: state.bounties.map(bounty => {
+                    if (bounty.id === action.bounty.id) {
+                        return action.bounty
+                    } else {
+                        return bounty
+                    }
+                })
+                // bounties: newBounties
             }
         case 'DELETE_BOUNTY':
             return {
