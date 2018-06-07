@@ -10,13 +10,31 @@
 }
 
 .form__title {
+    font-weight: 300;
+    letter-spacing: 1px;
     text-align: center;
+    margin: auto 0 0;
 }
 
 
 .form {
     display: flex;
     flex-direction: column;
+}
+
+.form h3 {
+    margin: 1.25em 0 0.25em;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+
+.form h3::after {
+    content: "";
+    background: white;
+    height: 1px;
+    width: 100%;
+    display: block;
+    margin: 0.2em 0 0.5em;
 }
 
 .form input,
@@ -37,8 +55,8 @@ input[type=number]::-webkit-outer-spin-button {
 .form input {
     padding: 0.618em 0.618em 0.618em;
     margin: 1em 0;
-    border-radius: 5px;
-    border: 2px solid rgba(255, 255, 255, 0.639);
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.639);
     color: inherit;
 }
 
@@ -76,7 +94,7 @@ input[type=number]::-webkit-outer-spin-button {
     right: 0;
     bottom: 0;
     background: #231F20;
-    border: 2px solid white;
+    border: 1px solid white;
     border-radius: 50px;
     transition: all 0.3s;
 }
@@ -85,10 +103,10 @@ input[type=number]::-webkit-outer-spin-button {
     position: absolute;
     border-radius: 50%;
     content: "";
-    height: 23px;
-    width: 23px;
-    left: 4px;
-    bottom: 4px;
+    height: 22px;
+    width: 22px;
+    left: 5px;
+    bottom: 5px;
     background: white;
     transition: all 0.3s;
 }
@@ -135,7 +153,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 20px;
     cursor: pointer;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 1px solid white;
     font-size: 0;
 }
 

@@ -10,7 +10,7 @@ class FormContainer extends Component {
         return (
             <div className="form-wrapper">
                 {/* <i className="material-icons form__back-btn">arrow_back_ios</i> */}
-                <h3 className="form__title">Add New Bounty</h3>
+                <h2 className="form__title">Add New Bounty</h2>
                 <BountyForm inputs={inputs} handleChange={handleChange} handleSubmit={handleSubmit} editing={editing}/>
             </div>
         );

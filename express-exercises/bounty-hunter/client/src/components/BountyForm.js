@@ -5,6 +5,7 @@ class BountyForm extends Component {
         const { handleChange, handleSubmit, inputs, editing } = this.props
         return (
             <form className="form" onSubmit={handleSubmit}>
+                <h3>General Information</h3>
                 <input
                     onChange={handleChange}
                     name="firstName"
@@ -31,6 +32,7 @@ class BountyForm extends Component {
                     required
                     autoComplete="off"
                 />
+                <h3>Alive or Dead</h3>
                 <div className="form__toggle-life">
                     <p>Alive</p>
                     <label className="form__switch">
