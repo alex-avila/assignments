@@ -72,6 +72,9 @@ class App extends Component {
                     handleEdit={this.handleEdit} 
                     handleDelete={this.handleDelete} 
                 />
+                <div className="add-btn">
+                    <i class="material-icons add-icon">add</i>
+                </div>
             </div>
         )
     }

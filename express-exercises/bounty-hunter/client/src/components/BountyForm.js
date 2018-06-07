@@ -44,7 +44,7 @@ class BountyForm extends Component {
                     </label>
                 </div>
                 <div className="form__affiliation">
-                    <p>Affiliation</p>
+                    <h3>Affiliation</h3>
                     <label>
                         <input
                             onChange={handleChange}

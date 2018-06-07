@@ -4,3 +4,22 @@
     margin: auto;
     padding: 0 1em;
 }
+
+.add-btn {
+    position: fixed;
+    height: 60px;
+    width: 60px;
+    background: white;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 50%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.add-icon {
+    font-size: 2.5em;
+}
