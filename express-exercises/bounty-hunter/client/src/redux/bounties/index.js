@@ -25,7 +25,6 @@ export const addBounty = body => {
 }
 
 export const editBounty = (id, body) => {
-    console.log(id)
     return dispatch => {
         axios.put('/bounties/' + id, body).then(response => {
             dispatch({
@@ -54,7 +53,8 @@ const bountiesReducer = (state = [], action) => {
         case 'GET_BOUNTIES':
             return action.bounties
         case 'ADD_BOUNTY':
-            return [...state.bounties, action.bounty]
+            console.log([...state, action.bounty])
+            return [...state, action.bounty]
         case 'EDIT_BOUNTY':
             // does it have to do something with reference???
             // const newBounties = state.bounties

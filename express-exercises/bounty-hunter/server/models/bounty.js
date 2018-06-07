@@ -14,7 +14,7 @@ const bountySchema = Schema({
     },
     type: {
         type: String,
-        enum: ['Jedi', 'Sith']
+        // enum: ['Jedi', 'Sith']
     }
 })
 

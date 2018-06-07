@@ -1,0 +1,24 @@
+.bounty {
+    background: #eee;
+    padding: 0 1em 1em;
+    margin: 1em;
+}
+
+.bounty__primary-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bounty__extra-info {
+    display: flex;
+    padding: 1em 0;
+}
+
+.bounty__extra-info span:not(:last-child) {
+    margin: 0 1.618em 0 0;
+}
+
+.bounty__btns button:not(:last-child) {
+    margin: 0 1.618em 0 0;
+}

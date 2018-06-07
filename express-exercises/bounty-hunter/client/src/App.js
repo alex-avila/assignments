@@ -35,10 +35,15 @@ class App extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const { inputs, currentId } = this.state
         if (!this.state.editing) {
-            this.props.addBounty(this.state.inputs)
+            const filteredInputs = Object.keys(inputs).reduce((a, b) => {
+                return inputs[b] ? {...a, [b]: inputs[b]} : a
+            }, {})
+            console.log(filteredInputs)
+            this.props.addBounty(filteredInputs)
         } else {
-            this.props.editBounty(this.state.currentId, this.state.inputs)
+            this.props.editBounty(currentId, inputs)
         }
         this.setState({ inputs: this.baseInputs, editing: false, currentId: null })
     }
