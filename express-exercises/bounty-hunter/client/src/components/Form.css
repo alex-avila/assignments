@@ -1,0 +1,122 @@
+.form-wrapper {
+    /* text-align: center; */
+    /* position: fixed; */
+    background: #231F20;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__title {
+    text-align: center;
+}
+
+.form__back-btn {
+    align-self: flex-start;
+    font-size: 2em;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form input,
+.form button {
+    font-family: inherit;
+    font-size: 16px;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.form input {
+    /* padding: 1em 0.618em 0.618em; */
+    margin: 1em 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.61);
+    color: inherit;
+}
+
+.form button {
+    font-weight: 500;
+    background: white;
+    align-self: center;
+    padding: 0.618em 1em;
+    border-radius: 100px;
+    margin: 1em 0 0;
+}
+
+
+.form__toggle-life {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form__switch input {
+    display: none;
+}
+
+.form__switch {
+    display: block;
+    position: relative;
+    width: 60px;
+    height: 34px;
+}
+
+.form__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #231F20;
+    border: 2px solid white;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+.form__slider::before {
+    position: absolute;
+    border-radius: 50%;
+    content: "";
+    height: 23px;
+    width: 23px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    transition: all 0.3s;
+}
+
+.form__switch input:checked + .form__slider {
+    background: white;
+}
+
+.form__switch input:checked + .form__slider::before {
+    background: #231F20;
+    transform: translateX(26px)
+}
+
+
+.form__affiliation {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__affiliation label {
+    display: flex;
+    align-items: center;
+}
+
+.form__affiliation label span {
+    padding: 0 0 0 1em;
+}
+

@@ -6,6 +6,8 @@ import { addBounty, editBounty, deleteBounty } from './redux/bounties'
 import Bounties from './components/Bounties'
 import FormContainer from './components/FormContainer'
 
+import './App.css'
+
 class App extends Component {
     constructor(props) {
         super(props)
@@ -14,7 +16,7 @@ class App extends Component {
                 firstName: '',
                 lastName: '',
                 bountyAmount: '',
-                living: '',
+                living: false,
                 type: '',
             },
             editing: false,
@@ -24,7 +26,9 @@ class App extends Component {
     }
 
     handleChange = e => {
-        const { name, value } = e.target
+        const { target } = e
+        const { name } = e.target
+        const value = target.type === 'checkbox' ? target.checked : target.value
         this.setState(prevState => ({
             inputs: {
                 ...prevState.inputs,
@@ -57,11 +61,12 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <FormContainer
                     inputs={this.state.inputs}
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}
+                    editing={this.state.editing}
                 />
                 <Bounties 
                     handleEdit={this.handleEdit} 

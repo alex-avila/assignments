@@ -1,7 +1,8 @@
 .bounty {
-    background: #eee;
+    background: #fafafa;
+    border-radius: 10px;
     padding: 0 1em 1em;
-    margin: 1em;
+    margin: 1em 0;
 }
 
 .bounty__primary-info {
