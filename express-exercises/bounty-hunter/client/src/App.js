@@ -40,7 +40,6 @@ class App extends Component {
             const filteredInputs = Object.keys(inputs).reduce((a, b) => {
                 return inputs[b] ? {...a, [b]: inputs[b]} : a
             }, {})
-            console.log(filteredInputs)
             this.props.addBounty(filteredInputs)
         } else {
             this.props.editBounty(currentId, inputs)
