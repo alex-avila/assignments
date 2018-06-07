@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { getBounties } from '../redux'
+import { getBounties } from '../redux/bounties'
 
 import Bounty from './Bounty'
 
@@ -35,4 +35,4 @@ class Bounties extends Component {
     }
 }
 
-export default connect(state => ({ bounties: state.bounties }), { getBounties })(Bounties)
+export default connect(state => ({bounties: state.bounties}), { getBounties })(Bounties)

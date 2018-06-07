@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { addBounty, editBounty, deleteBounty } from './redux'
+import { addBounty, editBounty, deleteBounty } from './redux/bounties'
 
 import Bounties from './components/Bounties'
 import FormContainer from './components/FormContainer'
