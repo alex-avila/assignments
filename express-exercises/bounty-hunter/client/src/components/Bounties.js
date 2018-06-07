@@ -20,7 +20,7 @@ class Bounties extends Component {
                     amount={bounty.bountyAmount}
                     living={bounty.living}
                     type={bounty.type}
-                    id={bounty.id}
+                    id={bounty._id}
                     bounty={bounty}
                     handleEdit={this.props.handleEdit}
                     handleDelete={this.props.handleDelete}

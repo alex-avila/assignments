@@ -35,6 +35,7 @@ export const addBounty = body => {
 }
 
 export const editBounty = (id, body) => {
+    console.log(id)
     return dispatch => {
         axios.put('/bounties/' + id, body).then(response => {
             dispatch({
@@ -51,7 +52,7 @@ export const deleteBounty = id => {
         axios.delete('/bounties/' + id).then(response => {
             dispatch({
                 type: 'DELETE_BOUNTY',
-                // entire bounties array
+                // single deleted bounty
                 bounties: response.data
             })
         })

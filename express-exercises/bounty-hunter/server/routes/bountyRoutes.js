@@ -1,26 +1,40 @@
 const express = require('express')
 const bountyRouter = express.Router()
-const bounties = require('../models/bountyData')
-const uuid = require('uuid/v4')
+const Bounty = require('../models/bounty')
 
 bountyRouter.route('/')
-    .get((req, res) => res.send(bounties))
+    .get((req, res) => {
+        Bounty.find((err, bounties) => {
+            if (err) return res.status(500).send(err)
+            return res.send(bounties)
+        })
+    })
     .post((req, res) => {
-        req.body.id = uuid() 
-        bounties.push(req.body)
-        res.send(req.body)
+        const newBounty = new Bounty(req.body)
+        newBounty.save((err, savedBounty) => {
+            if (err) return res.status(500).send(err)
+            return res.status(201).send(savedBounty)
+        })
     })
 
 bountyRouter.route('/:id')
-    .get((req, res) => res.send(bounties.find(bounty => bounty.id === Number(req.params.id))))
     .put((req, res) => {
-        const bounty = bounties.find(bounty => bounty.id == req.params.id)
-        Object.assign(bounty, req.body)
-        res.send(bounty)
+        console.log(req.params)
+        Bounty.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {new: true},
+            (err, updatedDog) => {
+                if (err) return res.status(500).send(err)
+                return res.status(201).send(updatedDog)
+            }
+        )
     })
     .delete(((req, res) => {
-        bounties.splice(bounties.findIndex(bounty => bounty.id === Number(req.params.id)), 1)
-        res.send(bounties)
+        Bounty.findByIdAndRemove(req.params.id, (err, removedDog) => {
+            if (err) return res.status(500).send(err)
+            return res.status(201).send(removedDog)
+        })
     }))
 
 module.exports = bountyRouter
