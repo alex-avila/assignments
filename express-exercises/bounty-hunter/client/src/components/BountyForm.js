@@ -46,34 +46,43 @@ class BountyForm extends Component {
                 <div className="form__affiliation">
                     <h3>Affiliation</h3>
                     <label>
-                        <input
-                            onChange={handleChange}
-                            name="type"
-                            value="Jedi"
-                            type="radio"
-                            checked={inputs.type === 'Jedi'}
-                        />
-                        <span>Jedi</span>
+                        <div className="form__radio-wrapper">
+                            <input
+                                onChange={handleChange}
+                                name="type"
+                                value="Jedi"
+                                type="radio"
+                                checked={inputs.type === 'Jedi'}
+                            />
+                            <span className="form__radio"></span>
+                        </div>
+                        <span className="radio-text">Jedi</span>
                     </label>
                     <label>
-                        <input
-                            onChange={handleChange}
-                            name="type"
-                            value="Sith"
-                            type="radio"
-                            checked={inputs.type === 'Sith'}
-                        />
-                        <span>Sith</span>
+                        <div className="form__radio-wrapper">
+                            <input
+                                onChange={handleChange}
+                                name="type"
+                                value="Sith"
+                                type="radio"
+                                checked={inputs.type === 'Sith'}
+                            />
+                            <span className="form__radio"></span>
+                        </div>
+                        <span className="radio-text">Sith</span>
                     </label>
                     <label>
-                        <input
-                            onChange={handleChange}
-                            name="type"
-                            value=""
-                            type="radio"
-                            checked={!inputs.type}
-                        />
-                        <span>Other</span>
+                        <div className="form__radio-wrapper">
+                            <input
+                                onChange={handleChange}
+                                name="type"
+                                value=""
+                                type="radio"
+                                checked={!inputs.type}
+                            />
+                            <span className="form__radio"></span>
+                        </div>
+                        <span className="radio-text">Other</span>
                     </label>
                 </div>
                 <button>{editing ? 'UPDATE BOUNTY' : 'ADD BOUNTY'}</button>
