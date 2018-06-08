@@ -87,7 +87,7 @@ class BountyForm extends Component {
                         <span className="radio-text">Other</span>
                     </label>
                 </div>
-                <button>{editing ? 'UPDATE BOUNTY' : 'ADD BOUNTY'}</button>
+                <button>{editing ? 'UPDATE ' : 'ADD '}IT</button>
             </form>
         );
     }

@@ -14,9 +14,12 @@ const Bounty = (props) => {
                 <span>{living ? 'Alive' : 'Dead'}</span>
                 <span>{type}</span>
             </div>
+            {/* <div className="bounty__popper">
+                <i className="material-icons">more_horiz</i>
+            </div> */}
             <div className="bounty__btns">
-                <button onClick={() => handleEdit(bounty, id)}>EDIT</button>
-                <button onClick={() => handleDelete(id)}>DELETE</button>
+                <button onClick={() => handleEdit(bounty, id)}><i className="material-icons">edit</i></button>
+                <button onClick={() => handleDelete(id)}><i className="material-icons">delete</i></button>
             </div>
         </div>
     )

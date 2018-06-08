@@ -55,7 +55,6 @@ const bountiesReducer = (state = [], action) => {
         case 'ADD_BOUNTY':
             return [...state, action.bounty]
         case 'EDIT_BOUNTY':
-            // does it have to do something with reference???
             // const newBounties = state.bounties
             // newBounties[newBounties.indexOf(newBounties.find(bounty => bounty.id === action.bounty.id))] = action.bounty
             return state.map(bounty => {
