@@ -63,8 +63,9 @@ input[type=number]::-webkit-outer-spin-button {
 .form button {
     font-weight: 500;
     background: white;
+    box-shadow: 0 0px 4px rgba(255, 255, 255, 0.589);
     align-self: center;
-    padding: 0.618em 1em;
+    padding: 0.5em 0.8em;
     border-radius: 100px;
     margin: 0.5em 0;
 }
