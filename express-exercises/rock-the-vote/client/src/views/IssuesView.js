@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getIssues } from '../redux/issues'
+import { getIssues } from '../redux/issuesReducer'
 
-import Issue from './Issue'
+import Issue from '../components/Issue'
 
-class Issues extends Component {
+class IssuesView extends Component {
     componentDidMount() {
         this.props.getIssues()
     }
@@ -21,4 +21,4 @@ class Issues extends Component {
     }
 }
 
-export default connect(state => ({ issues: state.issues }), { getIssues })(Issues)
+export default connect(state => ({ issues: state.issues }), { getIssues })(IssuesView)

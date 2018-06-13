@@ -5,7 +5,7 @@ const Issue = require('../models/issue')
 
 commentsRoutes.route('/')
     .get((req, res) => {
-        Comment.find((err, comments) => {
+        Comment.find({issue: req.params.issueId}, (err, comments) => {
             if (err) return res.status(500).send(err)
             return res.status(200).send(comments)
         })
