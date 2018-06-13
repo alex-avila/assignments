@@ -46,8 +46,7 @@ issuesRoutes.route('/:issueId')
         Issue.findById(req.params.issueId, (err, foundIssue) => {
             if (err) return res.status(500).send(err)
             Comment.find({ issue: foundIssue._id }, (err, comments) => {
-                if (err) return res.status(500).send(err)
-                res.status(200).send({foundIssue, comments})
+                handleRequest(res, err, {foundIssue, comments})
             })
         })
     })
