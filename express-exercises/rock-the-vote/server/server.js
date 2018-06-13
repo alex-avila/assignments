@@ -12,9 +12,8 @@ mongoose.connect('mongodb://localhost/rock_the_vote')
 
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', () => console.log('Connected to the database/collection -> (not the same thing but you should know what I mean)'))
+db.once('open', () => console.log('Connected to the database'))
 
 app.use('/issues', require('./routes/issues'))
-app.use('/comments', require('./routes/comments'))
 
 app.listen(port, () => console.log(`Server running on port ${port}`))

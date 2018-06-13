@@ -1,15 +1,7 @@
-const mongoose = require('schema')
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-/*
-Each comment should have:
-content,
-date (made automatically),
-### author (made automatically, forget about this, though, for now),
-votes/likes,
-reference to issue
-*/
-
+// Maybe add author later
 const commentSchema = new Schema({
     content: {
         type: String,

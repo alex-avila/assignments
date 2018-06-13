@@ -1,21 +1,11 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-/*
-Each issue should have:
-title,
-description,
-content (only shown on issue view),
-date (made automatically),
-### author (made automatically, forget about this though for now),
-votes,
-comments
-*/
-
+// Maybe add author later
 const issueSchema = new Schema({
     title: {
         type: String,
-        required: True
+        required: true
     },
     description: {
         type: String
@@ -27,11 +17,13 @@ const issueSchema = new Schema({
     votes: {
         type: Number,
         default: 0
-    },
-    comments: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Comment'
-    }]
+    }
+    // Commented out because I want to avoid pointing to many comments here
+    // It seems like it's better to have each comment have one pointer to an issue
+    // comments: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Comment'
+    // }]
 }, { timestamps: true })
 
 module.exports = mongoose.model('Issue', issueSchema)
