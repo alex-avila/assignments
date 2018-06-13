@@ -1,6 +1,7 @@
 const express = require('express')
-const commentsRoutes = express.Router({mergeParams: true})
+const commentsRoutes = express.Router({ mergeParams: true })
 const Comment = require('../models/comment')
+const Issue = require('../models/issue')
 
 commentsRoutes.route('/')
     .get((req, res) => {
@@ -10,10 +11,18 @@ commentsRoutes.route('/')
         })
     })
     .post((req, res) => {
-        const comment = new Comment({...req.body, issue: req.params.issueId})
+        const comment = new Comment({ ...req.body, issue: req.params.issueId })
         comment.save((err, comment) => {
             if (err) return res.status(500).send(err)
-            return res.status(201).send(comment)
+            Issue.findByIdAndUpdate(
+                req.params.issueId,
+                { $inc: { commentsCount: 1 } },
+                { new: true },
+                (err, updatedIssue) => {
+                    if (err) return res.status(500).send(err)
+                    return res.status(201).send({ updatedIssue, comment })
+                }
+            )
         })
     })
 
@@ -28,7 +37,7 @@ commentsRoutes.route('/:commentId')
         Comment.findByIdAndUpdate(
             req.params.commentId,
             req.body,
-            {new: true},
+            { new: true },
             (err, updatedComment) => {
                 if (err) return res.status(500).send(err)
                 return res.status(200).send(updatedComment)
@@ -38,7 +47,15 @@ commentsRoutes.route('/:commentId')
     .delete((req, res) => {
         Comment.findByIdAndRemove(req.params.commentId, (err, removedComment) => {
             if (err) return res.status(500).send(err)
-            return res.status(200).send(removedComment)
+            Issue.findByIdAndUpdate(
+                req.params.issueId,
+                { $inc: { commentsCount: -1 } },
+                { new: true },
+                (err, updatedIssue) => {
+                    if (err) return res.status(500).send(err)
+                    return res.status(200).send({ updatedIssue, removedComment })
+                }
+            )
         })
     })
 

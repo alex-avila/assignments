@@ -1,8 +1,11 @@
 import React from 'react'
+import Issues from './components/Issues';
 
 const App = () => {
     return (
-        <div></div>
+        <div>
+            <Issues />
+        </div>
     )
 }
 
