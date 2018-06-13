@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { getComments } from '../redux/commentsReducer'
 import { getIssue } from '../redux/issueReducer'
+import VotingSystem from '../components/VotingSystem';
 
 class IssueView extends Component {
     constructor(props) {
@@ -38,8 +40,7 @@ class IssueView extends Component {
                         <h1>{issue.title}</h1>
                         <p>{issue.updatedAt ? issue.updatedAt : issue.createdAt}</p>
                         <p>{issue.content}</p>
-                        <p>Upvotes: {issue.votes}</p>
-                        <p>Comments: {issue.commentsCount}</p>
+                        <VotingSystem votes={issue.votes} id={issue._id}/>
                     </div>
                 }
                 {
@@ -58,4 +59,4 @@ class IssueView extends Component {
     }
 }
 
-export default connect(state => ({ issues: state.issues, comments: state.comments, issue: state.issue }), { getComments, getIssue })(IssueView)
+export default withRouter(connect(state => ({ issues: state.issues, comments: state.comments, issue: state.issue }), { getComments, getIssue })(IssueView))

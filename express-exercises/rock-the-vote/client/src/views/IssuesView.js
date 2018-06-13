@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { getIssues } from '../redux/issuesReducer'
 
 import Issue from '../components/Issue'
@@ -10,9 +11,13 @@ class IssuesView extends Component {
     }
 
     render() {
-        const mappedIssues = this.props.issues.map((issue, i) => {
-            return <Issue key={issue._id} {...issue} />
-        })
+        const mappedIssues = this.props.issues
+            .sort((a, b) => {
+                return b.votes > a.votes
+            })
+            .map(issue => {
+                return <Issue key={issue._id} {...issue} />
+            })
         return (
             <div>
                 {mappedIssues}
@@ -21,4 +26,4 @@ class IssuesView extends Component {
     }
 }
 
-export default connect(state => ({ issues: state.issues }), { getIssues })(IssuesView)
+export default withRouter(connect(state => ({ issues: state.issues }), { getIssues })(IssuesView))

@@ -8,4 +8,6 @@ const rootReducer = combineReducers({ issues, comments, issue })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
+store.subscribe(() => console.log(store.getState()))
+
 export default store

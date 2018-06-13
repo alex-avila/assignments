@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+
 import { getIssues } from '../redux/issues'
 
 import Issue from './Issue'
@@ -21,4 +23,4 @@ class Issues extends Component {
     }
 }
 
-export default connect(state => ({ issues: state.issues }), { getIssues })(Issues)
+export default withRouter(connect(state => ({ issues: state.issues }), { getIssues })(Issues))

@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
+import VotingSystem from './VotingSystem'
+
 const Issue = props => {
     const { title, content, votes, commentsCount, _id: id, updatedAt, createdAt } = props
     return (
@@ -14,10 +16,7 @@ const Issue = props => {
                     <span>Comments </span>
                     <span>{commentsCount}</span>
                 </div>
-                <div>
-                    <span>Upvotes </span>
-                    <span>{votes}</span>
-                </div>
+                <VotingSystem votes={votes} id={id}/>
             </div>
         </Link>
     )
