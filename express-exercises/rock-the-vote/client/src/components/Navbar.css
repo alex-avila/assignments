@@ -8,5 +8,5 @@
 .navbar__wrapper--inner {
     font-weight: 500;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }

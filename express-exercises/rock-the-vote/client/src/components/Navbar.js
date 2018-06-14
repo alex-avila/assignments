@@ -13,6 +13,11 @@ const Navbar = () => {
                 >
                     HOME
                 </Link>
+                <Link
+                    to="/editor"
+                >
+                    NEW POST
+                </Link>
             </div>
         </div>
     )

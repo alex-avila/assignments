@@ -4,7 +4,9 @@
 
 body {
     margin: 0;
-    font-family: 'Avenir';
+    font-family: 'Helvetica Neue';
+    line-height: 1.5;
+    padding-bottom: 3em;
 }
 
 a {
@@ -12,12 +14,8 @@ a {
     color: inherit
 }
 
-#content {
-    width: 480px;
-    margin: 0 auto;
-}
-
 .editor {
     border: 1px solid grey;
-    padding: 6px;
+    border-radius: 20px;
+    padding: 1em;
 }

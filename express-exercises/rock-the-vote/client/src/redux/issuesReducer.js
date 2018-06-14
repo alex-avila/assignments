@@ -19,6 +19,14 @@ export const updateIssue = (id, body) => {
     }
 }
 
+export const createIssue = body => {
+    return dispatch => {
+        axios.post('/issues', body).then(response => {
+            dispatch(getIssues())
+        })
+    }
+}
+
 const issuesReducer = (state = [], action) => {
     switch(action.type) {
         case 'GET_ISSUES':

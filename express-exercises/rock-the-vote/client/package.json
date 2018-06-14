@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "draft-js": "^0.10.5",
+    "es6-shim": "^0.35.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",

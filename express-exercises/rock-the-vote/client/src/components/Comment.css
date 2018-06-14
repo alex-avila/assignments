@@ -1,0 +1,52 @@
+.comments__editor--new {
+    display: flex;
+    flex-direction: column;
+    padding: 1.618em 0;
+}
+
+.comments__editor--new textarea {
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.249);
+    border-radius: 15px;
+    height: 100px;
+    padding: 0.618em 1em;
+    resize: none;
+}
+
+.comments__editor--new button {
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    background: black;
+    color: white;
+    border: none;
+    align-self: flex-start;
+    padding: 0.618em 1em;
+    border-radius: 50px;
+    margin: 1em 0 0;
+    cursor: pointer;
+}
+
+.comment button {
+    outline: none;
+    font-family: inherit;
+    font-weight: bold;
+    background: black;
+    color: white;
+    border: none;
+    align-self: flex-start;
+    padding: 0.618em 1em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.comment:not(:last-child)::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.29);
+    margin: 1em auto;
+}

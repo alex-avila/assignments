@@ -15,6 +15,7 @@ const handleRequest = (res, err, data, method = 'not post') => {
 issuesRoutes.route('/')
     .get((req, res) => {
         // this might be bad because
+        // It would be nice to use populate though
         // I have the comments pointers in the 'one' side
         // and I also have the issue pointer in the 'many' side
         // Issue.find({})
