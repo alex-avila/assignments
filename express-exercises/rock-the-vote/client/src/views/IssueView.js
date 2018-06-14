@@ -6,6 +6,8 @@ import { getComments } from '../redux/commentsReducer'
 import { getIssue } from '../redux/issueReducer'
 import VotingSystem from '../components/VotingSystem';
 
+import './Issue.css'
+
 class IssueView extends Component {
     constructor(props) {
         super(props)
@@ -33,27 +35,29 @@ class IssueView extends Component {
             comments = this.props.issue.comments
         }
         return (
-            <div>
-                {
-                    issue &&
-                    <div>
-                        <h1>{issue.title}</h1>
-                        <p>{issue.updatedAt ? issue.updatedAt : issue.createdAt}</p>
-                        <p>{issue.content}</p>
-                        <VotingSystem votes={issue.votes} id={issue._id}/>
-                    </div>
-                }
-                {
-                    comments &&
-                    comments.map(comment => {
-                        return (
-                            <div key={comment._id}>
-                                <p>{comment.updatedAt ? comment.updatedAt : comment.createdAt}</p>
-                                <p>{comment.content}</p>
-                            </div>
-                        )
-                    })
-                }
+            <div className="issue-view__wrapper--outer">
+                <div className="issue-view__wrapper--inner general-content-wrapper">
+                    {
+                        issue &&
+                        <div>
+                            <h1>{issue.title}</h1>
+                            <p>{issue.updatedAt ? new Date(issue.updatedAt).toLocaleDateString() : new Date(issue.createdAt).toLocaleDateString()}</p>
+                            <p>{issue.content}</p>
+                            <VotingSystem votes={issue.votes} id={issue._id}/>
+                        </div>
+                    }
+                    {
+                        comments &&
+                        comments.map(comment => {
+                            return (
+                                <div key={comment._id}>
+                                    <p>{comment.updatedAt ? new Date(comment.updatedAt).toLocaleDateString() : new Date(comment.createdAt).toLocaleDateString()}</p>
+                                    <p>{comment.content}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         )
     }

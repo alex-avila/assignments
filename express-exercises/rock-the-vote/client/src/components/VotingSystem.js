@@ -5,6 +5,11 @@ import { withRouter } from 'react-router-dom'
 
 import { updateIssue } from '../redux/issuesReducer'
 
+import upvote from '../icons/arrow_up.svg'
+import downvote from '../icons/arrow_down.svg'
+
+import './VotingSystem.css'
+
 class VotingSystem extends Component {
     handleClick = (e, id, increment) => {
         e.preventDefault()
@@ -14,10 +19,14 @@ class VotingSystem extends Component {
 
     render() {
         return (
-            <div>
-                <button onClick={e => this.handleClick(e, this.props.id, true)}>↑</button>
+            <div className="voting-system__wrapper">
+                <button className="vote-btn upvote" onClick={e => this.handleClick(e, this.props.id, true)}>
+                    <img src={upvote} alt=""/>
+                </button>
                 <span>{this.props.votes}</span>
-                <button onClick={e => this.handleClick(e, this.props.id, false)}>↓</button>
+                <button className="vote-btn downvote" onClick={e => this.handleClick(e, this.props.id, false)}>
+                    <img src={downvote} alt=""/>
+                </button>
             </div>
         )
     }

@@ -5,6 +5,8 @@ import { getIssues } from '../redux/issuesReducer'
 
 import Issue from '../components/Issue'
 
+import './Issues.css'
+
 class IssuesView extends Component {
     componentDidMount() {
         this.props.getIssues()
@@ -19,8 +21,10 @@ class IssuesView extends Component {
                 return <Issue key={issue._id} {...issue} />
             })
         return (
-            <div>
-                {mappedIssues}
+            <div className="general-content-wrapper">
+                <div className="issues__wrapper">
+                    {mappedIssues}
+                </div>
             </div>
         )
     }

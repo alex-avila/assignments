@@ -6,6 +6,8 @@ import Navbar from './components/Navbar'
 import IssuesView from './views/IssuesView';
 import IssueView from './views/IssueView';
 
+import './App.css'
+
 const App = () => {
     return (
         <div>

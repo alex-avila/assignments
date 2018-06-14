@@ -1,0 +1,57 @@
+/* This stylesheet is for the IssuesView and Issue components */
+.issues__wrapper {
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.146);
+}
+
+.issue__wrapper--outer,
+.issue__wrapper--inner {
+    display: block;
+}
+
+.issue__wrapper--outer h3 {
+    margin: 0 auto auto;
+}
+
+.issue__wrapper--outer:not(:last-child)::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.153);
+}
+
+.issue__wrapper .issue__wrapper--outer:first-child {
+    border-radius: 20px 20px 0 0;
+}
+
+.issue__wrapper .issue__wrapper--outer:last-child {
+    border-radius: 20px 20px 0 0;
+}
+
+.issue__wrapper--inner {
+    padding: 0.618em 0.618em 1em;
+}
+
+.issue__interactions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.interactions__comments {
+    display: flex;
+    align-items: center;
+}
+
+.interactions__comments img {
+    margin-right: 0.618em;
+    display: block;
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+    filter: contrast(0.25);
+}
+
