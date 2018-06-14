@@ -21,6 +21,10 @@ class SimpleEditor extends Component {
 
     handleClick = () => {
         this.props.createIssue(this.state)
+        this.setState({
+            title: '',
+            content: ''
+        })
     }
 
     render() {
