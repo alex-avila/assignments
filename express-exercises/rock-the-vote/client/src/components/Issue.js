@@ -16,7 +16,7 @@ const Issue = props => {
                 <p>{content}</p>
                 <div className="issue__interactions">
                     <div className="interactions__comments">
-                        <img src={commentIcon} />
+                        <img src={commentIcon} alt="Comment icon." />
                         <span>{commentsCount}</span>
                     </div>
                     <VotingSystem votes={votes} id={id} />

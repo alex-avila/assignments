@@ -21,11 +21,11 @@ class VotingSystem extends Component {
         return (
             <div className="voting-system__wrapper">
                 <button className="vote-btn upvote" onClick={e => this.handleClick(e, this.props.id, true)}>
-                    <img src={upvote} alt=""/>
+                    <img src={upvote} alt="Up vote icon."/>
                 </button>
                 <span>{this.props.votes}</span>
                 <button className="vote-btn downvote" onClick={e => this.handleClick(e, this.props.id, false)}>
-                    <img src={downvote} alt=""/>
+                    <img src={downvote} alt="Down vote icon."/>
                 </button>
             </div>
         )
