@@ -14,16 +14,6 @@ const handleRequest = (res, err, data, method = 'not post') => {
 
 issuesRoutes.route('/')
     .get((req, res) => {
-        // this might be bad because
-        // It would be nice to use populate though
-        // I have the comments pointers in the 'one' side
-        // and I also have the issue pointer in the 'many' side
-        // Issue.find({})
-        // .populate('comments')
-        // .exec((err, issues) => {
-        //     handleRequest(res, err, issues)
-        // })
-        // this is better, I think
         Issue.find((err, issues) => {
             handleRequest(res, err, issues)
         })
@@ -37,13 +27,6 @@ issuesRoutes.route('/')
 
 issuesRoutes.route('/:issueId')
     .get((req, res) => {
-        // this might also be bad
-        // Issue.findById(req.params.issueId)
-        // .populate('comments')
-        // .exec((err, foundIssue) => {
-        //     handleRequest(res, err, foundIssue)
-        // })
-        // this is better, I think
         Issue.findById(req.params.issueId, (err, foundIssue) => {
             if (err) return res.status(500).send(err)
             Comment.find({ issue: foundIssue._id }, (err, comments) => {
