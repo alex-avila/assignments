@@ -2,11 +2,9 @@ import React from 'react'
 
 import { Switch, Route } from 'react-router-dom'
 
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import IssuesView from './views/IssuesView'
 import IssueView from './views/IssueView'
-// import SimpleEditor from './views/SimpleEditor'
-// import EditorView from './views/EditorView'
 import GoodEditor from './views/GoodEditor'
 
 import './App.css'

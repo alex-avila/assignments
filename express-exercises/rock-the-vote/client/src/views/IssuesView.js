@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getIssues } from '../redux/issuesReducer'
 
-import Issue from '../components/Issue'
+import Issue from '../components/Issues/Issue'
 
 import './Issues.css'
 
@@ -15,7 +15,7 @@ class IssuesView extends Component {
     render() {
         const mappedIssues = this.props.issues
             .sort((a, b) => {
-                return b.votes > a.votes
+                return b.votes - a.votes
             })
             .map(issue => {
                 return <Issue key={issue._id} {...issue} />

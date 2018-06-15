@@ -12,7 +12,8 @@ class GoodEditor extends Component {
         super(props);
         this.state = {
             editorState: EditorState.createEmpty(),
-            html: null
+            html: null,
+            title: ''
         };
     }
 
@@ -24,7 +25,12 @@ class GoodEditor extends Component {
     };
 
     handleClick = () => {
-        this.props.createIssue(this.state.html)
+        this.props.createIssue({title: this.state.title, content: this.state.html})
+    }
+
+    handleChange = e => {
+        const { name, value } = e.target
+        this.setState({ [name]: value })
     }
 
     render() {
@@ -32,6 +38,7 @@ class GoodEditor extends Component {
         const { editorState } = this.state
         return (
             <div className="general-content-wrapper">
+                <input type="text" placeholder="Title" name="title" value={this.state.title} onChange={this.handleChange}/>
                 <Editor
                     editorState={editorState}
                     toolbarClassName="toolbarClassName"

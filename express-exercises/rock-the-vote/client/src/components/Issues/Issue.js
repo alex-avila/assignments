@@ -2,9 +2,9 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-import VotingSystem from './VotingSystem'
+import VotingSystem from '../General/VotingSystem'
 
-import commentIcon from '../icons/comment.svg'
+import commentIcon from '../../icons/comment.svg'
 
 import ReactHtmlParser from 'react-html-parser'
 
@@ -15,7 +15,7 @@ const Issue = props => {
             <div id={id} className="issue__wrapper--inner">
                 <h3>{title}</h3>
                 <p><small>{updatedAt ? new Date(updatedAt).toLocaleDateString() : createdAt}</small></p>
-                <p>{ReactHtmlParser(content)}</p>
+                <div>{ReactHtmlParser(content)}</div>
                 <div className="issue__interactions">
                     <div className="interactions__comments">
                         <img src={commentIcon} alt="Comment icon." />

@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getComments } from '../redux/commentsReducer'
 import { getIssue } from '../redux/issueReducer'
-import VotingSystem from '../components/VotingSystem';
-import Comments from '../components/Comments'
-import NewCommentEditor from '../components/NewCommentEditor';
+import VotingSystem from '../components/General/VotingSystem';
+import Comments from '../components/Comments/Comments'
+import NewCommentEditor from '../components/Comments/NewCommentEditor';
 
 import ReactHtmlParser from 'react-html-parser'
 

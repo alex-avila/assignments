@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { deleteComment } from '../redux/commentsReducer'
+import { deleteComment } from '../../redux/commentsReducer'
 
 import { withRouter } from 'react-router-dom'
 
