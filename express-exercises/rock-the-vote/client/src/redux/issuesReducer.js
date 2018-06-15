@@ -21,7 +21,7 @@ export const updateIssue = (id, body) => {
 
 export const createIssue = body => {
     return dispatch => {
-        axios.post('/issues', body).then(response => {
+        axios.post('/issues', {title: 'hello', content: body}).then(response => {
             dispatch(getIssues())
         })
     }

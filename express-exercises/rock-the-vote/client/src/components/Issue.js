@@ -6,6 +6,8 @@ import VotingSystem from './VotingSystem'
 
 import commentIcon from '../icons/comment.svg'
 
+import ReactHtmlParser from 'react-html-parser'
+
 const Issue = props => {
     const { title, content, votes, commentsCount, _id: id, updatedAt, createdAt } = props
     return (
@@ -13,7 +15,7 @@ const Issue = props => {
             <div id={id} className="issue__wrapper--inner">
                 <h3>{title}</h3>
                 <p><small>{updatedAt ? new Date(updatedAt).toLocaleDateString() : createdAt}</small></p>
-                <p>{content}</p>
+                <p>{ReactHtmlParser(content)}</p>
                 <div className="issue__interactions">
                     <div className="interactions__comments">
                         <img src={commentIcon} alt="Comment icon." />

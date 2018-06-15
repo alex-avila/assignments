@@ -8,6 +8,8 @@ import VotingSystem from '../components/VotingSystem';
 import Comments from '../components/Comments'
 import NewCommentEditor from '../components/NewCommentEditor';
 
+import ReactHtmlParser from 'react-html-parser'
+
 import './Issue.css'
 
 class IssueView extends Component {
@@ -30,6 +32,7 @@ class IssueView extends Component {
         if (this.props.issues.find(issue => issue._id === this.id)) {
             // loads from different page
             issue = this.props.issues.find(issue => issue._id === this.id)
+            console.log(issue.content)
         } else {
             // loads from this page
             issue = this.props.issue.foundIssue
@@ -43,7 +46,9 @@ class IssueView extends Component {
                         <div>
                             <h1>{issue.title}</h1>
                             <p>{issue.updatedAt ? new Date(issue.updatedAt).toLocaleDateString() : new Date(issue.createdAt).toLocaleDateString()}</p>
-                            <p>{issue.content}</p>
+                            <div>
+                                {ReactHtmlParser(issue.content)}
+                            </div>
                             <VotingSystem votes={issue.votes} id={issue._id} />
                         </div>
                     }
