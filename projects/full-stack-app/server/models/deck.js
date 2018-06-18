@@ -1,60 +1,42 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-// CARD //
-// answer
-// question
-// easinessFactor
-// currentRepetition
-// nextAvailableDate
-// mostRecentInterval
-// type: [new, learning, review, relearning]
 const cardSchema = new Schema({
-    answer: {
-        type: String,
-        required: true
-    },
     question: {
         type: String,
         required: true
     },
-    type: {
+    answer: {
         type: String,
-        required: true,
-        enum: ['new', 'learning', 'review', 'relearning'],
-        default: 'new'
+        required: true
     },
-    easinessFactor: {
-        type: Number,
-        required: true,
-        default: 2.5
-    },
-    currentRepetition: {
+    repetition: {
         type: Number,
         required: true,
         default: 0
     },
-    nextReviewDate: {
+    eFactor: {
+        type: Number,
+        required: true,
+        default: 2.5
+    },
+    availableDate: {
         type: Date,
         required: true,
         default: Date.now()
+    },
+    learntDate: {
+        type: Date
     }
 }, { timestamps: true })
 
-// DECK //
-// name
-// desciption
-// cards
-// settings
 const deckSchema = new Schema({
     name: {
         type: String,
         required: true,
         unique: true
     },
-    description: {
-        type: String
-    },
+    description: String,
     cards: [cardSchema],
     settings: {
         newCards: {},
@@ -63,3 +45,36 @@ const deckSchema = new Schema({
 }, { timestamps: true })
 
 module.exports = mongoose.model('Deck', deckSchema)
+
+
+// DECK EXAMPLE //
+// {
+//     _id: 1u25u2950,
+//     name: 'Chinese',
+//     cards: [
+//         {
+//             _id: 2j948574ujgje,
+//             question: '你好',
+//             answer: 'Hello',
+//             repetition: 0,
+//             eFactor: 2.5,
+//             availableDate: 12039580219786,
+//         },
+//         {
+//             _id: 98698u3et1234,
+//             question: '我',
+//             answer: 'I',
+//             repetition: 0,
+//             eFactor: 2.5,
+//             availableDate: 12039580219786,
+//         },
+//         {
+//             _id: j908347583746mf,
+//             question: '再见',
+//             answer: 'See you later; Goodbye',
+//             repetition: 0,
+//             eFactor: 2.5,
+//             availableDate: 12039580219786,
+//         }
+//     ]
+// }
