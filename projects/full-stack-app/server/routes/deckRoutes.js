@@ -34,15 +34,14 @@ deckRoutes.route('/')
         deck.save((err, savedDeck) => handleRes(err, res, savedDeck, req.method))
     })
 
-deckRoutes.route('/:id')
+deckRoutes.route('/:deckId')
     .get((req, res) => {
-        Deck.findById(req.params.id, (err, foundDeck) => handleRes(err, res, foundDeck))
+        Deck.findById(req.params.deckId, (err, foundDeck) => handleRes(err, res, foundDeck))
     })
     .put((req, res) => {
         // Currently set up to only allow one card to be added at a time
         const { cards } = req.body
         const question = cards[0].question
-        console.log(question)
         // https://stackoverflow.com/questions/32024548/how-to-create-a-unique-list-of-json-elements-using-node-js-with-mongoose
         // Work around to make each card unique
         const query = {
@@ -55,7 +54,6 @@ deckRoutes.route('/:id')
         const bodyWithoutCards = Object.keys(req.body).reduce((final, key) => {
             return key !== 'cards' ? {...final, [key]: req.body[key]} : final
         }, {})
-        console.log(query)
         Deck.findOneAndUpdate(
             query,
             { $push: { cards }, ...bodyWithoutCards },
@@ -64,9 +62,9 @@ deckRoutes.route('/:id')
         )
     })
     .delete((req, res) => {
-        Deck.findByIdAndRemove(req.params.id, (err, deletedDeck) => handleRes(err, res, deletedDeck))
+        Deck.findByIdAndRemove(req.params.deckId, (err, deletedDeck) => handleRes(err, res, deletedDeck))
     })
 
-deckRoutes.use('/:id/cards', require('./cardRoutes'))
+deckRoutes.use('/:deckId/cards', require('./cardRoutes'))
 
 module.exports = deckRoutes
