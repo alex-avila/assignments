@@ -13,22 +13,24 @@ const calcEF = (q, ef = 2.5) => {
 /**
  * SuperMemo 2 algorithm that calculates the inter-repetition interval
  * @param {number} i - n-th repetition
- * @param {number} calcEF - Callback function that calculates EF
+ * @param {number} calcEF - Easiness factor
  */
-const calcInterval = (i, calcEF) => {
+const calcInterval = (i, EF) => {
     if (i === 1) {
         return 1
     } else if (i === 2) {
         return 6
     } else if (i > 2) {
-        console.log(calcEF)
-        return Math.ceil(calcInterval(i - 1) * calcEF)
+        return Math.ceil(calcInterval(i - 1) * EF)
     } else {
         return 0
     }
 }
 
-console.log(calcInterval(3, calcEF(3)))
+module.exports = {
+    calcInterval,
+    calcEF
+}
 
 
 // SUPERMEMO 2 //
