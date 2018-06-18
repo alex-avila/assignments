@@ -15,42 +15,58 @@ DELETE    | /decks/1   | Delete deck #1
 
 /**
  * Handles response to be less repetetive
- * @param {Object} res - Response object
  * @param {Object} err - Error object
+ * @param {Object} res - Response object
  * @param {Object} data - Data object to send back
  * @param {string} method - String of method used to determine status
  */
-const handleRes = (res, err, data, method = '') => {
+const handleRes = (err, res, data, method = '') => {
     if (err) return res.status(500).send(err)
     return res.status(method === 'POST' ? 201 : 200).send(data)
 }
 
 deckRoutes.route('/')
     .get((req, res) => {
-        Deck.find((err, decks) => handleRes(res, err, decks))
+        Deck.find((err, decks) => handleRes(err, res, decks))
     })
     .post((req, res) => {
         const deck = new Deck(req.body)
-        deck.save((err, savedDeck) => handleRes(res, err, savedDeck, req.method))
+        deck.save((err, savedDeck) => handleRes(err, res, savedDeck, req.method))
     })
 
 deckRoutes.route('/:id')
     .get((req, res) => {
-        Deck.findById(req.params.id, (err, foundDeck) => handleRes(res, err, foundDeck))
+        Deck.findById(req.params.id, (err, foundDeck) => handleRes(err, res, foundDeck))
     })
     .put((req, res) => {
-        // If I change the structure of the model,
-        // I'll have to change this as well
-        const { name, description, settings, cards } = req.body
-        Deck.findByIdAndUpdate(
-            req.params.id,
-            { name, description, settings, $push: { cards } },
+        // Currently set up to only allow one card to be added at a time
+        const { cards } = req.body
+        const question = cards[0].question
+        console.log(question)
+        // https://stackoverflow.com/questions/32024548/how-to-create-a-unique-list-of-json-elements-using-node-js-with-mongoose
+        // Work around to make each card unique
+        const query = {
+            "cards": {
+                $not: {
+                    $elemMatch: cards[0]
+                }
+            }
+        }
+        const bodyWithoutCards = Object.keys(req.body).reduce((final, key) => {
+            return key !== 'cards' ? {...final, [key]: req.body[key]} : final
+        }, {})
+        console.log(query)
+        Deck.findOneAndUpdate(
+            query,
+            { $push: { cards }, ...bodyWithoutCards },
             { new: true },
-            (err, updatedDeck) => handleRes(res, err, updatedDeck)
+            (err, updatedDeck) => handleRes(err, res, updatedDeck)
         )
     })
     .delete((req, res) => {
-        Deck.findByIdAndRemove(req.params.id, (err, deletedDeck) => handleRes(res, err, deletedDeck))
+        Deck.findByIdAndRemove(req.params.id, (err, deletedDeck) => handleRes(err, res, deletedDeck))
     })
+
+deckRoutes.use('/:id/cards', require('./cardRoutes'))
 
 module.exports = deckRoutes
