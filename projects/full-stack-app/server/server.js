@@ -3,18 +3,16 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-
 const port = 8000
 
 app.use(bodyParser.json())
 app.use(morgan('dev'))
 
-mongoose.connect('mongodb://localhost/full_stack_app')
+mongoose.connect('mongodb://localhost/full_stack_app', (err) => {
+    if (err) throw err
+    console.log('Connected to the database')
+})
 
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', () => console.log('Connected to the database'))
+app.use('/decks', require('./routes/deckRoutes'))
 
-// connect to routers with app.use
-
-app.listen(port, () => console.log(`Server running on port ${port}`))
+app.listen(port, () => console.log(`Server is running on port ${port}`))
