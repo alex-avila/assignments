@@ -37,7 +37,7 @@ const cardSchema = new Schema({
     nextReviewDate: {
         type: Date,
         required: true,
-        default: 0
+        default: new Date.now()
     }
 }, { timestamps: true })
 
