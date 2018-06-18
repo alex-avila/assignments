@@ -39,9 +39,12 @@ deckRoutes.route('/:id')
         Deck.findById(req.params.id, (err, foundDeck) => handleRes(res, err, foundDeck))
     })
     .put((req, res) => {
+        // If I change the structure of the model,
+        // I'll have to change this as well
+        const { name, description, settings, cards } = req.body
         Deck.findByIdAndUpdate(
             req.params.id,
-            req.body,
+            { name, description, settings, $push: { cards } },
             { new: true },
             (err, updatedDeck) => handleRes(res, err, updatedDeck)
         )
