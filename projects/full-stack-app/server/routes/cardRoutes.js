@@ -58,9 +58,12 @@ cardRoutes.route('/:cardId')
             // Set new review date
             // https://stackoverflow.com/questions/40642154/use-mongoose-to-update-subdocument-in-array
             let repetition = card.repetition
+            let availableDate
             // Card is only given a new available date if they respond with a quality of 4 or greater
             if (quality > 3) {
-                card.availableDate.setUTCDate(card.availableDate.getUTCDate() + interRepetitionInterval)
+                let date = new Date(card.availableDate)
+                date.setUTCDate(date.getUTCDate() + interRepetitionInterval)
+                availableDate = date
                 repetition += 1
             } else if (quality === 3) {
                 repetition = repetition
@@ -69,11 +72,11 @@ cardRoutes.route('/:cardId')
             }
 
             // Set card with new values
-            card.set({ eFactor, availableDate: card.availableDate, repetition })
+            card.set({ eFactor, availableDate, repetition })
 
             // Save/update parent foundDeck
             foundDeck.save((err, savedDeck) => {
-                handleRes(err, res, savedDeck.cards.id(cardId))
+                handleRes(err, res, savedDeck)
             })
         })
     })

@@ -10,18 +10,18 @@ const calcEF = (q, ef = 2.5) => {
     return newEF >= 1.3 ? newEF : 1.3
 }
 
-/**
- * SuperMemo 2 algorithm that calculates the inter-repetition interval
- * @param {number} i - n-th repetition
- * @param {number} calcEF - Easiness factor
- */
-const calcInterval = (i, EF) => {
+// /**
+//  * SuperMemo 2 algorithm that calculates the inter-repetition interval
+//  * @param {number} i - n-th repetition
+//  * @param {number} eF - Easiness factor
+//  */
+const calcInterval = (i, eFactor) => {
     if (i === 1) {
         return 1
     } else if (i === 2) {
         return 6
     } else if (i > 2) {
-        return Math.ceil(calcInterval(i - 1) * EF)
+        return Math.floor(calcInterval(i - 1, eFactor) * eFactor)
     } else {
         return 0
     }
@@ -51,7 +51,7 @@ module.exports = {
 // After each repetition modify EF
 // 4 //
 // If the quality of the response was lower than 3, start repetitions for
-// the item from the beginning w/out changing the EF 
+// the item from the beginning w/out changing the EF
 // (i.e. use intervals I(1) and I(2), etc.)
 // 5 //
 // After each repetition session of a given day repeat again all items
