@@ -2,17 +2,6 @@ const express = require('express')
 const deckRoutes = express.Router()
 const Deck = require('../models/deck')
 
-// API DESIGN: Basic Version //
-/*
-HTTP Verb | Endpoint   | Action
-—————————————————————————————————————
-GET       | /decks     | List all decks
-POST      | /decks     | Create new deck
-GET       | /decks/1   | Get details for deck #1
-PUT       | /decks/1   | Update deck #1
-DELETE    | /decks/1   | Delete deck #1
-*/
-
 /**
  * Handles response to be less repetetive
  * @param {Object} err - Error object
