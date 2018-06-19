@@ -13,7 +13,7 @@ const cardSchema = new Schema({
     repetition: {
         type: Number,
         required: true,
-        default: 0
+        default: 1
     },
     eFactor: {
         type: Number,

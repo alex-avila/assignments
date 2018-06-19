@@ -31,11 +31,11 @@ cardRoutes.route('/:cardId')
             // Run supermemo algorithm to get the E-Factor and inter-repetition interval using quality from body
             const { quality } = req.body
             const eFactor = calcEF(quality, card.eFactor)
-            const interRepetitionInterval = calcInterval(card.repetition + 1, eFactor)
+            const interRepetitionInterval = calcInterval(card.repetition, eFactor)
 
             // Set new review date
             // https://stackoverflow.com/questions/40642154/use-mongoose-to-update-subdocument-in-array
-            let repetition = card.repetition + 1
+            let repetition = card.repetition
             // Card is only given a new available date if they respond with a quality of 4 or greater
             if (quality > 3) {
                 card.availableDate.setUTCDate(card.availableDate.getUTCDate() + interRepetitionInterval)
@@ -43,11 +43,11 @@ cardRoutes.route('/:cardId')
             } else if (quality === 3) {
                 repetition = repetition
             } else if (quality < 3) {
-                repetition = 0
+                repetition = 1
             }
 
             // Set card with new values
-            card.set({ eFactor, availableDate, repetition })
+            card.set({ eFactor, availableDate: card.availableDate, repetition })
 
             // Save/update parent foundDeck
             foundDeck.save((err, savedDeck) => {
