@@ -30,4 +30,4 @@ class Decks extends Component {
     }
 }
 
-export default connect(state => ({ decks: state.decks }), { getDecks })(Decks);
+export default connect(state => ({ decks: state.deckData.decks }), { getDecks })(Decks);
