@@ -5,6 +5,8 @@ import { getDecks } from './redux/decksReducer'
 
 import { Link } from 'react-router-dom'
 
+import Button from './Button'
+
 class DeckDetails extends Component {
     componentDidMount() {
         if (!this.props.decks.length) {
@@ -18,7 +20,7 @@ class DeckDetails extends Component {
             return new Date(card.availableDate) <= Date.now()
         }) : null
         return (
-            <div>
+            <div className="utility-wrapper">
                 {
                     deck &&
                     <div>
@@ -31,7 +33,7 @@ class DeckDetails extends Component {
                                 deckId: this.props.match.params.id
                             }
                         }}>
-                            <button>STUDY NOW</button>
+                            <Button rounded>STUDY NOW</Button>
                         </Link>
                     </div>
                 }

@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import { updateCard } from './redux/decksReducer'
+import QualityGetter from './QualityGetter';
+import Card from './Card';
+
+import './ReviewSession.css'
 
 class ReviewSession extends Component {
     /*
@@ -13,10 +17,11 @@ class ReviewSession extends Component {
     on to a later date
     */
 
-   constructor(props) {
-       super(props)
-       this.state = {
-           currentInQueue: 0
+    constructor(props) {
+        super(props)
+        this.state = {
+            currentInQueue: 0,
+            isCardFlipped: false
         }
     }
 
@@ -24,10 +29,17 @@ class ReviewSession extends Component {
         const { deckId } = this.props.location.state
         this.props.updateCard(deckId, cardId, quality)
         if (this.state.currentInQueue + 1 <= len - 1) {
-            this.setState(prevState => ({currentInQueue: prevState.currentInQueue + 1}))
+            this.setState(prevState => ({
+                currentInQueue: prevState.currentInQueue + 1,
+                isCardFlipped: false
+            }))
         } else {
-            this.setState({currentInQueue: 0})
+            this.setState({ currentInQueue: 0, isCardFlipped: false })
         }
+    }
+
+    handleFlip = () => {
+        this.setState(prevState => ({isCardFlipped: !prevState.isCardFlipped}))
     }
 
 
@@ -36,27 +48,21 @@ class ReviewSession extends Component {
         const availableCards = deck ? deck.cards.filter(card => {
             return new Date(card.availableDate) <= Date.now()
         }) : null
-        if (availableCards) {console.log(availableCards.length, this.state.currentInQueue)}
         const card = availableCards ? availableCards[this.state.currentInQueue] : null
         return (
-            <div>
+            <div className="review-session__wrapper">
                 {/* Special Navbar */}
-                <h1>学习</h1>
                 {
                     deck && card &&
-                    <div>
-                        <p>{card.question}</p>
-                    </div>
+                    <Card {...card} handleFlip={this.handleFlip} isCardFlipped={this.state.isCardFlipped}/>
                 }
                 {
                     card &&
-                    <div>
-                        <button onClick={() => this.handleQRes(availableCards.length, card._id, 1)}>1</button>
-                        <button onClick={() => this.handleQRes(availableCards.length, card._id, 2)}>2</button>
-                        <button onClick={() => this.handleQRes(availableCards.length, card._id, 3)}>3</button>
-                        <button onClick={() => this.handleQRes(availableCards.length, card._id, 4)}>4</button>
-                        <button onClick={() => this.handleQRes(availableCards.length, card._id, 5)}>5</button>
-                    </div>
+                    <QualityGetter 
+                        handleQRes={this.handleQRes} 
+                        len={availableCards.length} 
+                        id={card._id}
+                    />
                 }
             </div>
         );
