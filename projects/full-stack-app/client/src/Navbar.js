@@ -12,7 +12,7 @@ class Navbar extends Component {
                     <Link to="/" className="nav__to-home">
                         <div className="nav__logo">MEMRISE</div>
                     </Link>
-                    <div className="nav__action--add"></div>
+                    {/* <div className="nav__action--add"></div> */}
                 </div>
             </nav>
         );
