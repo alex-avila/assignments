@@ -62,6 +62,9 @@ cardRoutes.route('/:cardId')
             // Card is only given a new available date if they respond with a quality of 4 or greater
             if (quality > 3) {
                 let date = new Date(card.availableDate)
+                if (date < Date.now()) {
+                    date = new Date(Date.now())
+                }
                 date.setUTCDate(date.getUTCDate() + interRepetitionInterval)
                 availableDate = date
                 repetition += 1
