@@ -9,8 +9,8 @@ class Navbar extends Component {
         return (
             <nav className="header__nav">
                 <div className="nav__wrapper">
-                    <Link to="/">
-                        <div className="nav__logo"></div>
+                    <Link to="/" className="nav__to-home">
+                        <div className="nav__logo">MEMRISE</div>
                     </Link>
                     <div className="nav__action--add"></div>
                 </div>

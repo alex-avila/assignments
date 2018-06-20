@@ -10,11 +10,19 @@
     justify-content: space-between;
 }
 
+.nav__to-home {
+    text-decoration: none;
+    color: inherit;
+}
+
 .nav__logo {
-    background: #777777;
+    background: #EBEBEB;
     height: 40px;
     width: 100px;
     border: 1px solid #979797;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav__action--add {
