@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 
 import Button from '../../components/Button'
 
+import './DeckDetails.css'
+
 class DeckDetails extends Component {
     componentDidMount() {
         if (!this.props.decks.length) {
@@ -23,7 +25,7 @@ class DeckDetails extends Component {
             <div className="utility-wrapper">
                 {
                     deck &&
-                    <div>
+                    <div className="deck-details">
                         <h2>{deck.name}</h2>
                         <p>{deck.description}</p>
                         <p>Cards in deck: {deck.cards.length}</p>

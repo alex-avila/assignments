@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 
 import { Switch, Route } from 'react-router-dom'
 
-import Decks from './scenes/Home/index';
-import DeckDetails from './scenes/DeckDetails/index';
-import ReviewSession from './scenes/ReviewSession/index';
 import Navbar from './components/Navbar';
+import Decks from './scenes/Home';
+import DeckDetails from './scenes/DeckDetails';
+import ReviewSession from './scenes/ReviewSession';
 
 class App extends Component {
     render() {

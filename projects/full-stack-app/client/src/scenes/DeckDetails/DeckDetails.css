@@ -1,0 +1,8 @@
+.deck-details h2::after {
+    content: "";
+    display: block;
+    background: #979797;
+    height: 1px;
+    width: 100%;
+    margin: 0.618em 0 0;
+}
