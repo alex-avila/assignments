@@ -1,0 +1,42 @@
+.card__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.card {
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: all 0.5s;
+    position: relative;
+    margin: auto;
+    height: 350px;
+    width: calc(350px / 1.414);
+    font-size: 22px;
+}
+
+.card__side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: #D8D8D8;
+    border: 1px solid #979797;
+}
+
+.card__front {
+    transform: rotateY(180deg)
+}
+
+.card__back {
+    transform: rotateY(0deg)
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}

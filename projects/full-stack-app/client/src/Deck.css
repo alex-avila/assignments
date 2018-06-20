@@ -1,0 +1,14 @@
+.deck-item {
+    display: block;
+    background: #D8D8D8;
+    margin: 1em 0;
+    padding: 0 1em;
+    border: 1px solid #979797;
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 4px 4px #0000001d;
+}
+
+.deck-item__wrapper {
+    text-align: center;
+}

@@ -2,7 +2,16 @@
     box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root,
+.wrapper {
     margin: 0;
     font-family: 'Avenir';
+    color: #777777;
+    height: 100%;
+}
+
+.utility-wrapper {
+    padding: 0 1rem;
 }

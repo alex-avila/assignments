@@ -23,9 +23,11 @@ class Decks extends Component {
                 )
             })
         return (
-            <div>
-                {mappedDecks}
-            </div>
+            <section className="decks-list">
+                <div className="decks-list__wrapper utility-wrapper">
+                    {mappedDecks}
+                </div>
+            </section>
         );
     }
 }

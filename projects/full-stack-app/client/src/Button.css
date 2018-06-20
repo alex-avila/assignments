@@ -1,0 +1,11 @@
+.utility-btn {
+    background: #D8D8D8;
+    border: 1px solid #979797;
+    outline: none;
+    color: #777777;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.618em 1em;
+    cursor: pointer;
+    box-shadow: 0 4px 4px #0000001f;
+}

@@ -10,7 +10,7 @@ import Navbar from './Navbar';
 class App extends Component {
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <Navbar />
                 <Switch>
                     <Route exact path="/" component={Decks}/>
