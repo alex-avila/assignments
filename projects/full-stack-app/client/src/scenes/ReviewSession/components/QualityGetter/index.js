@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Button from './Button'
+import Button from '../../../../components/Button'
 
 import './QualityGetter.css'
 

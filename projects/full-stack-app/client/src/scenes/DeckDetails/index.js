@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { getDecks } from './redux/decksReducer'
+import { getDecks } from '../../redux/decksReducer'
 
 import { Link } from 'react-router-dom'
 
-import Button from './Button'
+import Button from '../../components/Button'
 
 class DeckDetails extends Component {
     componentDidMount() {
@@ -25,6 +25,7 @@ class DeckDetails extends Component {
                     deck &&
                     <div>
                         <h2>{deck.name}</h2>
+                        <p>{deck.description}</p>
                         <p>Cards in deck: {deck.cards.length}</p>
                         <p>Available cards: {availableCards.length}</p>
                         <Link to={{

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { updateCard } from './redux/decksReducer'
-import QualityGetter from './QualityGetter';
-import Card from './Card';
+import { updateCard } from '../../redux/decksReducer'
+import QualityGetter from './components/QualityGetter';
+import Card from './components/Card';
 
 import './ReviewSession.css'
 

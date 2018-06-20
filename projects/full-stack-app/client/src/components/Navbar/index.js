@@ -10,7 +10,7 @@ class Navbar extends Component {
             <nav className="header__nav">
                 <div className="nav__wrapper">
                     <Link to="/" className="nav__to-home">
-                        <div className="nav__logo">MEMRISE</div>
+                        <div className="nav__logo">BAD ANKI</div>
                     </Link>
                     {/* <div className="nav__action--add"></div> */}
                 </div>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import { getDecks } from './redux/decksReducer'
+import { getDecks } from '../../redux/decksReducer'
 
-import Deck from './Deck';
+import Deck from './components/Deck';
 
 class Decks extends Component {
     componentDidMount() {
