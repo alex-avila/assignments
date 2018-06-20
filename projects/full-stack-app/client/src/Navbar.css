@@ -1,0 +1,26 @@
+.header__nav {
+    background: #D8D8D8;
+    padding: 1em 1em;
+    border: 1px solid #979797;
+}
+
+.nav__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__logo {
+    background: #777777;
+    height: 40px;
+    width: 100px;
+    border: 1px solid #979797;
+}
+
+.nav__action--add {
+    background: #EBEBEB;
+    height: 30px;
+    width: 80px;
+    border-radius: 500px;
+    border: 1px solid #979797;
+}
