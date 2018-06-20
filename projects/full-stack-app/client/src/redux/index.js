@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import decks from './decksReducer'
+import deckData from './decksReducer'
 
-const rootReducer = combineReducers({ decks })
+const rootReducer = combineReducers({ deckData })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 

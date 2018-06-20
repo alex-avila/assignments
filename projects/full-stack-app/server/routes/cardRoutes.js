@@ -71,6 +71,7 @@ cardRoutes.route('/:cardId')
                 repetition = 1
             }
 
+            availableDate = availableDate ? availableDate : card.availableDate
             // Set card with new values
             card.set({ eFactor, availableDate, repetition })
 
