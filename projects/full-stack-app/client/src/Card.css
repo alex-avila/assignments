@@ -8,12 +8,12 @@
 .card {
     cursor: pointer;
     transform-style: preserve-3d;
-    transition: all 0.5s;
     position: relative;
     margin: auto;
-    height: 350px;
-    width: calc(350px / 1.414);
+    height: 340px;
+    width: calc(350px / 1.214);
     font-size: 22px;
+    transition: all 0.25s;
 }
 
 .card__side {
@@ -23,6 +23,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    padding: 0 0.75em;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     background: #D8D8D8;

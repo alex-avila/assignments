@@ -24,7 +24,7 @@ class DeckDetails extends Component {
                 {
                     deck &&
                     <div>
-                        <h1>{deck.name}</h1>
+                        <h2>{deck.name}</h2>
                         <p>Cards in deck: {deck.cards.length}</p>
                         <p>Available cards: {availableCards.length}</p>
                         <Link to={{

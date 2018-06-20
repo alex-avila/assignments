@@ -39,7 +39,7 @@ class ReviewSession extends Component {
     }
 
     handleFlip = () => {
-        this.setState(prevState => ({isCardFlipped: !prevState.isCardFlipped}))
+        this.setState(prevState => ({ isCardFlipped: !prevState.isCardFlipped }))
     }
 
 
@@ -48,19 +48,20 @@ class ReviewSession extends Component {
         const availableCards = deck ? deck.cards.filter(card => {
             return new Date(card.availableDate) <= Date.now()
         }) : null
+        if (availableCards) {console.log(availableCards.length)}
         const card = availableCards ? availableCards[this.state.currentInQueue] : null
         return (
             <div className="review-session__wrapper">
                 {/* Special Navbar */}
                 {
                     deck && card &&
-                    <Card {...card} handleFlip={this.handleFlip} isCardFlipped={this.state.isCardFlipped}/>
+                    <Card {...card} handleFlip={this.handleFlip} isCardFlipped={this.state.isCardFlipped} />
                 }
                 {
                     card &&
-                    <QualityGetter 
-                        handleQRes={this.handleQRes} 
-                        len={availableCards.length} 
+                    <QualityGetter
+                        handleQRes={this.handleQRes}
+                        len={availableCards.length}
                         id={card._id}
                     />
                 }
