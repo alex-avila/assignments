@@ -20,6 +20,7 @@ class AddDeckModal extends Component {
     }
 
     handleAdd = () => {
+        // if newDeck we're in ADD DECK mode else we're in ADD CARD mode
         const { valOne, valTwo } = this.state.inputs
         if (this.props.newDeck) {
             this.props.addDeck({ name: valOne, description: valTwo })
@@ -92,4 +93,4 @@ class AddDeckModal extends Component {
     }
 }
 
-export default connect(null, { addDeck, addCard })(AddDeckModal)
+export default connect(state => ({ deck: state.deckData.deck }), { addDeck, addCard })(AddDeckModal)
