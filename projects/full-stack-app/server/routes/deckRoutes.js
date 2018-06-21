@@ -18,7 +18,12 @@ deckRoutes.route('/')
 
 deckRoutes.route('/:deckId')
     .get((req, res) => {
-        Deck.findById(req.params.deckId, (err, foundDeck) => handleRes(err, res, foundDeck))
+        console.log('Finding one deck by id.')
+        Deck.findById(req.params.deckId, (err, foundDeck) => {
+            foundDeck.save((err, savedDeck) => {
+                handleRes(err, res, savedDeck)
+            })
+        })
     })
     .delete((req, res) => {
         Deck.findByIdAndRemove(req.params.deckId, (err, deletedDeck) => handleRes(err, res, deletedDeck))
