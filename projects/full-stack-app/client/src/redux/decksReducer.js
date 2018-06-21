@@ -35,6 +35,14 @@ export const updateCard = (deckId, cardId, body) => {
     }
 }
 
+export const addDeck = body => {
+    return dispatch => {
+        axios.post('/decks', body).then(response => {
+            dispatch(getDecks())
+        })
+    }
+}
+
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_DECKS':
