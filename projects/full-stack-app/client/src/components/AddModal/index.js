@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addDeck, addCard } from '../../redux/decksReducer'
 
-import './AddDeckModal.css'
+import './AddModal.css'
 import Button from '../Button';
 
 class AddDeckModal extends Component {

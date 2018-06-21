@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Decks from './scenes/Home';
 import DeckDetails from './scenes/DeckDetails';
 import ReviewSession from './scenes/ReviewSession';
-import AddDeckModal from './components/AddDeckModal';
+import AddModal from './components/AddModal';
 
 class App extends Component {
     constructor(props) {
@@ -58,7 +58,7 @@ class App extends Component {
         return (
             <div className="wrapper">
                 <Navbar handleShowModal={this.handleShowModal} />
-                <AddDeckModal
+                <AddModal
                     isModalOn={this.state.isModalOn}
                     handleHideModal={this.handleHideModal}
                     newDeck={this.state.isHome}
