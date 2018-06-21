@@ -38,14 +38,17 @@ class ReviewSession extends Component {
     handleQRes = (len, cardId, quality) => {
         const { deckId } = this.props.location.state
         this.props.updateCard(deckId, cardId, quality)
-        // if availableCards decreased in length
+        // if quality is more than 4, availableCards decreases in length so
             // keep currentIndex the same
             // otherwise if currentIndex plus 1 is less than or equal to
                 // len minus 1
                 // add 1 to currentIndex
-        const { lastAvailableLen } = this.state
-        if (len < lastAvailableLen) {
-            this.setState({ lastAvailableLen: len })
+        if (quality > 3) {
+            this.setState(prevState => ({ lastAvailableLen: prevState.lastAvailableLen - 1 }))
+            if (this.state.currentIndex + 1 >= len - 1) {
+                this.setState({ currentIndex: 0 })
+            }
+            this.setState({isCardFlipped: false})
         } else {
             if (this.state.currentIndex + 1 <= len - 1) {
                 this.setState(prevState => ({
