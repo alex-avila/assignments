@@ -33,7 +33,7 @@ class App extends Component {
     render() {
         return (
             <div className="wrapper">
-                <Navbar handleAdd={this.handleShowModal}/>
+                <Navbar handleShowModal={this.handleShowModal}/>
                 <AddDeckModal
                     isModalOn={this.state.isModalOn}
                     handleHideModal={this.handleHideModal}

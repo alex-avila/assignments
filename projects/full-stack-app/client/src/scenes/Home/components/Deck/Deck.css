@@ -12,3 +12,7 @@
 .deck-item__wrapper {
     text-align: center;
 }
+
+.deck-item__wrapper h3 {
+    font-weight: 400;
+}

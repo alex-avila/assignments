@@ -16,7 +16,7 @@ class Navbar extends Component {
                     </Link>
                     <div
                         className="nav__action--add"
-                        onClick={this.props.handleAdd}
+                        onClick={this.props.handleShowModal}
                     >
                         <img className="add-icon" src={addIcon} alt="Add icon."/>
                         NEW

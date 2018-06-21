@@ -51,6 +51,7 @@ class AddDeckModal extends Component {
                         type="text" 
                         placeholder="Name"
                         onChange={this.handleChange}
+                        autoComplete="off"
                     />
                     <textarea 
                         name="description" 
@@ -58,6 +59,7 @@ class AddDeckModal extends Component {
                         type="text"
                         placeholder="Describe this deck..."
                         onChange={this.handleChange}
+                        autoComplete="off"
                     />
                     <Button rounded onClick={this.handleAdd}>ADD DECK</Button>
                 </div>
