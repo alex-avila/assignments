@@ -24,16 +24,16 @@ class App extends Component {
         if (!e) {
             // I have this first check to make modal hide when the
             // ADD btn is clicked on the the AddDeckModal component
-            this.setState({isModalOn: false})
+            this.setState({ isModalOn: false })
         } else if (e.target.id === 'background') {
-            this.setState({isModalOn: false})
+            this.setState({ isModalOn: false })
         }
     }
 
     render() {
         return (
             <div className="wrapper">
-                <Navbar handleShowModal={this.handleShowModal}/>
+                <Navbar handleShowModal={this.handleShowModal} />
                 <AddDeckModal
                     isModalOn={this.state.isModalOn}
                     handleHideModal={this.handleHideModal}

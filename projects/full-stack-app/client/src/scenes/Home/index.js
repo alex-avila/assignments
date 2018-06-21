@@ -19,7 +19,7 @@ class Decks extends Component {
                     return new Date(card.availableDate) <= Date.now()
                 })
                 return (
-                    <Deck key={_id} {...deck} availableCards={availableCards}/>
+                    <Deck key={_id} {...deck} availableCards={availableCards} />
                 )
             })
         return (

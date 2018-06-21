@@ -40,22 +40,22 @@ class AddDeckModal extends Component {
         }
         const { name, description } = this.state.inputs
         return (
-            <div 
+            <div
                 id="background"
                 className={modalClasses}
                 onClick={this.props.handleHideModal}>
                 <div className="add-deck-modal__wrapper">
-                    <input 
-                        name="name" 
-                        value={name} 
-                        type="text" 
+                    <input
+                        name="name"
+                        value={name}
+                        type="text"
                         placeholder="Name"
                         onChange={this.handleChange}
                         autoComplete="off"
                     />
-                    <textarea 
-                        name="description" 
-                        value={description} 
+                    <textarea
+                        name="description"
+                        value={description}
                         type="text"
                         placeholder="Describe this deck..."
                         onChange={this.handleChange}

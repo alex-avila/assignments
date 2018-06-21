@@ -29,7 +29,7 @@ export const getDeck = id => {
 
 export const updateCard = (deckId, cardId, body) => {
     return dispatch => {
-        axios.put(`/decks/${deckId}/cards/${cardId}`, {quality: body}).then(response => {
+        axios.put(`/decks/${deckId}/cards/${cardId}`, { quality: body }).then(response => {
             dispatch(getDeck(deckId))
         })
     }
@@ -46,9 +46,9 @@ export const addDeck = body => {
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_DECKS':
-            return {...state, decks: action.decks}
+            return { ...state, decks: action.decks }
         case 'GET_DECK':
-            return {...state, deck: action.deck}
+            return { ...state, deck: action.deck }
         default:
             return state
     }
