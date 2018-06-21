@@ -6,6 +6,6 @@ const rootReducer = combineReducers({ deckData })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
-store.subscribe(() => console.log(store.getState()))
+// store.subscribe(() => console.log(store.getState()))
 
 export default store

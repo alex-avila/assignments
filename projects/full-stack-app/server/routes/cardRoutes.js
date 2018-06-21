@@ -17,15 +17,17 @@ cardRoutes.route('/')
         })
     })
     .put((req, res) => {
+        console.log('putting')
         // Currently set up to only allow one card to be added at a time
         const { cards } = req.body
         // Work around to make each card unique
         const query = {
-            "cards": {
+            cards: {
                 $not: {
                     $elemMatch: cards[0]
                 }
-            }
+            },
+            _id: req.params.deckId
         }
         const bodyWithoutCards = Object.keys(req.body).reduce((final, key) => {
             return key !== 'cards' ? { ...final, [key]: req.body[key] } : final

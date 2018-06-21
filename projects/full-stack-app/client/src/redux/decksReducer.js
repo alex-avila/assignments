@@ -43,6 +43,15 @@ export const addDeck = body => {
     }
 }
 
+export const addCard = (id, body) => {
+    console.log(id)
+    return dispatch => {
+        axios.put(`/decks/${id}/cards`, body).then(response => {
+            dispatch(getDeck(id))
+        })
+    }
+}
+
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_DECKS':

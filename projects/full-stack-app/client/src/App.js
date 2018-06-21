@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 
 import Navbar from './components/Navbar';
 import Decks from './scenes/Home';
@@ -9,10 +9,34 @@ import ReviewSession from './scenes/ReviewSession';
 import AddDeckModal from './components/AddDeckModal';
 
 class App extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            isModalOn: false
+            isModalOn: false,
+            isHome: true
+        }
+    }
+
+    // Component DidMount and WillReceiveProps will work with 
+    // withRouter props to check if we are home currently
+    componentDidMount() {
+        const { pathname } = this.props.location
+        if (pathname !== '/') {
+            this.setState({ isHome: false })
+        } else {
+            this.setState({ isHome: true })
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { pathname } = this.props.location
+        const { pathname: newPathname } = nextProps.location
+        if (pathname !== newPathname) {
+            if (newPathname !== '/') {
+                this.setState({ isHome: false })
+            } else {
+                this.setState({ isHome: true })
+            }
         }
     }
 
@@ -37,6 +61,8 @@ class App extends Component {
                 <AddDeckModal
                     isModalOn={this.state.isModalOn}
                     handleHideModal={this.handleHideModal}
+                    newDeck={this.state.isHome}
+                    deckId={this.props.location.pathname}
                 />
                 <Switch>
                     <Route exact path="/" component={Decks} />
@@ -49,4 +75,4 @@ class App extends Component {
     }
 }
 
-export default App
+export default withRouter(App)

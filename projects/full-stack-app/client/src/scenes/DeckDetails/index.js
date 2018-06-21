@@ -22,7 +22,7 @@ class DeckDetails extends Component {
         return (
             <div className="utility-wrapper">
                 {
-                    Object.keys(deck).length &&
+                    !!Object.keys(deck).length &&
                     <div className="deck-details">
                         <h2>{deck.name}</h2>
                         <p>{deck.description}</p>

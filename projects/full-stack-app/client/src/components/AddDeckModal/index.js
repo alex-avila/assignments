@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import { addDeck } from '../../redux/decksReducer'
+import { addDeck, addCard } from '../../redux/decksReducer'
 
 import './AddDeckModal.css'
 import Button from '../Button';
@@ -11,15 +11,25 @@ class AddDeckModal extends Component {
         super(props)
         this.state = {
             inputs: {
-                name: '',
-                description: ''
-            }
+                valOne: '',
+                valTwo: '',
+            },
+            cardsAdded: 0
         }
+        this.initialState = this.state
     }
 
     handleAdd = () => {
-        this.props.addDeck(this.state.inputs)
-        this.props.handleHideModal()
+        const { valOne, valTwo } = this.state.inputs
+        if (this.props.newDeck) {
+            this.props.addDeck({ name: valOne, description: valTwo })
+            this.props.handleHideModal()
+            this.setState(this.initialState)
+        } else {
+            const deckId = this.props.deckId.slice(1)
+            this.props.addCard(deckId, { cards: [{ question: valOne, answer: valTwo }] })
+            this.setState(this.initialState)
+        }
     }
 
     handleChange = e => {
@@ -33,39 +43,53 @@ class AddDeckModal extends Component {
     }
 
     render() {
-        const { isModalOn } = this.props
+        const { isModalOn, newDeck, handleHideModal } = this.props
         let modalClasses = "add-deck-modal"
         if (isModalOn) {
             modalClasses += " modal__show"
         }
-        const { name, description } = this.state.inputs
+        const { valOne, valTwo } = this.state.inputs
         return (
             <div
                 id="background"
                 className={modalClasses}
-                onClick={this.props.handleHideModal}>
+                onClick={handleHideModal}>
                 <div className="add-deck-modal__wrapper">
                     <input
-                        name="name"
-                        value={name}
+                        name="valOne"
+                        value={valOne}
                         type="text"
-                        placeholder="Name"
+                        placeholder={newDeck ? "Name" : "Question"}
                         onChange={this.handleChange}
                         autoComplete="off"
                     />
-                    <textarea
-                        name="description"
-                        value={description}
-                        type="text"
-                        placeholder="Describe this deck..."
-                        onChange={this.handleChange}
-                        autoComplete="off"
-                    />
-                    <Button rounded onClick={this.handleAdd}>ADD DECK</Button>
+                    {
+                        newDeck ?
+                            <textarea
+                                name="valTwo"
+                                value={valTwo}
+                                type="text"
+                                placeholder="Describe this deck..."
+                                onChange={this.handleChange}
+                                autoComplete="off"
+                            /> :
+                            <div>
+                                <input
+                                    name="valTwo"
+                                    value={valTwo}
+                                    type="text"
+                                    placeholder="Answer"
+                                    onChange={this.handleChange}
+                                    autoComplete="off"
+                                />
+                                {/* <p>Added = {this.state.cardsAdded}</p> */}
+                            </div>
+                    }
+                    <Button rounded onClick={this.handleAdd}>ADD {newDeck ? 'DECK' : 'CARD'}</Button>
                 </div>
             </div>
         );
     }
 }
 
-export default connect(null, { addDeck })(AddDeckModal)
+export default connect(null, { addDeck, addCard })(AddDeckModal)
