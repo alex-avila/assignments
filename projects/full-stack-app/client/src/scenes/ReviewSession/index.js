@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { updateCard } from '../../redux/decksReducer'
+import { updateCard, getDeck } from '../../redux/decksReducer'
+
 import QualityGetter from './components/QualityGetter';
 import Card from './components/Card';
 
@@ -20,21 +21,40 @@ class ReviewSession extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentInQueue: 0,
-            isCardFlipped: false
+            currentIndex: 0,
+            isCardFlipped: false,
+            lastAvailableLen: 0
+        }
+    }
+
+    componentDidMount() {
+        if (!Object.keys(this.props.deck).length) {
+            this.props.getDeck(this.props.location.state.deckId)
+        } else {
+            this.setState({ lastAvailableLen: this.props.deck.inQueue.len })
         }
     }
 
     handleQRes = (len, cardId, quality) => {
         const { deckId } = this.props.location.state
         this.props.updateCard(deckId, cardId, quality)
-        if (this.state.currentInQueue + 1 <= len - 1) {
-            this.setState(prevState => ({
-                currentInQueue: prevState.currentInQueue + 1,
-                isCardFlipped: false
-            }))
+        // if availableCards decreased in length
+            // keep currentIndex the same
+            // otherwise if currentIndex plus 1 is less than or equal to
+                // len minus 1
+                // add 1 to currentIndex
+        const { lastAvailableLen } = this.state
+        if (len < lastAvailableLen) {
+            this.setState({ lastAvailableLen: len })
         } else {
-            this.setState({ currentInQueue: 0, isCardFlipped: false })
+            if (this.state.currentIndex + 1 <= len - 1) {
+                this.setState(prevState => ({
+                    currentIndex: prevState.currentIndex + 1,
+                    isCardFlipped: false
+                }))
+            } else {
+                this.setState({ currentIndex: 0, isCardFlipped: false })
+            }
         }
     }
 
@@ -42,14 +62,17 @@ class ReviewSession extends Component {
         this.setState(prevState => ({ isCardFlipped: !prevState.isCardFlipped }))
     }
 
-
     render() {
-        const deck = this.props.decks.find(deck => deck._id === this.props.match.params.id)
-        const availableCards = deck ? deck.cards.filter(card => {
-            return new Date(card.availableDate) <= Date.now()
-        }) : null
-        if (availableCards) {console.log(availableCards.length)}
-        const card = availableCards ? availableCards[this.state.currentInQueue] : null
+        const deck = this.props.deck
+        let availableCards
+        if (Object.keys(deck).length) {
+            if (deck.inQueue.cards) {
+                availableCards = deck.inQueue.cards
+            }
+        }
+        const card = availableCards ? availableCards[this.state.currentIndex] : null
+        console.log(`Cards in queue: ${Object.keys(deck).length ? deck.inQueue.len : null}`)
+        console.log(`Current index: ${this.state.currentIndex}`)
         return (
             <div className="review-session__wrapper">
                 {/* Special Navbar */}
@@ -65,9 +88,15 @@ class ReviewSession extends Component {
                         id={card._id}
                     />
                 }
+                {
+                    !card &&
+                    <div className="utility-wrapper">
+                        <h1>Finished review.</h1>
+                    </div>
+                }
             </div>
         );
     }
 }
 
-export default connect(state => ({ decks: state.deckData.decks }), { updateCard })(ReviewSession)
+export default connect(state => ({ deck: state.deckData.deck }), { updateCard, getDeck })(ReviewSession)

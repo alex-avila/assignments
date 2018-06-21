@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const initialState = {
     decks: [],
-    deck: []
+    deck: {}
 }
 
 export const getDecks = () => {
@@ -30,7 +30,7 @@ export const getDeck = id => {
 export const updateCard = (deckId, cardId, body) => {
     return dispatch => {
         axios.put(`/decks/${deckId}/cards/${cardId}`, {quality: body}).then(response => {
-            dispatch(getDecks())
+            dispatch(getDeck(deckId))
         })
     }
 }
@@ -41,8 +41,6 @@ const decksReducer = (state = initialState, action) => {
             return {...state, decks: action.decks}
         case 'GET_DECK':
             return {...state, deck: action.deck}
-        case 'UPDATE_CARD':
-            return state
         default:
             return state
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { getDecks } from '../../redux/decksReducer'
+import { getDeck } from '../../redux/decksReducer'
 
 import { Link } from 'react-router-dom'
 
@@ -11,20 +11,18 @@ import './DeckDetails.css'
 
 class DeckDetails extends Component {
     componentDidMount() {
-        if (!this.props.decks.length) {
-            this.props.getDecks()
-        }
+        this.props.getDeck(this.props.match.params.id)
     }
 
     render() {
-        const deck = this.props.decks.find(deck => deck._id === this.props.match.params.id)
-        const availableCards = deck ? deck.cards.filter(card => {
+        const deck = this.props.deck
+        const availableCards = Object.keys(deck).length ? deck.cards.filter(card => {
             return new Date(card.availableDate) <= Date.now()
         }) : null
         return (
             <div className="utility-wrapper">
                 {
-                    deck &&
+                    Object.keys(deck).length &&
                     <div className="deck-details">
                         <h2>{deck.name}</h2>
                         <p>{deck.description}</p>
@@ -45,4 +43,4 @@ class DeckDetails extends Component {
     }
 }
 
-export default connect(state => ({ decks: state.deckData.decks }), { getDecks })(DeckDetails)
+export default connect(state => ({ deck: state.deckData.deck }), { getDeck })(DeckDetails)
