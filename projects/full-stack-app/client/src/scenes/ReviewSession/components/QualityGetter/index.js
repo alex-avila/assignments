@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Button from '../../../../components/Button'
 
-import './QualityGetter.css'
+import './index.css'
 
 class QualityGetter extends Component {
     render() {

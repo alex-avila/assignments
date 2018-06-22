@@ -6,7 +6,7 @@ import { uploadCSV } from '../../redux/decksReducer'
 import Button from '../Button'
 import Dropzone from 'react-dropzone'
 
-import './UploadModal.css'
+import './index.css'
 
 class UploadModal extends Component {
     constructor(props) {

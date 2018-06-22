@@ -6,7 +6,7 @@ import { updateCard, getDeck } from '../../redux/decksReducer'
 import QualityGetter from './components/QualityGetter';
 import Card from './components/Card';
 
-import './ReviewSession.css'
+import './index.css'
 
 class ReviewSession extends Component {
     /*

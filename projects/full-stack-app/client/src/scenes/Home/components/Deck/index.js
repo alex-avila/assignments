@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Link } from 'react-router-dom'
 
-import './Deck.css'
+import './index.css'
 
 class Deck extends Component {
     render() {

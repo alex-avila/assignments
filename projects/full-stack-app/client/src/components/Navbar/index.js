@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import addIcon from '../../icons/add.svg'
 
-import './Navbar.css'
+import './index.css'
 
 class Navbar extends Component {
     render() {
