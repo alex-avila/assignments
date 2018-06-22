@@ -2,7 +2,7 @@ const express = require('express')
 const deckRoutes = express.Router()
 const Deck = require('../models/deck')
 const csv = require('csv')
-const formidable = require('formidable')
+
 const handleRes = (err, res, data, method = '') => {
     if (err) return res.status(500).send(err)
     return res.status(method === 'POST' ? 201 : 200).send(data)
