@@ -25,15 +25,25 @@
     padding: 0.5em 0.618em;
 }
 
-.nav__action--add {
+.nav__actions {
+    display: flex;
     background: #EBEBEB;
-    border-radius: 500px;
     border: 1px solid #979797;
+    border-radius: 500px;
+    padding: 0 0.25em;
+}
+
+.nav__action {
     display: flex;
     align-items: center;
-    padding: 0.25em 0.8em 0.25em 0.618em;
     justify-content: space-evenly;
     cursor: pointer;
+    padding: 0.25em 0.8em 0.25em 0.5em;
+}
+
+.nav__action:first-child {
+    border-right: 1px solid #979797;
+    padding: 0.25em 0.8em;
 }
 
 .add-icon {

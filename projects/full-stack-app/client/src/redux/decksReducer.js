@@ -52,6 +52,14 @@ export const addCard = (id, body) => {
     }
 }
 
+export const uploadCSV = (body) => {
+    return dispatch => {
+        axios.post(`/decks/`, body).then(response => {
+            dispatch(getDecks())
+        })
+    }
+}
+
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_DECKS':

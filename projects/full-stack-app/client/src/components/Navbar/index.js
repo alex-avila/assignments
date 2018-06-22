@@ -14,12 +14,20 @@ class Navbar extends Component {
                     <Link to="/" className="nav__to-home">
                         <div className="nav__logo">WARIO ANKI</div>
                     </Link>
-                    <div
-                        className="nav__action--add"
-                        onClick={this.props.handleShowModal}
-                    >
-                        <img className="add-icon" src={addIcon} alt="Add icon." />
-                        NEW
+                    <div className="nav__actions">
+                        <div
+                            className="nav__action"
+                            onClick={() => this.props.handleShowModal('upload')}
+                        >
+                            UPLOAD
+                        </div>
+                        <div
+                            className="nav__action"
+                            onClick={() => this.props.handleShowModal('add')}
+                        >
+                            <img className="add-icon" src={addIcon} alt="Add icon." />
+                            NEW
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -27,4 +35,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+export default Navbar

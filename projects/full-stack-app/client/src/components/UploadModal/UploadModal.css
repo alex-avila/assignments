@@ -1,4 +1,4 @@
-.add-deck-modal {
+.upload-deck-modal {
     position: fixed;
     top: 0;
     height: 100%;
@@ -12,7 +12,7 @@
     transition: all 0.3s;
 }
 
-.add-deck-modal__wrapper {
+.upload-deck-modal__wrapper {
     background: #EBEBEB;
     border: 1px solid #979797;
     padding: 1em 1em;
@@ -20,8 +20,28 @@
     flex-direction: column;
 }
 
-.add-deck-modal input,
-.add-deck-modal textarea {
+.upload-deck-modal button {
+    margin: auto;
+}
+
+.modal__show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropzone {
+    display: flex;
+    height: 200px;
+    width: 200px;
+    border: dashed 1px #979797;
+    margin-bottom: 0.618em;
+    align-items: center;
+    justify-content: center; 
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.upload-deck-modal input {
     background: #ffffff;
     font-size: 16px;
     border: 1px solid #979797;
@@ -31,27 +51,7 @@
     outline: none;
 }
 
-.add-deck-modal input::placeholder,
-.add-deck-modal textarea::placeholder {
+.upload-deck-modal input::placeholder,
+.upload-deck-modal textarea::placeholder {
     color: #AAAAAA;
-}
-
-.add-deck-modal input {
-    font-size: 22px;
-}
-
-.add-deck-modal textarea {
-    resize: none;
-    height: 100px;
-    margin: auto 0 0.618em;
-}
-
-.add-deck-modal button {
-    width: 63%;
-    margin: auto;
-}
-
-.modal__show {
-    visibility: visible;
-    opacity: 1;
 }

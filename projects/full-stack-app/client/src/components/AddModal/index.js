@@ -54,7 +54,8 @@ class AddDeckModal extends Component {
             <div
                 id="background"
                 className={modalClasses}
-                onClick={handleHideModal}>
+                onClick={handleHideModal}
+            >
                 <div className="add-deck-modal__wrapper">
                     <input
                         name="valOne"

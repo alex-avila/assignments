@@ -2,17 +2,19 @@ import React, { Component } from 'react'
 
 import { Switch, Route, withRouter } from 'react-router-dom'
 
-import Navbar from './components/Navbar';
-import Decks from './scenes/Home';
-import DeckDetails from './scenes/DeckDetails';
-import ReviewSession from './scenes/ReviewSession';
-import AddModal from './components/AddModal';
+import Navbar from './components/Navbar'
+import Decks from './scenes/Home'
+import DeckDetails from './scenes/DeckDetails'
+import ReviewSession from './scenes/ReviewSession'
+import AddModal from './components/AddModal'
+import UploadModal from './components/UploadModal'
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isModalOn: false,
+            isAddModalOn: false,
+            isUploadModalOn: false,
             isHome: true
         }
     }
@@ -40,17 +42,21 @@ class App extends Component {
         }
     }
 
-    handleShowModal = () => {
-        this.setState({ isModalOn: true })
+    handleShowModal = mode => {
+        if (mode === 'add') {
+            this.setState({ isAddModalOn: true })
+        } else if (mode === 'upload') {
+            this.setState({ isUploadModalOn: true })
+        }
     }
 
     handleHideModal = e => {
         if (!e) {
             // I have this first check to make modal hide when the
             // ADD btn is clicked on the the AddDeckModal component
-            this.setState({ isModalOn: false })
+            this.setState({ isUploadModalOn: false, isAddModalOn: false })
         } else if (e.target.id === 'background') {
-            this.setState({ isModalOn: false })
+            this.setState({ isUploadModalOn: false, isAddModalOn: false })
         }
     }
 
@@ -59,10 +65,14 @@ class App extends Component {
             <div className="wrapper">
                 <Navbar handleShowModal={this.handleShowModal} />
                 <AddModal
-                    isModalOn={this.state.isModalOn}
+                    isModalOn={this.state.isAddModalOn}
                     handleHideModal={this.handleHideModal}
                     newDeck={this.state.isHome}
                     deckId={this.props.location.pathname}
+                />
+                <UploadModal
+                    isModalOn={this.state.isUploadModalOn}
+                    handleHideModal={this.handleHideModal}
                 />
                 <Switch>
                     <Route exact path="/" component={Decks} />
