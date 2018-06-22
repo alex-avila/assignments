@@ -37,8 +37,8 @@ class UploadModal extends Component {
     handleUpload = () => {
         const data = new FormData()
         data.append('file', this.state.file)
-        data.append('fileName', this.state.inputs.name)
-        data.append('fileDescription', this.state.inputs.description)
+        data.append('name', this.state.inputs.name)
+        data.append('description', this.state.inputs.description)
         this.props.uploadCSV(data)
     }
 

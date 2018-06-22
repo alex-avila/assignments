@@ -2,40 +2,49 @@ const express = require('express')
 const deckRoutes = express.Router()
 const Deck = require('../models/deck')
 const csv = require('csv')
-const fs = require('fs')
-
+const formidable = require('formidable')
 const handleRes = (err, res, data, method = '') => {
     if (err) return res.status(500).send(err)
     return res.status(method === 'POST' ? 201 : 200).send(data)
 }
+
+class Card {
+    constructor(question, answer) {
+        this.question = question
+        this.answer = answer
+    }
+}
+
 
 deckRoutes.route('/')
     .get((req, res) => {
         Deck.find((err, decks) => handleRes(err, res, decks))
     })
     .post((req, res) => {
-        const csvFile = req.files.file
-
-        console.log(__dirname)
-        csvFile.mv(`${__dirname}/${req.body.filename}.csv`, (err) => {
-            if (err) return res.status(500).send(err)
-            res.json({ file: `public/${req.body.filename}.jpg` })
-        })
-
-        const csvData = []
-        fs.createReadStream(csvFile.data)
-            .pipe(csv.parse({ delimiter: ':' }))
-            .on('data', csvrow => {
-                console.log(csvrow)
-                csvData.push(csvrow)
+        if (req.files) {
+            const csvFile = req.files.file
+            const { name, description } = req.body
+            csv.parse(csvFile.data, (err, data) => {
+                const cards = data.reduce((final, row) => {
+                    return [
+                        ...final,
+                        row.reduce((final, item) => {
+                            if (row.indexOf(item) === 0) {
+                                return { ...final, question: item }
+                            } else {
+                                return { ...final, answer: item }
+                            }
+                        }, {})
+                    ]
+                }, [])
+                const deck = new Deck({cards, name, description})
+                deck.save((err, savedDeck) => handleRes(err, res, savedDeck, req.method))
             })
-            .on('end', () => [
-                console.log(csvData)
-            ])
+        } else {
+            const deck = new Deck(req.body)
+            deck.save((err, savedDeck) => handleRes(err, res, savedDeck, req.method))
+        }
 
-
-        // const deck = new Deck(req.body)
-        // deck.save((err, savedDeck) => handleRes(err, res, savedDeck, req.method))
     })
 
 deckRoutes.route('/:deckId')
