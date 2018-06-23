@@ -61,3 +61,11 @@
     cursor: pointer;
     padding: 0 1em;
 }
+
+.deck-details__wrapper a {
+    display: block;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
