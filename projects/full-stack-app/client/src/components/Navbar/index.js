@@ -10,7 +10,7 @@ class Navbar extends Component {
     render() {
         return (
             <nav className="header__nav">
-                <div className="nav__wrapper">
+                <div className="nav__wrapper utility-wrapper">
                     <Link to="/" className="nav__to-home">
                         <div className="nav__logo">WARIO ANKI</div>
                     </Link>

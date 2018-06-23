@@ -13,6 +13,7 @@ class UploadModal extends Component {
         super(props)
         this.state = {
             file: null,
+            isUploadAccepted: false,
             inputs: {
                 name: '',
                 description: ''
@@ -30,8 +31,10 @@ class UploadModal extends Component {
         }))
     }
 
-    onDrop = files => {
-        this.setState({ file: files[0] })
+    onDrop = (accepted, rejected) => {
+        if (accepted.length === 1) {
+            this.setState({ file: accepted[0], isUploadAccepted: true })
+        }
     }
 
     handleUpload = () => {
@@ -55,22 +58,43 @@ class UploadModal extends Component {
                 onClick={handleHideModal}
             >
                 <div className="upload-deck-modal__wrapper">
-                    <Dropzone className="dropzone" onDrop={this.onDrop}>
-                        <div>Drag &amp; Drop</div>
-                        <div><small>(or click to select a file)</small></div>
-                    </Dropzone>
+                    {
+                        !this.state.isUploadAccepted ?
+                        <Dropzone 
+                            accept="text/csv"
+                            className="dropzone"
+                            onDrop={this.onDrop}
+                        >
+                        {({ isDragActive, isDragReject }) => {
+                            if (isDragReject) {
+                                return "This is not a csv file."
+                            }
+                            if (isDragActive) {
+                                return "Drop it."
+                            }
+                            return (
+                                <div>
+                                    <div>Drag &amp; Drop</div>
+                                    <div><small>(or click to select a csv file)</small></div>
+                                </div>
+                            )
+                        }}
+                            
+                        </Dropzone> :
+                        <p>{this.state.file.name} was uploaded.</p>
+                    }
                     <input
                         name="name"
                         type="text" 
-                        placeholder="name"
+                        placeholder="Name"
                         onChange={this.handleChange}
                         value={this.state.inputs.name}
                         autoComplete="off"
                     />
-                    <input
+                    <textarea
                         name="description"
                         type="text" 
-                        placeholder="description"
+                        placeholder="Describe this deck..."
                         onChange={this.handleChange}
                         value={this.state.inputs.description}
                         autoComplete="off"

@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { getDecks } from '../../redux/decksReducer'
 
 import Deck from './components/Deck';
-// import Dashboard from '../../components/Dashboard'
+
+import './index.css'
 
 class Decks extends Component {
     componentDidMount() {
@@ -25,10 +26,8 @@ class Decks extends Component {
             })
         return (
             <section className="decks-list">
-                {/* <Dashboard
-                /> */}
+                <h2 className="utility-wrapper">Decks</h2>
                 <div className="decks-list__wrapper utility-wrapper">
-                    <h2>Decks</h2>
                     {mappedDecks}
                 </div>
             </section>

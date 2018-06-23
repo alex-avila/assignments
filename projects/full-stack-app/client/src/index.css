@@ -15,4 +15,6 @@ body,
 
 .utility-wrapper {
     padding: 0 1rem;
+    max-width: 800px;
+    margin: auto;
 }

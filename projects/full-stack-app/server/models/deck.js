@@ -24,6 +24,10 @@ const cardSchema = new Schema({
         type: Date,
         required: true,
         default: Date.now()
+    },
+    hasBeenSeen: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true })
 
