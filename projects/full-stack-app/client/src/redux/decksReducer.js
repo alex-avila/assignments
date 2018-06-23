@@ -52,9 +52,17 @@ export const addCard = (id, body) => {
     }
 }
 
-export const uploadCSV = (body) => {
+export const uploadCSV = body => {
     return dispatch => {
         axios.post(`/decks/`, body).then(response => {
+            dispatch(getDecks())
+        })
+    }
+}
+
+export const deleteDeck = id => {
+    return dispatch => {
+        axios.delete('/decks/' + id).then(response => {
             dispatch(getDecks())
         })
     }
