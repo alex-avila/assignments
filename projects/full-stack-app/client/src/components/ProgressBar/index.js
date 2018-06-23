@@ -6,7 +6,6 @@ class ProgressBar extends Component {
     render() {
         let { percentage } = this.props
         percentage =  !isNaN(percentage) ? percentage : 0
-        console.log(percentage)
         return (
             <div className="progress-bar">
                 <div className="progress-bar__wrapper">

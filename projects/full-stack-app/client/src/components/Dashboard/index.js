@@ -17,8 +17,6 @@ class Dashboard extends Component {
         })
         nextReview = nextReview[0].availableDate
         const momentDate = moment(nextReview).fromNow()
-        console.log(new Date(nextReview))
-        console.log(Date.now())
         return (
             <div className="dashboard">
                 <h3>Dashboard</h3>

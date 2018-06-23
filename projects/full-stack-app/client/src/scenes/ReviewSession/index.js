@@ -90,8 +90,6 @@ class ReviewSession extends Component {
         const card = availableCards ? availableCards[this.state.currentIndex] : null
         // console.log(`Cards in queue: ${Object.keys(deck).length ? deck.inQueue.len : null}`)
         // console.log(`Current index: ${this.state.currentIndex}`)
-        console.log(`Initial cards num: ${this.state.initialCardsNum}`)
-        console.log(`Current cards completed: ${this.state.currentCardsNum}`)
         return (
             <div className="review-session__wrapper">
                 {/* Special Navbar */}

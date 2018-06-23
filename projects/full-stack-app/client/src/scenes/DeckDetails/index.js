@@ -30,10 +30,9 @@ class DeckDetails extends Component {
                 isDropdownOn: false
             }))
         } else if (e.target.id === 'settings__icon') {
-            console.log('hey')
             this.setState(prevState => ({
                 isDropdownOn: !prevState.isDropdownOn
-            }), () => console.log(this.state.isDropdownOn))
+            }))
         }
     }
 
