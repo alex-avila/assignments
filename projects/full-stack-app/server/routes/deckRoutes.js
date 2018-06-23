@@ -8,14 +8,6 @@ const handleRes = (err, res, data, method = '') => {
     return res.status(method === 'POST' ? 201 : 200).send(data)
 }
 
-class Card {
-    constructor(question, answer) {
-        this.question = question
-        this.answer = answer
-    }
-}
-
-
 deckRoutes.route('/')
     .get((req, res) => {
         Deck.find((err, decks) => handleRes(err, res, decks))
