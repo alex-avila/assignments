@@ -6,6 +6,7 @@ import { getDeck, deleteDeck } from '../../redux/decksReducer'
 import { Link, Redirect } from 'react-router-dom'
 
 import Button from '../../components/Button'
+import Dashboard from '../../components/Dashboard'
 import settingsIcon from '../../icons/settings.svg'
 
 import './index.css'
@@ -46,9 +47,6 @@ class DeckDetails extends Component {
             return <Redirect to="/" />
         }
         const deck = this.props.deck
-        const availableCards = Object.keys(deck).length ? deck.cards.filter(card => {
-            return new Date(card.availableDate) <= Date.now()
-        }) : null
         return (
             <div className="deck-details utility-wrapper" onClick={this.handleToggleDropdown}>
                 {
@@ -58,12 +56,6 @@ class DeckDetails extends Component {
                             <div className="name-wrapper--inner">
                                 <h2>{deck.name}</h2>
                                 <div className="deck__settings">
-                                    <img
-                                        className="settings__icon"
-                                        id="settings__icon"
-                                        src={settingsIcon}
-                                        alt="Settings icon"
-                                    />
                                     <div
                                         className={
                                             this.state.isDropdownOn ?
@@ -73,12 +65,19 @@ class DeckDetails extends Component {
                                     >
                                         <span onClick={this.handleDelete}>Delete</span>
                                     </div>
+                                    <img
+                                        className="settings__icon"
+                                        id="settings__icon"
+                                        src={settingsIcon}
+                                        alt="Settings icon"
+                                    />
+                                    
                                 </div>
                             </div>
                         </div>
                         <p>{deck.description}</p>
-                        <p>Cards in deck: {deck.cards.length}</p>
-                        <p>Available cards: {availableCards.length}</p>
+                        <p>{deck.cards.length} cards in total.</p>
+                        <Dashboard {...deck} />
                         <Link to={{
                             pathname: `${this.props.match.url}/review-session`,
                             state: {

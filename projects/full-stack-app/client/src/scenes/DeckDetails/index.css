@@ -24,7 +24,6 @@
 
 .settings__icon {
     align-self: center;
-    justify-self: center;
     display: block;
     height: 25px;
     width: 25px;
@@ -33,6 +32,7 @@
     margin: 0 0.25em 0 0;
     filter: contrast(0.1);
     cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.23, 0, 0.51, 0.98);
 }
 
 .settings__dropdown {
@@ -51,6 +51,10 @@
 .dropdown-show {
     visibility: visible;
     opacity: 1;
+}
+
+.dropdown-show + .settings__icon {
+    transform: rotate(120deg)
 }
 
 .settings__dropdown span {
