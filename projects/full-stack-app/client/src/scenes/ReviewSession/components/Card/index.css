@@ -10,8 +10,8 @@
     transform-style: preserve-3d;
     position: relative;
     margin: auto;
-    height: 340px;
-    width: calc(350px / 1.214);
+    height: 300px;
+    width: calc(300px / 1.214);
     font-size: 22px;
     transition: all 0.5s cubic-bezier(0.02, 0.49, 0.54, 0.98);
 }

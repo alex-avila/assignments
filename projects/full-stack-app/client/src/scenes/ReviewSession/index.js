@@ -95,11 +95,8 @@ class ReviewSession extends Component {
             }
         }
         const card = availableCards ? availableCards[this.state.currentIndex] : null
-        // console.log(`Cards in queue: ${Object.keys(deck).length ? deck.inQueue.len : null}`)
-        // console.log(`Current index: ${this.state.currentIndex}`)
         return (
             <div className="review-session__wrapper">
-                {/* Special Navbar */}
                 {
                     deck && card &&
                     <Card {...card} handleFlip={this.handleFlip} isCardFlipped={isCardFlipped} />
@@ -108,6 +105,7 @@ class ReviewSession extends Component {
                     card &&
                     <div className="review__status-and-controls">
                         <ProgressBar
+                            className="progresss"
                             percentage={ (currentCardsNum / initialCardsNum) * 100 }
                         />
                         <QualityGetter

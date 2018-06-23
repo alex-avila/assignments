@@ -1,6 +1,11 @@
-.progress-bar__wrapper,
-.progress-bar__progression {
+.progress-bar__wrapper {
+    border: 1px solid #979797;
+    border-bottom: 0;
     height: 10px;
+}
+
+.progress-bar__progression {
+    border-right: 1px solid #979797;
 }
 
 .progress-bar__wrapper {
