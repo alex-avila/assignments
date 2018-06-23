@@ -1,0 +1,13 @@
+.progress-bar__wrapper,
+.progress-bar__progression {
+    height: 10px;
+}
+
+.progress-bar__wrapper {
+    width: 100%;
+    background: #EBEBEB;
+}
+
+.progress-bar__progression {
+    background: #979797;
+}

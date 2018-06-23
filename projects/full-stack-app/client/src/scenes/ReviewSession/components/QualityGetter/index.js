@@ -30,7 +30,7 @@ class QualityGetter extends Component {
                     4
                 </Button>
                 <Button
-                    onClick={() => handleQRes(len, id, 4)}
+                    onClick={() => handleQRes(len, id, 5)}
                 >
                     5
                 </Button>

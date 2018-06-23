@@ -7,6 +7,7 @@ import QualityGetter from './components/QualityGetter';
 import Card from './components/Card';
 
 import './index.css'
+import ProgressBar from '../../components/ProgressBar';
 
 class ReviewSession extends Component {
     /*
@@ -23,15 +24,24 @@ class ReviewSession extends Component {
         this.state = {
             currentIndex: 0,
             isCardFlipped: false,
-            lastAvailableLen: 0
+            lastAvailableLen: 0,
+            initialCardsNum: 0,       // This will be used to get percentage
+            currentCardsNum: 0        // This will be used to get percentage
         }
     }
 
     componentDidMount() {
+        // If user's first page is this page then go get deck
+        // it does not really work right now if I want to also set state
+        // but in the future I will either make this work somehow
+        // or redirect them to the home page or the deckdetails page
         if (!Object.keys(this.props.deck).length) {
             this.props.getDeck(this.props.location.state.deckId)
         } else {
-            this.setState({ lastAvailableLen: this.props.deck.inQueue.len })
+            this.setState({
+                lastAvailableLen: this.props.deck.inQueue.len,
+                initialCardsNum: this.props.deck.inQueue.len,
+            })
         }
     }
 
@@ -44,11 +54,14 @@ class ReviewSession extends Component {
                 // len minus 1
                 // add 1 to currentIndex
         if (quality > 3) {
-            this.setState(prevState => ({ lastAvailableLen: prevState.lastAvailableLen - 1 }))
+            this.setState(prevState => ({
+                lastAvailableLen: prevState.lastAvailableLen - 1,
+                currentCardsNum: prevState.currentCardsNum + 1
+            }))
             if (this.state.currentIndex + 1 >= len - 1) {
                 this.setState({ currentIndex: 0 })
             }
-            this.setState({isCardFlipped: false})
+            this.setState({ isCardFlipped: false })
         } else {
             if (this.state.currentIndex + 1 <= len - 1) {
                 this.setState(prevState => ({
@@ -67,6 +80,7 @@ class ReviewSession extends Component {
 
     render() {
         const deck = this.props.deck
+        const { initialCardsNum, currentCardsNum } = this.state
         let availableCards
         if (Object.keys(deck).length) {
             if (deck.inQueue.cards) {
@@ -74,8 +88,10 @@ class ReviewSession extends Component {
             }
         }
         const card = availableCards ? availableCards[this.state.currentIndex] : null
-        console.log(`Cards in queue: ${Object.keys(deck).length ? deck.inQueue.len : null}`)
-        console.log(`Current index: ${this.state.currentIndex}`)
+        // console.log(`Cards in queue: ${Object.keys(deck).length ? deck.inQueue.len : null}`)
+        // console.log(`Current index: ${this.state.currentIndex}`)
+        console.log(`Initial cards num: ${this.state.initialCardsNum}`)
+        console.log(`Current cards completed: ${this.state.currentCardsNum}`)
         return (
             <div className="review-session__wrapper">
                 {/* Special Navbar */}
@@ -85,11 +101,16 @@ class ReviewSession extends Component {
                 }
                 {
                     card &&
-                    <QualityGetter
-                        handleQRes={this.handleQRes}
-                        len={availableCards.length}
-                        id={card._id}
-                    />
+                    <div className="review__status-and-controls">
+                        <ProgressBar
+                            percentage={ (currentCardsNum / initialCardsNum) * 100 }
+                        />
+                        <QualityGetter
+                            handleQRes={this.handleQRes}
+                            len={availableCards.length}
+                            id={card._id}
+                        />
+                    </div>
                 }
                 {
                     !card &&
