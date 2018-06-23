@@ -24,6 +24,7 @@ class ReviewSession extends Component {
         this.state = {
             currentIndex: 0,
             isCardFlipped: false,
+            wasAnswerRevealed: false,
             lastAvailableLen: 0,
             initialCardsNum: 0,       // This will be used to get percentage
             currentCardsNum: 0        // This will be used to get percentage
@@ -56,31 +57,37 @@ class ReviewSession extends Component {
         if (quality > 3) {
             this.setState(prevState => ({
                 lastAvailableLen: prevState.lastAvailableLen - 1,
-                currentCardsNum: prevState.currentCardsNum + 1
+                currentCardsNum: prevState.currentCardsNum + 1,
             }))
             if (this.state.currentIndex + 1 >= len - 1) {
                 this.setState({ currentIndex: 0 })
             }
-            this.setState({ isCardFlipped: false })
+            this.setState({ isCardFlipped: false, wasAnswerRevealed: false })
         } else {
             if (this.state.currentIndex + 1 <= len - 1) {
                 this.setState(prevState => ({
                     currentIndex: prevState.currentIndex + 1,
-                    isCardFlipped: false
+                    isCardFlipped: false,
+                    wasAnswerRevealed: false
                 }))
             } else {
-                this.setState({ currentIndex: 0, isCardFlipped: false })
+                this.setState({ currentIndex: 0, isCardFlipped: false, wasAnswerRevealed: false })
             }
         }
     }
 
     handleFlip = () => {
-        this.setState(prevState => ({ isCardFlipped: !prevState.isCardFlipped }))
+        this.setState(prevState => ({ isCardFlipped: !prevState.isCardFlipped, wasAnswerRevealed: true }))
     }
 
     render() {
         const deck = this.props.deck
-        const { initialCardsNum, currentCardsNum } = this.state
+        const { 
+            initialCardsNum, 
+            currentCardsNum, 
+            isCardFlipped, 
+            wasAnswerRevealed 
+        } = this.state
         let availableCards
         if (Object.keys(deck).length) {
             if (deck.inQueue.cards) {
@@ -95,7 +102,7 @@ class ReviewSession extends Component {
                 {/* Special Navbar */}
                 {
                     deck && card &&
-                    <Card {...card} handleFlip={this.handleFlip} isCardFlipped={this.state.isCardFlipped} />
+                    <Card {...card} handleFlip={this.handleFlip} isCardFlipped={isCardFlipped} />
                 }
                 {
                     card &&
@@ -107,6 +114,8 @@ class ReviewSession extends Component {
                             handleQRes={this.handleQRes}
                             len={availableCards.length}
                             id={card._id}
+                            wasAnswerRevealed={wasAnswerRevealed}
+                            handleFlip={this.handleFlip}
                         />
                     </div>
                 }
