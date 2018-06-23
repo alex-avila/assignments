@@ -1,13 +1,15 @@
 .dashboard__wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
     border: 1px solid #979797;
     margin: 1em 0;
 }
 
 .dashboard__wrapper div {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .dashboard__wrapper div:not(:last-child) {
@@ -16,7 +18,7 @@
 
 .dashboard__wrapper div span {
     display: block;
-    padding: 0.618em 0 0.5em;
+    padding: 0.618em 1em 0.5em;
     font-size: 22px;
 }
 
