@@ -12,15 +12,6 @@ import './index.css'
 import ProgressBar from '../../components/ProgressBar';
 
 class ReviewSession extends Component {
-    /*
-    Get available cards to current queue
-    Record response to each card
-    After each response determine whether card should stay in queue
-    based on date or if it should get out
-    loop through the card array until all cards are confirmed to move
-    on to a later date
-    */
-
     constructor(props) {
         super(props)
         this.state = {
@@ -34,10 +25,6 @@ class ReviewSession extends Component {
     }
 
     componentDidMount() {
-        // If user's first page is this page then go get deck
-        // it does not really work right now if I want to also set state
-        // but in the future I will either make this work somehow
-        // or redirect them to the home page or the deckdetails page
         if (!Object.keys(this.props.deck).length) {
             return
         } else {
@@ -49,13 +36,9 @@ class ReviewSession extends Component {
     }
 
     handleQRes = (len, cardId, quality) => {
+        // Handles what happens when a certain quality is given so that it does not break
         const { deckId } = this.props.location.state
         this.props.updateCard(deckId, cardId, quality)
-        // if quality is more than 4, availableCards decreases in length so
-            // keep currentIndex the same
-            // otherwise if currentIndex plus 1 is less than or equal to
-                // len minus 1
-                // add 1 to currentIndex
         if (quality > 3) {
             this.setState(prevState => ({
                 lastAvailableLen: prevState.lastAvailableLen - 1,
@@ -79,7 +62,10 @@ class ReviewSession extends Component {
     }
 
     handleFlip = () => {
-        this.setState(prevState => ({ isCardFlipped: !prevState.isCardFlipped, wasAnswerRevealed: true }))
+        this.setState(prevState => ({
+            isCardFlipped: !prevState.isCardFlipped,
+            wasAnswerRevealed: true
+        }))
     }
 
     render() {

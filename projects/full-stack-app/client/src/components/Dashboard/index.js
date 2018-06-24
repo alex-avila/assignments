@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 
 import './index.css'
+import ProgressBar from '../ProgressBar';
 
 class Dashboard extends Component {
     render() {
@@ -17,6 +18,11 @@ class Dashboard extends Component {
         })
         nextReview = nextReview[0].availableDate
         const momentDate = moment(nextReview).fromNow()
+        const seen = this.props.cards.reduce((final, card) => {
+            return card.hasBeenSeen ? final + 1 : final
+        }, 0)
+        console.log(seen)
+        const percentage = (seen / this.props.cards.length) * 100
         return (
             <div className="dashboard">
                 <h3>Dashboard</h3>
@@ -40,6 +46,11 @@ class Dashboard extends Component {
                         <p>Next Day</p>
                     </div>
                 </div>
+                <h4>
+                    Percentage of cards studied <small>({percentage !== 0 && percentage < 1 ? 
+                        '<1' : Math.round(percentage)}%)</small>
+                </h4>
+                <ProgressBar percentage={percentage}/>
             </div>
         );
     }
