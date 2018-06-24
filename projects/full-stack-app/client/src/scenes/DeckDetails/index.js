@@ -5,9 +5,9 @@ import { getDeck, deleteDeck } from '../../redux/decksReducer'
 
 import { Link, Redirect } from 'react-router-dom'
 
+import TitleBar from './components/TitleBar';
 import Button from '../../components/Button'
 import Dashboard from '../../components/Dashboard'
-import settingsIcon from '../../icons/settings.svg'
 
 import './index.css'
 
@@ -41,39 +41,37 @@ class DeckDetails extends Component {
         this.props.deleteDeck(this.props.match.params.id)
     }
 
+    importantFunk = (deck) => {
+        const { cards } = deck
+        const cardObject = cards.reduce((final, card) => {
+            if (card.hasBeenSeen) {
+                final.newCards.push(card)
+            } else {
+                final.reviews.push(card)
+            }
+            return final
+        }, { newCards: [], reviews: [] })
+        const newCards = cardObject.newCards.slice(0, deck.settings.newCards.perDay)
+        const reviews = cardObject.reviews.slice(0, deck.settings.reviews.perDay)
+        const availableCards = [...newCards, ...reviews]
+        // Add condition to check if it was created today
+        console.log(deck.inQueue.reviews)
+        if (new Date(deck.today).getDate() !== new Date(Date.now()).getDate()) {
+            this.props.getCardsPerDeck(deck._id, availableCards)
+        }
+    }
+
     render() {
         if (this.state.deleted) {
             return <Redirect to="/" />
         }
-        const deck = this.props.deck
+        const { deck } = this.props
         return (
             <div className="deck-details utility-wrapper" onClick={this.handleToggleDropdown}>
                 {
                     !!Object.keys(deck).length &&
                     <div className="deck-details__wrapper">
-                        <div className="name-wrapper">
-                            <div className="name-wrapper--inner">
-                                <h2>{deck.name}</h2>
-                                <div className="deck__settings">
-                                    <div
-                                        className={
-                                            this.state.isDropdownOn ?
-                                                'settings__dropdown dropdown-show' :
-                                                'settings__dropdown'
-                                        }
-                                    >
-                                        <span onClick={this.handleDelete}>Delete</span>
-                                    </div>
-                                    <img
-                                        className="settings__icon"
-                                        id="settings__icon"
-                                        src={settingsIcon}
-                                        alt="Settings icon"
-                                    />
-                                    
-                                </div>
-                            </div>
-                        </div>
+                        <TitleBar deckName={deck.name} isDropdownOn={this.state.isDropdownOn} handleDelete={this.handleDelete}/>
                         <p>{deck.description}</p>
                         <p>{deck.cards.length} cards in total.</p>
                         <Dashboard {...deck} />
