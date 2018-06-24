@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import { getDecks } from '../../redux/decksReducer'
@@ -31,7 +31,7 @@ class Decks extends Component {
                     {mappedDecks}
                 </div>
             </section>
-        );
+        )
     }
 }
 

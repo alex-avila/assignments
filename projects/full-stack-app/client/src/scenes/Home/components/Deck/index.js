@@ -2,10 +2,17 @@ import React, { Component } from 'react'
 
 import { Link } from 'react-router-dom'
 
+import ProgressBar from '../../../../components/ProgressBar'
+
 import './index.css'
 
 class Deck extends Component {
     render() {
+        const seen = this.props.cards.reduce((final, card) => {
+            return card.hasBeenSeen ? final + 1 : final
+        }, 0)
+        console.log(seen)
+        const percentage = (seen / this.props.cards.length) * 100
         const { _id, name } = this.props
         // const { availableCards } = this.props
         return (
@@ -14,6 +21,7 @@ class Deck extends Component {
                     <div id={_id}>
                         <h3>{name}</h3>
                     </div>
+                    <ProgressBar percentage={percentage} />
                 </div>
             </Link>
         );

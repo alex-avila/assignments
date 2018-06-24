@@ -12,7 +12,7 @@ class ProgressBar extends Component {
                     <div
                         style={{ width: `${percentage}%`, height: 10 }}
                         className="progress-bar__progression"
-                    ></div>
+                    />
                 </div>
             </div>
         );

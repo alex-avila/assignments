@@ -1,3 +1,7 @@
+.decks-list {
+    padding-bottom: 2em;
+}
+
 .decks-list h2 {
     margin: 0.5em auto;
 }

@@ -59,7 +59,7 @@ cardRoutes.route('/:cardId')
             console.log(availableDate, repetition)
 
             // Set card with new values
-            card.set({ eFactor, availableDate, repetition })
+            card.set({ eFactor, availableDate, repetition, hasBeenSeen: true })
 
             // Save/update parent foundDeck
             foundDeck.save((err, savedDeck) => {

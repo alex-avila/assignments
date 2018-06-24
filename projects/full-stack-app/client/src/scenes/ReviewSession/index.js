@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateCard, getDeck } from '../../redux/decksReducer'
 
+import { Redirect } from 'react-router-dom'
+
 import QualityGetter from './components/QualityGetter';
 import Card from './components/Card';
 
@@ -37,7 +39,7 @@ class ReviewSession extends Component {
         // but in the future I will either make this work somehow
         // or redirect them to the home page or the deckdetails page
         if (!Object.keys(this.props.deck).length) {
-            this.props.getDeck(this.props.location.state.deckId)
+            return
         } else {
             this.setState({
                 lastAvailableLen: this.props.deck.inQueue.len,
@@ -81,6 +83,9 @@ class ReviewSession extends Component {
     }
 
     render() {
+        if (!Object.keys(this.props.deck).length) {
+            return <Redirect exact to={`/${this.props.location.state.deckId}`} />
+        }
         const deck = this.props.deck
         const { 
             initialCardsNum, 
