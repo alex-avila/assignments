@@ -2,7 +2,8 @@ import axios from 'axios'
 
 const initialState = {
     decks: [],
-    deck: {}
+    deck: {},
+    cardsPerDeck: {}
 }
 
 export const getDecks = () => {
@@ -68,12 +69,28 @@ export const deleteDeck = id => {
     }
 }
 
+export const getCardsPerDeck = (id, cards) => {
+    return {
+        type: 'GET_CARDS_PER_DECK',
+        id,
+        cards
+    }
+}
+
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_DECKS':
             return { ...state, decks: action.decks }
         case 'GET_DECK':
             return { ...state, deck: action.deck }
+        case 'GET_CARDS_PER_DECK':
+            return {
+                ...state,
+                cardsPerDeck: {
+                    ...state.cardsPerDeck,
+                    [action.id]: action.cards
+                }
+            }
         default:
             return state
     }
