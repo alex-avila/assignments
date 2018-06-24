@@ -18,8 +18,7 @@ deckRoutes.route('/')
             const { name, description } = req.body
             csv.parse(csvFile.data, (err, data) => {
                 const cards = data.reduce((final, row) => {
-                    return [
-                        ...final,
+                    final.push(
                         row.reduce((final, item) => {
                             if (row.indexOf(item) === 0) {
                                 return { ...final, question: item }
@@ -27,7 +26,8 @@ deckRoutes.route('/')
                                 return { ...final, answer: item }
                             }
                         }, {})
-                    ]
+                    )
+                    return final
                 }, [])
                 const deck = new Deck({cards, name, description})
                 deck.save((err, savedDeck) => handleRes(err, res, savedDeck, req.method))
@@ -41,7 +41,6 @@ deckRoutes.route('/')
 
 deckRoutes.route('/:deckId')
     .get((req, res) => {
-        console.log('Finding one deck by id.')
         Deck.findById(req.params.deckId, (err, foundDeck) => {
             foundDeck.save((err, savedDeck) => {
                 handleRes(err, res, savedDeck)
