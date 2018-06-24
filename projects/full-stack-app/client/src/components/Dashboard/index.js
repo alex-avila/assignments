@@ -21,7 +21,6 @@ class Dashboard extends Component {
         const seen = this.props.cards.reduce((final, card) => {
             return card.hasBeenSeen ? final + 1 : final
         }, 0)
-        console.log(seen)
         const percentage = (seen / this.props.cards.length) * 100
         return (
             <div className="dashboard">
