@@ -1,3 +1,13 @@
+// https://github.com/Automattic/mongoose/issues/6125
+// The link above SAVED THIS PROJECT!!!!!!!!!!!!!!!!!
+// It taught me how to do the things below
+// to pass props to mongoose middleware (pre('save'))
+// AGAIN, THIS SAVED MY PROJECT
+// updatedDeck.$cards = cards
+// updatedDeck.$addedManually = addedManually
+// foundDeck.$card = card
+// foundDeck.$quality = quality
+
 const express = require('express')
 const cardRoutes = express.Router({ mergeParams: true })
 
