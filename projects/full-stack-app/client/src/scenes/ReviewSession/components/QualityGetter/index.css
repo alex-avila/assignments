@@ -16,10 +16,10 @@
     cursor: pointer;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 600px) {
     .quality-getter,
     .quality-getter__reveal {
-        width: 60%;
+        width: 65%;
         margin: 0 auto 2em;
     }
 

@@ -25,7 +25,6 @@ class Dashboard extends Component {
             const areReviewsReady = new Date(nextReview).getUTCDate() === new Date(Date.now()).getUTCDate()
             // reviews are ready but there are none available
             if (areReviewsReady && availableNow === 0) {
-                console.log('why')
                 momentDate = 'in a day'
             } else if (areReviewsReady) {
                 momentDate = 'available now'

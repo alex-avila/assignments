@@ -8,12 +8,12 @@
     bottom: 0;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 600px) {
     .review-session__wrapper {
         height: auto;
         width: calc(100% - 3em);
         max-width: 800px;
-        margin: 2em auto 0;
+        margin: 3em auto 0;
         background: #fff;
         border: 1px solid #D8D8D8;
         box-shadow: 0 20px 30px -20px rgba(0, 0, 0, 0.13);

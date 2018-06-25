@@ -44,7 +44,7 @@
     transform: rotateY(180deg);
 }
 
-@media (min-width: 500px) {
+@media (min-width: 600px) {
     .card__wrapper {
         display: flex;
         align-items: center;
