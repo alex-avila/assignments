@@ -48,6 +48,11 @@ const deckSchema = new Schema({
             default: 0
         }
     },
+    dashboardData: {
+        availableNow: Number,
+        nextDay: Number,
+        nextReview: Date
+    },
     settings: {
         newCards: {
             perDay: {
@@ -68,20 +73,28 @@ const deckSchema = new Schema({
     }
 }, { timestamps: true })
 
-deckSchema.pre('save', function(next) {
+deckSchema.pre('save', function (next) {
     if (this.isNew || new Date(this.lastUpdated).getDate() !== new Date(Date.now()).getDate()) {
+
         const cardsInQueue = this.cards.filter(card => new Date(card.availableDate) <= Date.now())
         this.inQueue.newCards = cardsInQueue.filter(card => !card.hasBeenSeen).slice(0, this.settings.newCards.perDay)
         this.inQueue.reviews = cardsInQueue.filter(card => card.hasBeenSeen).slice(0, this.settings.reviews.perDay)
         this.inQueue.len = this.inQueue.newCards.length + this.inQueue.reviews.length
         this.lastUpdated = Date.now()
+
+        this.dashboardData.availableNow = this.inQueue.len
+        const nextDayLen = this.cards.filter(card => {
+            const cardDate = new Date(card.availableDate).getDate()
+            const tomorrowDate = new Date(new Date(Date.now()).setDate(new Date(Date.now()).getDate() + 1)).getDate()
+            return cardDate >= tomorrowDate
+        }).length
+        this.dashboardData.nextDay = nextDayLen
+        this.dashboardData.nextReview = this.cards.sort((a, b) => {
+            return new Date(a.availableDate).getDate() > new Date(b.availableDate).getDate()
+        })[0].availableDate
+
     }
     if (this.$addedManually) {
-        // console.log(this.cards.slice(50))
-        // let card = this.$cards[0]
-        // console.log(card)
-        // card = this.cards.find(card => card.question == card.question)
-        // console.log(card)
         this.inQueue.newCards.push(this.cards[this.cards.length - 1])
         this.inQueue.len = this.inQueue.newCards.length
         this.lastUpdated = Date.now()
@@ -89,7 +102,7 @@ deckSchema.pre('save', function(next) {
     next()
 })
 
-deckSchema.pre('save', function() {
+deckSchema.pre('save', function () {
     if (this.$card && this.$quality > 3) {
         if (this.inQueue.newCards.findIndex(card => card.question === this.$card.question) !== -1) {
             this.inQueue.newCards.splice(this.inQueue.newCards.findIndex(card => card.question === this.$card.question), 1)
