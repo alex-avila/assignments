@@ -1,6 +1,7 @@
 .deck-item {
     display: block;
     border: 1px solid #D8D8D8;
+    background: #fff;
     color: inherit;
     text-decoration: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
