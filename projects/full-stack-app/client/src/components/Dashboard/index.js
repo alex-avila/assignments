@@ -22,9 +22,10 @@ class Dashboard extends Component {
                 return new Date(a.availableDate).getDate() > new Date(b.availableDate).getDate()
             })
             nextReview = nextReview[0].availableDate
-            const areReviewsReady = new Date(nextReview).getDate() === new Date(Date.now()).getDate()
+            const areReviewsReady = new Date(nextReview).getUTCDate() === new Date(Date.now()).getUTCDate()
             // reviews are ready but there are none available
             if (areReviewsReady && availableNow === 0) {
+                console.log('why')
                 momentDate = 'in a day'
             } else if (areReviewsReady) {
                 momentDate = 'available now'
@@ -43,7 +44,7 @@ class Dashboard extends Component {
                     <div>
                         <span>
                             {
-                                new Date(nextReview) > Date.now() || !cards.length ||  new Date(nextReview).getDate() === new Date(Date.now()).getDate() ?
+                                new Date(nextReview) > Date.now() || !cards.length ||  new Date(nextReview).getUTCDate() === new Date(Date.now()).getUTCDate() ?
                                     momentDate.slice(0, 1).toUpperCase() + momentDate.slice(1) :
                                     'Available Now'
                             }
