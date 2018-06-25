@@ -13,7 +13,6 @@ class Deck extends Component {
         }, 0)
         const percentage = (seen / this.props.cards.length) * 100
         const { _id, name } = this.props
-        // const { availableCards } = this.props
         return (
             <Link to={_id} className="deck-item">
                 <div className="deck-item__wrapper">
