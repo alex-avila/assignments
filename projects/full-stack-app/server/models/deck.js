@@ -75,18 +75,20 @@ deckSchema.pre('save', function(next) {
         this.inQueue.reviews = cardsInQueue.filter(card => card.hasBeenSeen).slice(0, this.settings.reviews.perDay)
         this.inQueue.len = this.inQueue.newCards.length + this.inQueue.reviews.length
         this.lastUpdated = Date.now()
-    } 
+    }
+    if (this.$addedManually) {
+        this.inQueue.newCards.push(this.cards.find(card => card.question <= this.$cards[0].question))
+        this.inQueue.len = this.inQueue.newCards.length
+        this.lastUpdated = Date.now()
+    }
     next()
 })
 
 deckSchema.pre('save', function() {
     if (this.$card && this.$quality > 3) {
-        console.log(this.inQueue.newCards.findIndex(card => card.question === this.$card.question))
         if (this.inQueue.newCards.findIndex(card => card.question === this.$card.question) !== -1) {
-            console.log('new')
             this.inQueue.newCards.splice(this.inQueue.newCards.findIndex(card => card.question === this.$card.question), 1)
         } else {
-            console.log('review')
             this.inQueue.reviews.splice(this.inQueue.reviews.indexOf(this.$card), 1)
         }
         this.inQueue.len = this.inQueue.newCards.length + this.inQueue.reviews.length

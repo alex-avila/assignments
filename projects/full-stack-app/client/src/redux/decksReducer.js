@@ -43,9 +43,9 @@ export const addDeck = body => {
     }
 }
 
-export const addCard = (id, body) => {
+export const addCard = (id, body, addedManually = false) => {
     return dispatch => {
-        axios.put(`/decks/${id}/cards`, body).then(response => {
+        axios.put(`/decks/${id}/cards`, {body, addedManually}).then(response => {
             dispatch(getDeck(id))
         })
     }

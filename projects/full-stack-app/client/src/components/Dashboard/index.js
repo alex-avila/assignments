@@ -22,7 +22,6 @@ class Dashboard extends Component {
                 return new Date(a.availableDate).getDate() - new Date(b.availableDate).getDate()
             })
             nextReview = nextReview[0].availableDate
-            console.log(availableNow)
             const areReviewsReady = new Date(nextReview).getDate() === new Date(Date.now()).getDate()
             // reviews are ready but there are none available
             if (areReviewsReady && availableNow === 0) {
@@ -36,9 +35,7 @@ class Dashboard extends Component {
                 return card.hasBeenSeen ? final + 1 : final
             }, 0)
             percentage = (seen / this.props.cards.length) * 100
-            console.log(momentDate)
         }
-        console.log(nextReview)
         return (
             <div className="dashboard">
                 <h3>Dashboard</h3>

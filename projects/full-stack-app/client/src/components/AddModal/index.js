@@ -28,7 +28,8 @@ class AddDeckModal extends Component {
             this.setState(this.initialState)
         } else {
             const deckId = this.props.deckId.slice(1)
-            this.props.addCard(deckId, { cards: [{ question: valOne, answer: valTwo }] })
+            // id, new card, and true means that it was added manually
+            this.props.addCard(deckId, { cards: [{ question: valOne, answer: valTwo }] }, true)
             this.setState(this.initialState)
         }
     }

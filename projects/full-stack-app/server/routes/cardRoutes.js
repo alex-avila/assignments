@@ -17,8 +17,8 @@ cardRoutes.route('/')
         })
     })
     .put((req, res) => {
-        console.log('putting')
-        const { cards } = req.body
+        const { cards } = req.body.body
+        const { addedManually } = req.body
         // Work around to make each card unique
         const query = {
             cards: {
@@ -31,11 +31,18 @@ cardRoutes.route('/')
         const bodyWithoutCards = Object.keys(req.body).reduce((final, key) => {
             return key !== 'cards' ? { ...final, [key]: req.body[key] } : final
         }, {})
+
         Deck.findOneAndUpdate(
             query,
             { $push: { cards }, ...bodyWithoutCards },
             { new: true },
-            (err, updatedDeck) => handleRes(err, res, updatedDeck)
+            (err, updatedDeck) => {
+                updatedDeck.$cards = cards
+                updatedDeck.$addedManually = addedManually
+                updatedDeck.save((err, savedDeck) => {
+                    handleRes(err, res, savedDeck)
+                })
+            }
         )
     })
 
@@ -55,7 +62,6 @@ cardRoutes.route('/:cardId')
 
             const [eFactor, interval] = getIntervalAndEF(quality, card.eFactor, card.repetition)
             const [availableDate, repetition] = getDateAndRepetition(quality, card.repetition, card.availableDate, interval)
-            console.log(availableDate, repetition)
 
             // Set card with new values
             card.set({ eFactor, availableDate, repetition, hasBeenSeen: true })
