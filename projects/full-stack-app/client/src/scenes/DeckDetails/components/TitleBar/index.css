@@ -11,8 +11,9 @@
 .name-wrapper::after {
     content: "";
     display: block;
-    background: #979797;
-    height: 1px;
+    background: #333;
+    height: 2px;
+    margin-top: -5px;
     width: 100%;
 }
 
@@ -30,7 +31,7 @@
     background-size: contain;
     background-position: center;
     margin: 0 0.25em 0 0;
-    filter: contrast(0.1);
+    filter: contrast(0.7);
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.23, 0, 0.51, 0.98);
 }
@@ -39,7 +40,7 @@
     background: #ffffff;
     margin: 0.25em 0 0;
     padding: 1em 0;
-    border: 1px solid #979797;
+    border: 1px solid #D8D8D8;
     position: absolute;
     top: 25px;
     right: 0;

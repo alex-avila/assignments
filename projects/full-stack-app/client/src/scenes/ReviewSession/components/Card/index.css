@@ -26,8 +26,9 @@
     padding: 0 0.75em;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    background: #D8D8D8;
-    border: 1px solid #979797;
+    border: 1px solid #D8D8D8;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .card__front {

@@ -1,18 +1,21 @@
 .progress-bar__wrapper {
-    /* border: 1px solid #979797; */
     border-bottom: 0;
     height: 10px;
 }
 
-.progress-bar__progression {
-    /* border-right: 1px solid #979797; */
-}
-
 .progress-bar__wrapper {
     width: 100%;
-    background: #EBEBEB;
+    background: repeating-linear-gradient(
+        -33deg, 
+        #fff, 
+        #fff 4px, 
+        #EBEBEB 4px, 
+        #EBEBEB 5px
+        )
+    ;
 }
 
 .progress-bar__progression {
-    background: #979797;
+    background: #333;
+    transition: all 0.25s;
 }

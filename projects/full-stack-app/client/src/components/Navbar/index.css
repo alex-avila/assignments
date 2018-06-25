@@ -1,7 +1,7 @@
 .header__nav {
-    background: #D8D8D8;
+    background: #fafafa;
     padding: 1em 0;
-    border: 1px solid #979797;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .nav__wrapper {
@@ -16,19 +16,18 @@
 }
 
 .nav__logo {
-    background: #EBEBEB;
-    /* height: 40px; */
-    border: 1px solid #979797;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0.5em 0.618em;
+    font-weight: 600;
+    letter-spacing: 3px;
 }
 
 .nav__actions {
     display: flex;
-    background: #EBEBEB;
-    border: 1px solid #979797;
+    border: 1px solid #D8D8D8;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     border-radius: 500px;
     padding: 0 0.25em;
 }
@@ -42,7 +41,7 @@
 }
 
 .nav__action:first-child {
-    border-right: 1px solid #979797;
+    border-right: 1px solid #D8D8D8;
     padding: 0.25em 0.8em;
 }
 
@@ -53,5 +52,5 @@
     background-size: contain;
     background-position: center;
     margin: 0 0.25em 0 0;
-    filter: contrast(0.1);
+    filter: contrast(0.7);
 }

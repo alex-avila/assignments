@@ -6,15 +6,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.5);
     visibility: hidden;
     opacity: 0;
     transition: all 0.3s;
 }
 
 .upload-deck-modal__wrapper {
-    background: #EBEBEB;
-    border: 1px solid #979797;
+    background: #fafafa;
+    border-radius: 3px;
+    border: 1px solid #D8D8D8;
+    box-shadow: 0 15px 40px -12px rgba(0, 0, 0, 0.15);
     padding: 1em 1em;
     display: flex;
     flex-direction: column;
@@ -32,6 +34,7 @@
 }
 
 .dropzone {
+    border-radius: 3px;
     display: flex;
     height: 200px;
     width: 100%;
@@ -50,7 +53,7 @@
 .upload-deck-modal input {
     background: #ffffff;
     font-size: 16px;
-    border: 1px solid #979797;
+    border: 1px solid #D8D8D8;
     padding: 0.5rem 0.618rem;
     margin: 0 0 0.5em;
     color: inherit;
@@ -66,7 +69,7 @@
 .upload-deck-modal textarea {
     background: #ffffff;
     font-size: 16px;
-    border: 1px solid #979797;
+    border: 1px solid #D8D8D8;
     padding: 0.5rem 0.618rem;
     margin: 0 0 0.5em;
     color: inherit;
