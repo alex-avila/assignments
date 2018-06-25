@@ -43,3 +43,13 @@
 .flipped {
     transform: rotateY(180deg);
 }
+
+@media (min-width: 500px) {
+    .card__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* height: 100%; */
+        padding: 3em 0;
+    }
+}

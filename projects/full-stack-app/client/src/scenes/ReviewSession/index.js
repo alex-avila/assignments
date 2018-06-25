@@ -9,7 +9,8 @@ import QualityGetter from './components/QualityGetter';
 import Card from './components/Card';
 
 import './index.css'
-import ProgressBar from '../../components/ProgressBar';
+// import ProgressBar from '../../components/ProgressBar';
+import ReviewProgress from './components/ReviewProgress'
 
 class ReviewSession extends Component {
     constructor(props) {
@@ -95,7 +96,7 @@ class ReviewSession extends Component {
                 {
                     card &&
                     <div className="review__status-and-controls">
-                        <ProgressBar
+                        <ReviewProgress
                             className="progresss"
                             percentage={ (currentCardsNum / initialCardsNum) * 100 }
                         />
