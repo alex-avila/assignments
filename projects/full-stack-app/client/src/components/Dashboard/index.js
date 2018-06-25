@@ -17,7 +17,11 @@ class Dashboard extends Component {
         } else if (areReviewsReady) {
             momentDate = 'available now'
         } else {
-            momentDate = moment(nextReview).fromNow()
+            if (cards.length) {
+                momentDate = moment(nextReview).fromNow()
+            } else {
+                momentDate = 'never'
+            }
         }
         const seen = this.props.cards.reduce((final, card) => {
             return card.hasBeenSeen ? final + 1 : final
