@@ -19,7 +19,7 @@ class Dashboard extends Component {
             })
             nextDay = nextDay.length
             nextReview = cards.sort((a, b) => {
-                return new Date(a.availableDate).getDate() - new Date(b.availableDate).getDate()
+                return new Date(a.availableDate).getDate() > new Date(b.availableDate).getDate()
             })
             nextReview = nextReview[0].availableDate
             const areReviewsReady = new Date(nextReview).getDate() === new Date(Date.now()).getDate()

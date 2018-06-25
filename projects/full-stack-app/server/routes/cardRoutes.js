@@ -47,8 +47,10 @@ cardRoutes.route('/')
             { $push: { cards }, ...bodyWithoutCards },
             { new: true },
             (err, updatedDeck) => {
-                updatedDeck.$cards = cards
-                updatedDeck.$addedManually = addedManually
+                if (addedManually) {
+                    updatedDeck.$cards = cards
+                    updatedDeck.$addedManually = addedManually
+                }
                 updatedDeck.save((err, savedDeck) => {
                     handleRes(err, res, savedDeck)
                 })

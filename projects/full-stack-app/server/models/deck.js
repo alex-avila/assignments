@@ -77,7 +77,12 @@ deckSchema.pre('save', function(next) {
         this.lastUpdated = Date.now()
     }
     if (this.$addedManually) {
-        this.inQueue.newCards.push(this.cards.find(card => card.question <= this.$cards[0].question))
+        // console.log(this.cards.slice(50))
+        // let card = this.$cards[0]
+        // console.log(card)
+        // card = this.cards.find(card => card.question == card.question)
+        // console.log(card)
+        this.inQueue.newCards.push(this.cards[this.cards.length - 1])
         this.inQueue.len = this.inQueue.newCards.length
         this.lastUpdated = Date.now()
     }
