@@ -2,8 +2,7 @@ import axios from 'axios'
 
 const initialState = {
     decks: [],
-    deck: {},
-    cardsPerDeck: {}
+    deck: {}
 }
 
 export const getDecks = () => {
@@ -45,7 +44,6 @@ export const addDeck = body => {
 }
 
 export const addCard = (id, body) => {
-    console.log(id)
     return dispatch => {
         axios.put(`/decks/${id}/cards`, body).then(response => {
             dispatch(getDeck(id))

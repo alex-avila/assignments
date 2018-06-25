@@ -18,7 +18,6 @@ cardRoutes.route('/')
     })
     .put((req, res) => {
         console.log('putting')
-        // Currently set up to only allow one card to be added at a time
         const { cards } = req.body
         // Work around to make each card unique
         const query = {
@@ -61,6 +60,9 @@ cardRoutes.route('/:cardId')
             // Set card with new values
             card.set({ eFactor, availableDate, repetition, hasBeenSeen: true })
 
+            // This card is now accessible in middleware by doint the following
+            foundDeck.$card = card
+            foundDeck.$quality = quality
             // Save/update parent foundDeck
             foundDeck.save((err, savedDeck) => {
                 handleRes(err, res, savedDeck)

@@ -82,7 +82,7 @@ class ReviewSession extends Component {
         let availableCards
         if (Object.keys(deck).length) {
             if (deck.inQueue.cards) {
-                availableCards = deck.inQueue.cards
+                availableCards = [...deck.inQueue.newCards, ...deck.inQueue.reviews]
             }
         }
         const card = availableCards ? availableCards[this.state.currentIndex] : null

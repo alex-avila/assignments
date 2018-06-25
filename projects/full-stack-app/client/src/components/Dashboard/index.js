@@ -8,7 +8,7 @@ class Dashboard extends Component {
     render() {
         const { inQueue: { len: availableNow }, cards } = this.props
         let nextDay = 0
-        let nextReview = Math.pow(10, 1000)
+        let nextReview
         let percentage = 0
         let momentDate = 'never'
         if (cards.length) {
@@ -22,12 +22,23 @@ class Dashboard extends Component {
                 return new Date(a.availableDate).getDate() - new Date(b.availableDate).getDate()
             })
             nextReview = nextReview[0].availableDate
-            momentDate = moment(nextReview).fromNow()
+            console.log(availableNow)
+            const areReviewsReady = new Date(nextReview).getDate() === new Date(Date.now()).getDate()
+            // reviews are ready but there are none available
+            if (areReviewsReady && availableNow === 0) {
+                momentDate = 'in a day'
+            } else if (areReviewsReady) {
+                momentDate = 'available now'
+            } else {
+                momentDate = moment(nextReview).fromNow()
+            }
             const seen = this.props.cards.reduce((final, card) => {
                 return card.hasBeenSeen ? final + 1 : final
             }, 0)
             percentage = (seen / this.props.cards.length) * 100
+            console.log(momentDate)
         }
+        console.log(nextReview)
         return (
             <div className="dashboard">
                 <h3>Dashboard</h3>
@@ -35,7 +46,7 @@ class Dashboard extends Component {
                     <div>
                         <span>
                             {
-                                new Date(nextReview) > Date.now() || !cards.length ?
+                                new Date(nextReview) > Date.now() || !cards.length ||  new Date(nextReview).getDate() === new Date(Date.now()).getDate() ?
                                     momentDate.slice(0, 1).toUpperCase() + momentDate.slice(1) :
                                     'Available Now'
                             }

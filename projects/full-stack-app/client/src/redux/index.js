@@ -7,6 +7,6 @@ const rootReducer = combineReducers({ deckData, cardsDueToday })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
-// store.subscribe(() => console.log(store.getState()))
+store.subscribe(() => console.log(store.getState().deckData.deck.inQueue))
 
 export default store
